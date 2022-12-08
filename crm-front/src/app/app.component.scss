@@ -1,0 +1,18 @@
+// .grid-container {
+//     // width: 100vw;
+//     min-width: 1280;
+//     max-width: 1320px;
+//     display: grid;
+//     grid-template-columns: auto auto;
+//     grid-template-rows: 100vh;
+//     margin: 0 auto;
+//     // box-sizing: border-box;
+// }
+
+.container {
+    display: flex;
+
+    .content {
+        margin: 5px;
+    }
+}

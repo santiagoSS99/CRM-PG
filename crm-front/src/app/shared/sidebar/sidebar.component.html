@@ -1,59 +1,45 @@
-<!-- Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-<aside class="left-sidebar">
-  <!-- Sidebar scroll-->
-  <div class="scroll-sidebar">
-    <!-- Sidebar navigation-->
-    <nav class="sidebar-nav">
-      <ul id="sidebarnav">
-        <li class="user-profile">
-          <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-            <!-- <img src="./assets/images/users/profile.png" alt="user" /> -->
-            <span class="hide-menu">Santiago sanchez</span>
-          </a>
-          <ul aria-expanded="false" class="collapse">
-            <li><a href="javascript:void()">My Profile </a></li>
-            <li><a href="javascript:void()">My Balance</a></li>
-            <li><a href="javascript:void()">Inbox</a></li>
-            <li><a href="javascript:void()">Account Setting</a></li>
-            <li><a href="javascript:void()">Logout</a></li>
-          </ul>
-        </li>
-        <li class="nav-devider"></li>
-        <li class="nav-small-cap">PERSONAL</li>
+<div class="sidebar">
+    <div class="logo_details">
+        <i class="bx bxl-audible icon"></i>
+        <div class="logo_name">VGACI</div>
+        <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
         <li>
-          <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span
-              class="hide-menu">Dashboard
-              <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
-          <ul aria-expanded="false" class="collapse">
-            <li><a href="index.html">Minimal </a></li>
-            <li><a href="index2.html">Analytical</a></li>
-            <li><a href="index3.html">Demographical</a></li>
-            <li><a href="index4.html">Modern</a></li>
-          </ul>
+            <i class="bx bx-search"></i>
+            <input type="text" placeholder="Search...">
+            <span class="tooltip">search</span>
         </li>
         <li>
-          <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-              class="mdi mdi-bullseye"></i><span class="hide-menu">Apps</span></a>
-          <ul aria-expanded="false" class="collapse">
-            <li><a href="app-calendar.html">Calendar</a></li>
-            <li><a href="app-chat.html">Chat app</a></li>
-            <li><a href="app-ticket.html">Support Ticket</a></li>
-            <li><a href="app-contact.html">Contact / Employee</a></li>
-            <li><a href="app-contact2.html">Contact Grid</a></li>
-            <li><a href="app-contact-detail.html">Contact Detail</a></li>
-          </ul>
+            <a href="#">
+                <i class='bx bxs-user'></i>
+                <span class="link_name">User</span>
+            </a>
+            <span class="tooltip">Userhptapapaptp aspjpasd</span>
         </li>
         <li>
-          <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-            <i class="mdi mdi-package-variant"></i><span class="hide-menu">Inventory</span></a>
+            <a href="#">
+                <i class='bx bxs-dashboard'></i>
+                <span class="link_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
         </li>
-      </ul>
-    </nav>
-    <!-- End Sidebar navigation --><i class="fa-solid fa-warehouse-full"></i>
-  </div>
-  <!-- End Sidebar scroll-->
-</aside>
-<!-- ============================================================== -->
-<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
+        <li>
+            <a href="#">
+                <i class="bx bx-package"></i>
+                <span class="link_name">Inventory</span>
+            </a>
+            <span class="tooltip">Inventory</span>
+        </li>
+        <li class="profile">
+            <div class="profile_details">
+                <img src="#" alt="profile image">
+                <div class="profile_content">
+                    <div class="name">Santiago Sanchez</div>
+                    <div class="designation">Admin</div>
+                </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+    </ul>
+</div>
