@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
 }
 
-.sidebar {
+.sidebar-menu {
     min-height: 100vh;
     width: 78px;
     padding: 6px 14px;
@@ -257,14 +257,14 @@ body {
 
 
 
-.sidebar .logo_details .sidebar.open .logo_details .icon,
-.sidebar.open .logo_details .logo_name {
+.sidebar-menu .logo_details .sidebar-menu.open .logo_details .icon,
+.sidebar-menu.open .logo_details .logo_name {
     opacity: 1;
 }
 
 
 
-.sidebar .profile .profile_details {
+.sidebar-menu .profile .profile_details {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -272,7 +272,7 @@ body {
 
 
 
-.sidebar.open .profile #exit {
+.sidebar-menu.open .profile #exit {
     width: 50px;
     background: none;
 }
