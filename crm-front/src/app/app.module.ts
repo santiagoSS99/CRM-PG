@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +14,12 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule } from '@angular/material/sidenav';
+// import { MatSidenavModule } from '@angular/material/sidenav';
 import { InventoryComponent } from './pages/inventory/inventory.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormProductComponent } from './pages/products/form-product/form-product.component';
+// import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +31,19 @@ import { InventoryComponent } from './pages/inventory/inventory.component';
     BreadcrumbsComponent,
     SidebarComponent,
     HeaderComponent,
-    InventoryComponent
+    InventoryComponent,
+    FormProductComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSidenavModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
