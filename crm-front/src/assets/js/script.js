@@ -1,5 +1,5 @@
 window.onload = function () {
-    const sidebar = document.querySelector(".sidebar");
+    const sidebar = document.querySelector(".sidebar-menu");
     const closeBtn = document.querySelector("#btn");
     const searchBtn = document.querySelector(".bx-search");
 
