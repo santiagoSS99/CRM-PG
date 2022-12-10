@@ -6,16 +6,16 @@
         <div class="wrapper-left">
             <div class="center-wrapper">
                 <div class="form-input">
-                    <label for="">Product Name</label>
-                    <input type="text">
+                    <label class="label" for="">Product Name</label>
+                    <input class="input" type="text" name="name" [(ngModel)]="product.product_name">
                 </div>
                 <div class="form-input">
-                    <label for="">Price</label>
-                    <input type="text">
+                    <label class="label" for="">Price</label>
+                    <input class="input" type="text" name="price" [(ngModel)]="product.price">
                 </div>
                 <div class="form-input">
-                    <label for="">Description</label>
-                    <input type="text">
+                    <label class="label" for="">Description</label>
+                    <input class="input" type="text" name="description" [(ngModel)]="product.description">
                 </div>
             </div>
 
@@ -23,22 +23,22 @@
         <div class="wrapper-right">
             <div class="center-wrapper">
                 <div class="form-input">
-                    <label for="">Product Name</label>
-                    <input type="text">
+                    <label class="label" for="">Image</label>
+                    <input class="input" type="text" name="image" [(ngModel)]="product.imageURL">
                 </div>
                 <div class="form-input">
-                    <label for="">Price</label>
-                    <input type="text">
+                    <label class="label" for="">Quantity</label>
+                    <input class="input" type="text" name="quantity" [(ngModel)]="product.quantity">
                 </div>
                 <div class="form-input">
-                    <label for="">Description</label>
-                    <input type="text">
+                    <label class="label" for="">Provider</label>
+                    <input class="input" type="search" name="provider" [(ngModel)]="product.provider">
                 </div>
             </div>
 
         </div>
     </form>
     <div class="button-send">
-        <button (click)="submitForm()" type="button" class='btn btn-primary'>SENsD</button>
+        <button (click)="submitForm()" type="button" class='btn btn-primary'>Create</button>
     </div>
 </div>

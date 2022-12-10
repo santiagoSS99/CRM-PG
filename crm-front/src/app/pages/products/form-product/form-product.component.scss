@@ -1,8 +1,8 @@
 .form-container {
     background-color: #ffffff;
-    height: 45%;
+    height: auto;
+    padding: 9px;
     width: 50%;
-    // color: aqua;
     border-radius: 10px;
     -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
@@ -12,7 +12,6 @@
         font-weight: bold;
         display: flex;
         justify-content: center;
-        // margin-top: 30px;
         padding: 20px;
     }
 
@@ -22,24 +21,21 @@
 
         .wrapper-left,
         .wrapper-right {
-            // font-size: x-large;
             background-color: rgba(81, 81, 81, 0);
-            // width: 70%;
             display: flex;
             justify-content: center;
 
             .form-input {
                 position: relative;
-                // height: 45px;
-                // width: 40%;
-                margin-bottom: 17px;
+                height: 40px;
+                width: 90%;
+                margin-bottom: 50px;
 
-                input {
-                    // position: absolute;
+
+                .input {
                     top: 0px;
                     left: 0px;
-                    height: 20%;
-                    // width: 100%;
+                    height: 100%;
                     border: 1px solid #DADCE0;
                     border-radius: 7px;
                     font-size: 16px;
@@ -47,16 +43,14 @@
                     outline: none;
                     background: none;
                     display: block;
-                    // z-index: 1;
+                    z-index: 1;
                 }
 
-                label {
+                .label {
                     // position: absolute;
                     top: 15px;
                     left: 15px;
                     padding: 0 4px;
-                    // background-color: white;
-                    // color: #0000;
                     font-size: 16px;
                     transition: 0.5s;
                     z-index: 0;
@@ -75,9 +69,9 @@
 @media (max-width: 1150px) {
     .form-container {
         background-color: #ffffff;
-        height: 65%;
+        padding: 8px;
+        height: auto;
         width: 50%;
-        // color: aqua;
         border-radius: 10px;
         -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
@@ -87,7 +81,6 @@
             font-weight: bold;
             display: flex;
             justify-content: center;
-            // margin-top: 30px;
             padding: 20px;
         }
 
@@ -98,12 +91,3 @@
         }
     }
 }
-
-// input:focus+label {
-//     top: -7px;
-//     left: 3px;
-//     z-index: 10;
-//     font-size: 14px;
-//     font-weight: 600;
-//     color: purple;
-// }
