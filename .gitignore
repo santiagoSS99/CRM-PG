@@ -1,3 +1,7 @@
 node_modules/
 .vscode/
 .angular/
+crm-back/node_modules
+crm-back/dist
+crm-back/src/config/config.ts
+.env
