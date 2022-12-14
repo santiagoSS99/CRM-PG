@@ -7,11 +7,12 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.keys';
+import { typeOrmConfig } from './config/config';
 
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot(typeOrmConfig),
+    TypeOrmModule.forRoot(typeOrmConfig),
     DatabaseModule,
     ConfigModule
   ],
