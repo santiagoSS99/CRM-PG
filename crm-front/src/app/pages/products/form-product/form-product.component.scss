@@ -2,7 +2,7 @@
     background-color: #ffffff;
     height: auto;
     padding: 9px;
-    width: 50%;
+    width: 35%;
     border-radius: 10px;
     -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
@@ -66,12 +66,12 @@
     }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1440px) {
     .form-container {
         background-color: #ffffff;
         padding: 8px;
         height: auto;
-        width: 50%;
+        width: 35%;
         border-radius: 10px;
         -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);

@@ -1,28 +1,30 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { join } from 'path';
 // import { typeOrmConfig } from './config/config';
-import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from './config/config.module';
-import { ConfigService } from './config/config.service';
-import { Configuration } from './config/config.keys';
-import { typeOrmConfig } from './config/config';
+import { ProductsModule } from './products/products.module';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
-    DatabaseModule,
-    ConfigModule
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: "mysql",
+      // host: 'localhost',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      autoLoadEntities: true,
+      // entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+      synchronize: true
+    }),
+    ProductsModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {
-  static port: number | string;
-
-  constructor(private readonly _configService: ConfigService) {
-    AppModule.port = this._configService.get(Configuration.PORT)
-  }
 }
