@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  BASE_URL: string = 'http://localhost:3000'
+  BASE_URL: string = 'http://localhost:3000/api'
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.BASE_URL}/product/${id}`);
   }
   createProduct(Product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.BASE_URL}/product/create`, Product)
+    return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)
   }
   updateProduct(id: string, Product: Product): Observable<Product> {
     return this.http.put<Product>(`${this.BASE_URL}/product/update?productID=${id}`, Product)

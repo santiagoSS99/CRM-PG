@@ -1,35 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { v4 as uuid } from 'uuid'
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { BadRequestException, InternalServerErrorException } from '@nestjs/common/exceptions';
 
 @Injectable()
 export class ProductsService {
-  private products: Product[]
+
+  private readonly logger = new Logger('ProductsService');
+  constructor(
+
+    @InjectRepository(Product)
+    private readonly productRepo: Repository<Product>,
+  ) {
+  }
+
 
   async create(createProductDto: CreateProductDto) {
-    // const product: Product = {
-    //   id: uuid(),
-    //   product_name: createProductDto.product_name,
-    //   price: createProductDto.price,
-    //   description: createProductDto.description,
-    //   quantity: createProductDto.quantity,
-    //   imageURL: createProductDto.imageURL,
-    //   provider: createProductDto.provider,
-    //   barcode: createProductDto.barcode,
-    //   createdAt: new Date().getTime()
-    // }
-    // this.products.push(product)
+
+    try {
+      const product = this.productRepo.create(createProductDto);
+      await this.productRepo.save(product)
+      return product
+    } catch (error) {
+      this.handleDBExceptions(error);
+    }
   }
 
   findAll() {
     return `This action returns all products`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} product`;
+  // }
 
   update(id: number, updateProductDto: UpdateProductDto) {
     return `This action updates a #${id} product`;
@@ -37,5 +44,13 @@ export class ProductsService {
 
   remove(id: number) {
     return `This action removes a #${id} product`;
+  }
+
+  private handleDBExceptions(error: any) {
+    if (error.code === '23505')
+      throw new BadRequestException(error.detail);
+
+    this.logger.error(error)
+    throw new InternalServerErrorException('unexpected error, please check the logs')
   }
 }

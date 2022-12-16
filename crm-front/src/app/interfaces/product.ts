@@ -10,4 +10,5 @@ export interface Product {
     quantity: number;
     provider: string;
     selled: number;
+    barcode?: string;
 }
