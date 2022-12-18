@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 // import { typeOrmConfig } from './config/config';
 import { ProductsModule } from './products/products.module';
+import { CommonModule } from './common/common.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { ProductsModule } from './products/products.module';
       // entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true
     }),
-    ProductsModule
+    ProductsModule,
+    CommonModule
   ],
   controllers: [],
   providers: [],
