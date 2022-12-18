@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
-  product: Product = {
+  products: Product = {
     product_name: '',
     price: 0,
     description: '',
@@ -26,8 +26,8 @@ export class FormProductComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.product)
-    this.productService.createProduct(this.product).subscribe((res) => {
+    console.log(this.products)
+    this.productService.createProduct(this.products).subscribe((res) => {
       console.log(res);
     })
   }
