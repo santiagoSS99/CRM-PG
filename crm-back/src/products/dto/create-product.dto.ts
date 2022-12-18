@@ -1,4 +1,4 @@
-import { IsString, MinLength, IsNumber, IsPositive, IsOptional, IsInt, IsIn } from 'class-validator'
+import { IsString, MinLength, IsPositive, IsOptional, IsInt } from 'class-validator'
 
 export class CreateProductDto {
     [x: string]: any
@@ -8,7 +8,6 @@ export class CreateProductDto {
     product_name: string
 
     @IsInt()
-    // @IsPositive()
     @IsOptional()
     price?: number
 

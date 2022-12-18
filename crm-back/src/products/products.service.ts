@@ -34,9 +34,9 @@ export class ProductsService {
     return `This action returns all products`;
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} product`;
-  // }
+  findOne(id: number) {
+    return `This action returns a #${id} product`;
+  }
 
   update(id: number, updateProductDto: UpdateProductDto) {
     return `This action updates a #${id} product`;
