@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BadRequestException, InternalServerErrorException } from '@nestjs/common/exceptions';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class ProductsService {
@@ -31,19 +32,26 @@ export class ProductsService {
   }
 
   findAll() {
-    return `This action returns all products`;
+    return this.productRepo.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findOne(id: string) {
+
+    const product = await this.productRepo.findOneBy({ id });
+    if (!product) {
+      throw new NotFoundException(`product with id ${id} not found`)
+    }
+
+    return product
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
     return `This action updates a #${id} product`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async remove(id: string) {
+    const product = await this.findOne(id);
+    await this.productRepo.remove(product);
   }
 
   private handleDBExceptions(error: any) {

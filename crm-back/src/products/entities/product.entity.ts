@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert } from 'typeorm';
 
 @Entity()
 export class Product {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Column()
     product_name: string;
@@ -25,6 +25,11 @@ export class Product {
     @Column()
     imageURL: string;
 
+    @Column('text', {
+        unique: true
+    })
+    slug: string
+
     @Column()
     provider: string;
 
@@ -42,4 +47,12 @@ export class Product {
 
     @CreateDateColumn()
     createdAt: Date;
+
+    @BeforeInsert()
+    checkSlugInsert() {
+        if (!this.slug) {
+            this.slug = this.product_name
+        }
+        this.slug = this.slug.toLowerCase().replaceAll(' ', '_').replaceAll("'", '')
+    }
 }
