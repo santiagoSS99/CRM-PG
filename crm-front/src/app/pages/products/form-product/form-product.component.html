@@ -1,44 +1,49 @@
-<div class="form-container">
-    <div class="title">
-        <h1 class="title-header">Create product</h1>
+<div class="fullcontainer">
+    <div class="form-container">
+        <div class="title">
+            <h1 class="title-header">Create product</h1>
+        </div>
+        <form class="inputs">
+            <div class="wrapper-left">
+                <div class="center-wrapper">
+                    <div class="form-input">
+                        <label class="label" for="">Product Name</label>
+                        <input class="input" type="text" name="name" [(ngModel)]="product.product_name">
+                    </div>
+                    <div class="form-input">
+                        <label class="label" for="">Price</label>
+                        <input class="input" type="number" name="price" [(ngModel)]="product.price">
+                    </div>
+                    <div class="form-input">
+                        <label class="label" for="">Description</label>
+                        <input class="input" type="text" name="description" [(ngModel)]="product.description">
+                    </div>
+                </div>
+
+            </div>
+            <div class="wrapper-right">
+                <div class="center-wrapper">
+                    <div class="form-input">
+                        <label class="label" for="">Image</label>
+                        <input class="input" type="text" name="image" [(ngModel)]="product.imageURL">
+                    </div>
+                    <div class="form-input">
+                        <label class="label" for="">Quantity</label>
+                        <input class="input" type="number" name="quantity" [(ngModel)]="product.quantity">
+                    </div>
+                    <div class="form-input">
+                        <label class="label" for="">Provider</label>
+                        <input class="input" type="search" name="provider" [(ngModel)]="product.provider">
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <div class="button-send">
+            <button (click)="submitForm()" type="button" class='btn btn-primary'>Create</button>
+        </div>
     </div>
-    <form class="inputs">
-        <div class="wrapper-left">
-            <div class="center-wrapper">
-                <div class="form-input">
-                    <label class="label" for="">Product Name</label>
-                    <input class="input" type="text" name="name" [(ngModel)]="product.product_name">
-                </div>
-                <div class="form-input">
-                    <label class="label" for="">Price</label>
-                    <input class="input" type="number" name="price" [(ngModel)]="product.price">
-                </div>
-                <div class="form-input">
-                    <label class="label" for="">Description</label>
-                    <input class="input" type="text" name="description" [(ngModel)]="product.description">
-                </div>
-            </div>
-
-        </div>
-        <div class="wrapper-right">
-            <div class="center-wrapper">
-                <div class="form-input">
-                    <label class="label" for="">Image</label>
-                    <input class="input" type="text" name="image" [(ngModel)]="product.imageURL">
-                </div>
-                <div class="form-input">
-                    <label class="label" for="">Quantity</label>
-                    <input class="input" type="number" name="quantity" [(ngModel)]="product.quantity">
-                </div>
-                <div class="form-input">
-                    <label class="label" for="">Provider</label>
-                    <input class="input" type="search" name="provider" [(ngModel)]="product.provider">
-                </div>
-            </div>
-
-        </div>
-    </form>
-    <div class="button-send">
-        <button (click)="submitForm()" type="button" class='btn btn-primary'>Create</button>
+    <div class="live-reload-component">
+        <app-live-reload-products></app-live-reload-products>
     </div>
 </div>

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert } from 'typeorm';
+import { text } from 'stream/consumers';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 
 @Entity()
 export class Product {
@@ -48,11 +49,21 @@ export class Product {
     @CreateDateColumn()
     createdAt: Date;
 
+    // @Column('text', {
+    //     array: true
+    // })
+    // tags: string[]
+
     @BeforeInsert()
     checkSlugInsert() {
         if (!this.slug) {
             this.slug = this.product_name
         }
+        this.slug = this.slug.toLowerCase().replaceAll(' ', '_').replaceAll("'", '')
+    }
+
+    @BeforeUpdate()
+    checkSlugUpdate() {
         this.slug = this.slug.toLowerCase().replaceAll(' ', '_').replaceAll("'", '')
     }
 }

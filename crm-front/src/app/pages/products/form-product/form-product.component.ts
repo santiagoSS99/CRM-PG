@@ -21,6 +21,7 @@ export class FormProductComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.productService.getProducts()
     // this.submitForm()
   }
 

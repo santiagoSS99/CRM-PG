@@ -20,6 +20,9 @@ export class ProductsService {
   ) {
   }
 
+  findAll() {
+    return this.productRepo.find({});
+  }
 
   async create(createProductDto: CreateProductDto) {
 
@@ -32,18 +35,12 @@ export class ProductsService {
     }
   }
 
-  findAll() {
-    return this.productRepo.find({});
-  }
 
   async findOne(term: string) {
-
     let product: Product
-
     if (isUUID(term)) {
       product = await this.productRepo.findOneBy({ id: term })
     } else {
-
       // product = await this.productRepo.findOneBy({ slug: term })
       const queryBuilder = this.productRepo.createQueryBuilder()
       product = await queryBuilder.where(`UPPER(product_name) = :title or slug = :slug`, {
@@ -51,10 +48,7 @@ export class ProductsService {
         slug: term.toLowerCase(),
       }).getOne();
     }
-
     // const product = await this.productRepo.findOneBy({ id });
-
-
     if (!product) {
       throw new NotFoundException(`product with id ${term} not found`)
     }
@@ -62,8 +56,24 @@ export class ProductsService {
     return product
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  async update(id: string, updateProductDto: UpdateProductDto) {
+
+    const product = await this.productRepo.preload({
+      id: id,
+      ...updateProductDto
+    });
+
+    if (!product) {
+      throw new NotFoundException(`product with ${id} not found`);
+    }
+
+    try {
+      await this.productRepo.save(product);
+      return product
+
+    } catch (error) {
+      this.handleDBExceptions(error)
+    }
   }
 
   async remove(id: string) {
