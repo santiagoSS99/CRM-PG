@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/product`);
+    return this.http.get<Product[]>(`${this.BASE_URL}/products`);
   }
 
   getProductsById(id: string): Observable<Product[]> {

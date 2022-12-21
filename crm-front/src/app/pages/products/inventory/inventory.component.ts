@@ -2,23 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-live-reload-products',
-  templateUrl: './live-reload-products.component.html',
-  styleUrls: ['./live-reload-products.component.scss']
+  selector: 'app-inventory',
+  templateUrl: './inventory.component.html',
+  styleUrls: ['./inventory.component.scss']
 })
-export class LiveReloadProductsComponent implements OnInit {
-
-  products: any
+export class InventoryComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
-
+  products: any
   ngOnInit(): void {
-    this.getProductData()
+    this.getDataAsEcommerce()
   }
 
-  getProductData() {
+  getDataAsEcommerce() {
     this.productService.getProducts().subscribe((res) => {
       this.products = res
     })
   }
+
 }

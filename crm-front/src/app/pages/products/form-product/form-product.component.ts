@@ -15,16 +15,25 @@ export class FormProductComponent implements OnInit {
     imageURL: '',
     quantity: 0,
     provider: '',
-    selled: 0
+    selled: 0,
   }
+  productsData: any
+
 
   constructor(private productService: ProductService) { }
 
-  ngOnInit(): void {
-    this.productService.getProducts()
+  ngOnInit() {
+    this.getAllProducts()
+
     // this.submitForm()
   }
 
+  getAllProducts() {
+    return this.productService.getProducts().subscribe((res) => {
+      console.log(res);
+      this.productsData = res
+    })
+  }
   submitForm() {
     console.log(this.products)
     this.productService.createProduct(this.products).subscribe((res) => {

@@ -14,4 +14,29 @@
         justify-content: center;
         padding: 20px;
     }
+
+    .products-container {
+        display: flex;
+        justify-content: space-around;
+
+
+        .card-products {
+            width: 140px;
+            /* outline: antiquewhite; */
+            // box-shadow: 0px 0px 5px 0px black;
+            background-color: darkgray;
+            border-radius: 5px;
+
+            .product-data {
+                display: flex;
+                justify-content: center;
+                margin: 20px;
+
+            }
+
+            .product-data {}
+        }
+    }
+
+
 }
