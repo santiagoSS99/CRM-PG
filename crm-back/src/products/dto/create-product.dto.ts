@@ -1,4 +1,4 @@
-import { IsString, MinLength, IsPositive, IsOptional, IsInt } from 'class-validator'
+import { IsString, MinLength, IsPositive, IsOptional, IsInt, IsArray } from 'class-validator'
 
 export class CreateProductDto {
     [x: string]: any
@@ -39,4 +39,9 @@ export class CreateProductDto {
     @IsOptional()
     @IsString()
     barcode?: string
+
+    @IsString({ each: true })
+    @IsArray()
+    @IsOptional()
+    tags: string[]
 }

@@ -1,5 +1,6 @@
 import { text } from 'stream/consumers';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
+import { ProductImage } from './';
 
 @Entity()
 export class Product {
@@ -49,21 +50,29 @@ export class Product {
     @CreateDateColumn()
     createdAt: Date;
 
-    // @Column('text', {
-    //     array: true
-    // })
-    // tags: string[]
+    @Column("simple-array", {
+        array: true,
+    })
+    tags: string[]
+
+    images?: ProductImage
 
     @BeforeInsert()
     checkSlugInsert() {
         if (!this.slug) {
             this.slug = this.product_name
         }
-        this.slug = this.slug.toLowerCase().replaceAll(' ', '_').replaceAll("'", '')
+        this.slug = this.slug
+            .toLowerCase()
+            .replaceAll(' ', '_')
+            .replaceAll("'", '')
     }
 
     @BeforeUpdate()
     checkSlugUpdate() {
-        this.slug = this.slug.toLowerCase().replaceAll(' ', '_').replaceAll("'", '')
+        this.slug = this.slug
+            .toLowerCase()
+            .replaceAll(' ', '_')
+            .replaceAll("'", '')
     }
 }
