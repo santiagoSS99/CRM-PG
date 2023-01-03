@@ -5,6 +5,7 @@ import { join } from 'path';
 // import { typeOrmConfig } from './config/config';
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
+import { CustomerModule } from './customer/customer.module';
 
 
 @Module({
@@ -23,7 +24,8 @@ import { CommonModule } from './common/common.module';
       synchronize: true
     }),
     ProductsModule,
-    CommonModule
+    CommonModule,
+    CustomerModule
   ],
   controllers: [],
   providers: [],
