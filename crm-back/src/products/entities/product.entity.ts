@@ -1,5 +1,5 @@
 import { text } from 'stream/consumers';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate, ManyToMany, OneToMany } from 'typeorm';
 import { ProductImage } from './';
 
 @Entity()
@@ -55,7 +55,12 @@ export class Product {
     })
     tags: string[]
 
-    images?: ProductImage
+    @OneToMany(
+        () => ProductImage,
+        (productImage) => productImage.product,
+        { cascade: true, eager: true }
+    )
+    images?: ProductImage[];
 
     @BeforeInsert()
     checkSlugInsert() {

@@ -6,6 +6,7 @@ import { join } from 'path';
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
 import { CustomerModule } from './customer/customer.module';
+import { FilesModule } from './files/files.module';
 
 
 @Module({
@@ -25,7 +26,8 @@ import { CustomerModule } from './customer/customer.module';
     }),
     ProductsModule,
     CommonModule,
-    CustomerModule
+    CustomerModule,
+    FilesModule
   ],
   controllers: [],
   providers: [],
