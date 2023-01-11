@@ -7,7 +7,7 @@ export class ProductImage {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column('text')
+    @Column('text', { array: true })
     url: string;
 
     @ManyToOne(
