@@ -24,9 +24,6 @@ export class Product {
     })
     stock: number;
 
-    @Column()
-    imageURL: string;
-
     @Column('text', {
         unique: true
     })
