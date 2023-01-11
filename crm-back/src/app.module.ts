@@ -7,6 +7,8 @@ import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
 import { CustomerModule } from './customer/customer.module';
 import { FilesModule } from './files/files.module';
+import { ChatController } from './chat/chat.controller';
+import { ChatService } from './chat/chat.service';
 
 
 @Module({
@@ -29,8 +31,8 @@ import { FilesModule } from './files/files.module';
     CustomerModule,
     FilesModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [ChatController],
+  providers: [ChatService],
 })
 export class AppModule {
 }

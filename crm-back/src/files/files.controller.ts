@@ -13,7 +13,7 @@ export class FilesController {
   constructor(private readonly filesService: FilesService) { }
 
   @Post('product')
-  @UseInterceptors(FileInterceptor('file', {
+  @UseInterceptors(FileInterceptor('images', {
     fileFilter: fileFilter,
     storage: diskStorage({
       destination: './static/products',
