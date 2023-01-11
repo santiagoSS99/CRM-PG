@@ -23,10 +23,7 @@
             </div>
             <div class="wrapper-right">
                 <div class="center-wrapper">
-                    <div class="form-input">
-                        <label class="label" for="">Image</label>
-                        <input class="input" type="text" name="image" [(ngModel)]="products.imageURL">
-                    </div>
+
                     <div class="form-input">
                         <label class="label" for="">Quantity</label>
                         <input class="input" type="number" name="quantity" [(ngModel)]="products.quantity">
@@ -34,6 +31,11 @@
                     <div class="form-input">
                         <label class="label" for="">Provider</label>
                         <input class="input" type="search" name="provider" [(ngModel)]="products.provider">
+                    </div>
+                    <div class="form-input">
+                        <label class="label" for="">Test Image</label>
+                        <input type="file" multiple name="images" [(ngModel)]="products.images"
+                            (change)="uploadFile($event)">
                     </div>
                 </div>
 
