@@ -24,10 +24,9 @@ export class Product {
     })
     stock: number;
 
-    @Column({
-        type: "varchar", length: 255, unique: true
-    })
-    slug: string
+    @Column({ type: 'char', length: 100, unique: true })
+    slug: string;
+
 
     @Column()
     provider: string;
@@ -35,20 +34,21 @@ export class Product {
     @Column('int')
     quantity: number;
 
-    @Column()
-    barcode: string;
+    // @Column()
+    // barcode: string;
 
     @Column('int')
     selled: number
 
-    @Column()
-    updatedAt?: Date;
+    // @CreateDateColumn({})
+    // updatedAt?: Date;
 
-    @CreateDateColumn()
-    createdAt: Date;
+    // @CreateDateColumn({
+    // })
+    // createdAt: Date;
 
-    @Column('simple-array')
-    tags: string[]
+    // @Column("json", { default: [] })
+    // tags: string[];
 
     @OneToMany(
         () => ProductImage,

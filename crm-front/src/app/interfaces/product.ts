@@ -4,11 +4,11 @@ export interface Product {
     product_name: string;
     price: number;
     description: string;
-    createdAt?: Date;
-    updatedAt?: Date;
+    // createdAt?: Date;
+    // updatedAt?: Date;
     quantity: number;
     provider: string;
     selled: number;
-    barcode?: string;
+    // barcode?: string;
     images?: any[]
 }
