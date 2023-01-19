@@ -1,7 +1,7 @@
 import { IsString, MinLength, IsPositive, IsOptional, IsInt, IsArray } from 'class-validator'
 
 export class CreateProductDto {
-    [x: string]: any
+    // [x: string]: any
 
     @IsString()
     @MinLength(3)
@@ -19,6 +19,9 @@ export class CreateProductDto {
     @IsOptional()
     @IsInt()
     stock?: number
+
+    @IsString()
+    slug: string
 
     @IsOptional()
     @IsString()

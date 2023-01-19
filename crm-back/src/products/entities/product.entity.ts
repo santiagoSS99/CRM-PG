@@ -24,8 +24,8 @@ export class Product {
     })
     stock: number;
 
-    @Column('text', {
-        unique: true
+    @Column({
+        type: "varchar", length: 255, unique: true
     })
     slug: string
 
@@ -47,9 +47,7 @@ export class Product {
     @CreateDateColumn()
     createdAt: Date;
 
-    @Column("simple-array", {
-        array: true,
-    })
+    @Column('simple-array')
     tags: string[]
 
     @OneToMany(

@@ -6,9 +6,9 @@ export class ChatController {
 
     constructor(private chatService: ChatService) { }
 
-    @Get()
-    async getMessages(@Res() res: Response) {
-        // const messages = await this.chatService.getMessages();
-        // return messages;
-    }
+    // @Get()
+    // async getMessages(@Res() res: Response) {
+    // const messages = await this.chatService.getMessages();
+    // return messages;
+    // }
 }
