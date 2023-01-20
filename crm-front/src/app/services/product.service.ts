@@ -28,4 +28,7 @@ export class ProductService {
   deleteProduct(id: string) {
     return this.http.delete<Product>(`${this.BASE_URL}/product/delete?productID=${id}`)
   }
+  uploadImages(formData: FormData) {
+    return this.http.post(`${this.BASE_URL}/files/product`, formData);
+  }
 }

@@ -29,6 +29,7 @@ export class FilesController {
   }
 
   @Post('product')
+  // fileinterceptor me indica que espera el key como el nombre que le ponga, en este caso images
   @UseInterceptors(FileInterceptor('images', {
     fileFilter: fileFilter,
     storage: diskStorage({
@@ -40,7 +41,7 @@ export class FilesController {
     @UploadedFile()
     file: Express.Multer.File) {
     if (!file) throw new BadRequestException('File')
-    const secureUrl = `${this.configService.get("HOST_API")}/files/product/${file.filename}`
+    const secureUrl = `${this.configService.get('HOST_API')}/files/product/${file.filename}`;
     return { secureUrl };
   }
 }
