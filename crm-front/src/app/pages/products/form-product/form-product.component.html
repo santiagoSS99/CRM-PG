@@ -43,7 +43,7 @@
               class="input"
               type="number"
               name="quantity"
-              [(ngModel)]="products.quantity"
+              [(ngModel)]="products.stock"
             />
           </div>
           <div class="form-input">
@@ -62,7 +62,7 @@
               multiple
               name="images"
               [(ngModel)]="products.images"
-              (change)="onFileChanged($event)"
+              (change)="selectFiles($event)"
               #fileInput
             />
           </div>
@@ -70,7 +70,7 @@
       </div>
     </form>
     <div class="button-send">
-      <button (click)="submitForm()" type="button" class="btn btn-primary">
+      <button (click)="uploadFiles()" type="button" class="btn btn-primary">
         Create
       </button>
     </div>

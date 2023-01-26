@@ -28,9 +28,9 @@ export class CreateProductDto {
     @IsOptional()
     provider?: string
 
-    @IsInt()
-    @IsOptional()
-    quantity?: number
+    // @IsInt()
+    // @IsOptional()
+    // quantity?: number
 
     @IsInt()
     @IsOptional()

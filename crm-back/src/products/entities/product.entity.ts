@@ -31,8 +31,8 @@ export class Product {
     @Column()
     provider: string;
 
-    @Column('int')
-    quantity: number;
+    // @Column('int')
+    // quantity: number;
 
     // @Column()
     // barcode: string;

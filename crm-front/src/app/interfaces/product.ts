@@ -6,7 +6,7 @@ export interface Product {
     description: string;
     // createdAt?: Date;
     // updatedAt?: Date;
-    quantity: number;
+    stock: number;
     provider: string;
     selled: number;
     // barcode?: string;
