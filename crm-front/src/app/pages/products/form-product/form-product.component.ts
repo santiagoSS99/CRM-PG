@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
-  products: Product = {
+  product: Product = {
     product_name: '',
     price: 0,
     description: '',
@@ -21,14 +21,9 @@ export class FormProductComponent implements OnInit {
   }
   productsData: any
   productId: any
-  selectedFiles?: FileList
-  // progressInfos: any[] = [];
-  message: string[] = [];
+  selectedFiles?: FileList;
 
-  previews: string[] = [];
-  imageInfos?: Observable<any>;
-
-
+  // selectedFiles: FileList = [] as FileList;
   constructor(
     private productService: ProductService,
     private http: HttpClient,
@@ -37,6 +32,7 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts()
+    this.selectFiles(Event)
   }
 
   onFileChanged(event: any) {
@@ -49,14 +45,7 @@ export class FormProductComponent implements OnInit {
       this.productsData = res
     })
   }
-  submitForm() {
-    console.log(this.products)
-    this.productService.createProduct(this.products).subscribe((res) => {
-      console.log(res);
-      this.productId = res!.id
-      console.log(this.productId);
-    })
-  }
+
 
   onFileChange(event: any) {
     console.log(event.target.files)
@@ -74,59 +63,36 @@ export class FormProductComponent implements OnInit {
     }
   }
 
-  uploadFiles(): void {
-
-    this.submitForm()
-    this.message = [];
+  submitForm() {
+    let images_test = [];
 
     if (this.selectedFiles) {
+      console.log("🚀", this.selectedFiles)
       for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload(i, this.selectedFiles[i]);
+        images_test.push(this.selectedFiles[i].name);
       }
     }
-  }
-
-  upload(idx: number, file: File): void {
-    // this.progressInfos[idx] = { value: 0, fileName: file.name };
-
-    if (file) {
-      this.productService.uploadImages(file).subscribe({
-        next: (event: any) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            // this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
-          } else if (event instanceof HttpResponse) {
-            const msg = 'Uploaded the file successfully: ' + file.name;
-            this.message.push(msg);
-            this.imageInfos = this.productService.getProducts();
-          }
-        },
-        error: (err: any) => {
-          // this.progressInfos[idx].value = 0;
-          const msg = 'Could not upload the file: ' + file.name;
-          this.message.push(msg);
-        }
-      });
+    let product = {
+      "product_name": this.product.product_name,
+      "price": this.product.price,
+      "description": this.product.description,
+      "stock": this.product.stock,
+      "images": images_test,
+      "provider": this.product.provider,
+      "selled": this.product.selled
     }
+    console.log(this.product)
+    this.productService.createProduct(product).subscribe((res) => {
+      console.log(res);
+      this.productId = res!.id
+      console.log(this.productId);
+    })
   }
 
   selectFiles(event: any): void {
-    this.message = [];
-    // this.progressInfos = [];
     this.selectedFiles = event.target.files;
+    console.log("🚀 ~ file: form-product.component.ts:125 ~ FormProductComponent ~ selectFiles ~ this.selectedFiles", this.selectedFiles)
 
-    if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
-      for (let i = 0; i < numberOfFiles; i++) {
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          console.log(e.target.result);
-          this.previews.push(e.target.result);
-        };
-
-        reader.readAsDataURL(this.selectedFiles[i]);
-      }
-    }
   }
 
 }

@@ -92,6 +92,11 @@ export class ProductsService {
     }
   }
 
+  async updateOneProduct(id: string, updateProductDto: UpdateProductDto) {
+    const product = await this.productRepo.preload({ id })
+    console.log(product)
+  }
+
   async update(id: string, updateProductDto: UpdateProductDto) {
 
     const { images, ...toUpdateRest } = updateProductDto

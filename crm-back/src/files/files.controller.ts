@@ -8,6 +8,7 @@ import { fileFilter } from './helpers/fileFilter.helper';
 import { diskStorage } from 'multer';
 import { fileNamer } from './helpers/fileNamer.helper';
 import { ConfigService } from '@nestjs/config';
+import { Product } from 'src/products/entities';
 
 
 @Controller('files')
@@ -42,6 +43,7 @@ export class FilesController {
     file: Express.Multer.File) {
     if (!file) throw new BadRequestException('File')
     const secureUrl = `${this.configService.get('HOST_API')}/files/product/${file.filename}`;
+
     return { secureUrl };
   }
 }

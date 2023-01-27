@@ -8,30 +8,15 @@
         <div class="center-wrapper">
           <div class="form-input">
             <label class="label" for="">Product Name</label>
-            <input
-              class="input"
-              type="text"
-              name="name"
-              [(ngModel)]="products.product_name"
-            />
+            <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
           </div>
           <div class="form-input">
             <label class="label" for="">Price</label>
-            <input
-              class="input"
-              type="number"
-              name="price"
-              [(ngModel)]="products.price"
-            />
+            <input class="input" type="number" name="price" [(ngModel)]="product.price" />
           </div>
           <div class="form-input">
             <label class="label" for="">Description</label>
-            <input
-              class="input"
-              type="text"
-              name="description"
-              [(ngModel)]="products.description"
-            />
+            <input class="input" type="text" name="description" [(ngModel)]="product.description" />
           </div>
         </div>
       </div>
@@ -39,38 +24,22 @@
         <div class="center-wrapper">
           <div class="form-input">
             <label class="label" for="">Quantity</label>
-            <input
-              class="input"
-              type="number"
-              name="quantity"
-              [(ngModel)]="products.stock"
-            />
+            <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
           </div>
           <div class="form-input">
             <label class="label" for="">Provider</label>
-            <input
-              class="input"
-              type="search"
-              name="provider"
-              [(ngModel)]="products.provider"
-            />
+            <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
           </div>
           <div class="form-input">
             <label class="label" for="">Test Image</label>
-            <input
-              type="file"
-              multiple
-              name="images"
-              [(ngModel)]="products.images"
-              (change)="selectFiles($event)"
-              #fileInput
-            />
+            <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)"
+              #fileInput />
           </div>
         </div>
       </div>
     </form>
     <div class="button-send">
-      <button (click)="uploadFiles()" type="button" class="btn btn-primary">
+      <button (click)="submitForm()" type="button" class="btn btn-primary">
         Create
       </button>
     </div>

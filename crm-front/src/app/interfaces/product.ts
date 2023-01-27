@@ -11,4 +11,5 @@ export interface Product {
     selled: number;
     // barcode?: string;
     images?: any[]
+
 }
