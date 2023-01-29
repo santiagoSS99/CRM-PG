@@ -41,7 +41,12 @@ export class FilesController {
   uploadImageFile(
     @UploadedFile()
     file: Express.Multer.File) {
-    if (!file) throw new BadRequestException('File')
+    if (!file) {
+      console.log("🚀 ~ file: files.controller.ts:45 ~ FilesController ~ file", file)
+      throw new BadRequestException('Make sure that the file is an image')
+    } else {
+      console.log("returning file", file)
+    }
     const secureUrl = `${this.configService.get('HOST_API')}/files/product/${file.filename}`;
 
     return { secureUrl };

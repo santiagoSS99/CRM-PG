@@ -21,7 +21,8 @@ export class FormProductComponent implements OnInit {
   }
   productsData: any
   productId: any
-  selectedFiles?: FileList;
+  // selectedFiles?: FileList;
+  selectedFiles?: any;
 
   // selectedFiles: FileList = [] as FileList;
   constructor(
@@ -52,7 +53,7 @@ export class FormProductComponent implements OnInit {
   }
 
   uploadFile(event: Event) {
-    const images = (event.target as HTMLInputElement).files;
+    let images = (event.target as HTMLInputElement).files;
     if (images) {
       const formData = new FormData();
       for (let i = 0; i < images.length; i++) {
@@ -63,6 +64,13 @@ export class FormProductComponent implements OnInit {
     }
   }
 
+  submitImages() {
+    console.log('has presionado el botón para subir imagenes')
+    this.productService.uploadImages(this.selectedFiles.nane).subscribe(res =>
+      console.log(res)
+    )
+  }
+
   submitForm() {
     let images_test = [];
 
@@ -71,6 +79,7 @@ export class FormProductComponent implements OnInit {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         images_test.push(this.selectedFiles[i].name);
       }
+
     }
     let product = {
       "product_name": this.product.product_name,

@@ -28,7 +28,7 @@ export class ProductService {
   deleteProduct(id: string) {
     return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
   }
-  uploadImages(file: FileList) {
+  uploadImages(file: any) {
     return this.http.post(`${this.BASE_URL}/files/product`, file);
   }
 }
