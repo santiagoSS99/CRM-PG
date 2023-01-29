@@ -28,25 +28,25 @@ export class CreateProductDto {
     @IsOptional()
     provider?: string
 
-    @IsInt()
-    @IsOptional()
-    quantity?: number
+    // @IsInt()
+    // @IsOptional()
+    // quantity?: number
 
     @IsInt()
     @IsOptional()
     selled?: number
 
-    @IsOptional()
-    @IsString()
-    barcode?: string
+    // @IsOptional()
+    // @IsString()
+    // barcode?: string
+
+    // @IsString({ each: true })
+    // @IsArray()
+    // @IsOptional()
+    // tags: string[]
 
     @IsString({ each: true })
-    @IsArray()
-    @IsOptional()
-    tags: string[]
-
-    @IsString({ each: true })
-    @IsArray()
+    // @IsArray()
     @IsOptional()
     images?: string[];
 }

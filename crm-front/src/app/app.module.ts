@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormProductComponent } from './pages/products/form-product/form-product.component';
 import { LiveReloadProductsComponent } from './pages/products/live-reload-products/live-reload-products.component';
 import { InventoryComponent } from './pages/products/inventory/inventory.component';
+import { SalesComponent } from './pages/sales/sales.component';
 // import { MatSelectModule } from '@angular/material/select';
 
 
@@ -35,6 +36,7 @@ import { InventoryComponent } from './pages/products/inventory/inventory.compone
     InventoryComponent,
     FormProductComponent,
     LiveReloadProductsComponent,
+    SalesComponent,
 
   ],
   imports: [

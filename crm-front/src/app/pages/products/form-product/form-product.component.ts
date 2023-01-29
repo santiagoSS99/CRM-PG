@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,19 +10,21 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
-  products: Product = {
+  product: Product = {
     product_name: '',
     price: 0,
     description: '',
-    quantity: 0,
+    stock: 0,
     provider: '',
     images: [],
     selled: 0,
   }
   productsData: any
   productId: any
+  // selectedFiles?: FileList;
+  selectedFiles?: any;
 
-
+  // selectedFiles: FileList = [] as FileList;
   constructor(
     private productService: ProductService,
     private http: HttpClient,
@@ -30,6 +33,11 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts()
+    this.selectFiles(Event)
+  }
+
+  onFileChanged(event: any) {
+
   }
 
   getAllProducts() {
@@ -38,17 +46,14 @@ export class FormProductComponent implements OnInit {
       this.productsData = res
     })
   }
-  submitForm() {
-    console.log(this.products)
-    this.productService.createProduct(this.products).subscribe((res) => {
-      console.log(res);
-      this.productId = res!.id
-      console.log(this.productId);
-    })
+
+
+  onFileChange(event: any) {
+    console.log(event.target.files)
   }
 
   uploadFile(event: Event) {
-    const images = (event.target as HTMLInputElement).files;
+    let images = (event.target as HTMLInputElement).files;
     if (images) {
       const formData = new FormData();
       for (let i = 0; i < images.length; i++) {
@@ -57,6 +62,46 @@ export class FormProductComponent implements OnInit {
       formData.append('productId', this.productId);
 
     }
+  }
+
+  submitImages() {
+    console.log('has presionado el botón para subir imagenes')
+    this.productService.uploadImages(this.selectedFiles.nane).subscribe(res =>
+      console.log(res)
+    )
+  }
+
+  submitForm() {
+    let images_test = [];
+
+    if (this.selectedFiles) {
+      console.log("🚀", this.selectedFiles)
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        images_test.push(this.selectedFiles[i].name);
+      }
+
+    }
+    let product = {
+      "product_name": this.product.product_name,
+      "price": this.product.price,
+      "description": this.product.description,
+      "stock": this.product.stock,
+      "images": images_test,
+      "provider": this.product.provider,
+      "selled": this.product.selled
+    }
+    console.log(this.product)
+    this.productService.createProduct(product).subscribe((res) => {
+      console.log(res);
+      this.productId = res!.id
+      console.log(this.productId);
+    })
+  }
+
+  selectFiles(event: any): void {
+    this.selectedFiles = event.target.files;
+    console.log("🚀 ~ file: form-product.component.ts:125 ~ FormProductComponent ~ selectFiles ~ this.selectedFiles", this.selectedFiles)
+
   }
 
 }

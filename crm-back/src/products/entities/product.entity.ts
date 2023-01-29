@@ -24,33 +24,31 @@ export class Product {
     })
     stock: number;
 
-    @Column('text', {
-        unique: true
-    })
-    slug: string
+    @Column({ type: 'char', length: 100, unique: true })
+    slug: string;
+
 
     @Column()
     provider: string;
 
-    @Column('int')
-    quantity: number;
+    // @Column('int')
+    // quantity: number;
 
-    @Column()
-    barcode: string;
+    // @Column()
+    // barcode: string;
 
     @Column('int')
     selled: number
 
-    @Column()
-    updatedAt?: Date;
+    // @CreateDateColumn({})
+    // updatedAt?: Date;
 
-    @CreateDateColumn()
-    createdAt: Date;
+    // @CreateDateColumn({
+    // })
+    // createdAt: Date;
 
-    @Column("simple-array", {
-        array: true,
-    })
-    tags: string[]
+    // @Column("json", { default: [] })
+    // tags: string[];
 
     @OneToMany(
         () => ProductImage,

@@ -17,15 +17,18 @@ export class ProductService {
   }
 
   getProductsById(id: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/product/${id}`);
+    return this.http.get<Product[]>(`${this.BASE_URL}/products/${id}`);
   }
   createProduct(Product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)
   }
   updateProduct(id: string, Product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.BASE_URL}/product/update?productID=${id}`, Product)
+    return this.http.put<Product>(`${this.BASE_URL}/products/update?productID=${id}`, Product)
   }
   deleteProduct(id: string) {
-    return this.http.delete<Product>(`${this.BASE_URL}/product/delete?productID=${id}`)
+    return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
+  }
+  uploadImages(file: any) {
+    return this.http.post(`${this.BASE_URL}/files/product`, file);
   }
 }
