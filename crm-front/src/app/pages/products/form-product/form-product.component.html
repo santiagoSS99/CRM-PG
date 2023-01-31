@@ -32,8 +32,7 @@
           </div>
           <div class="form-input">
             <label class="label" for="">Test Image</label>
-            <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)"
-              #fileInput />
+            <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
           </div>
         </div>
       </div>
@@ -42,9 +41,7 @@
       <button (click)="submitForm()" type="button" class="btn btn-primary">
         Create
       </button>
-      <button (click)="submitImages()" type="button" class="btn btn-primary">
-        Create
-      </button>
+
     </div>
   </div>
   <!-- <div *ngFor="let items in ssssdD products">

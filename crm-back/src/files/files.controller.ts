@@ -25,7 +25,7 @@ export class FilesController {
   ) {
 
     const path = this.filesService.getStaticProductImage(imageName);
-    // res
+    console.log(path)
     res.sendFile(path);
   }
 
@@ -48,7 +48,8 @@ export class FilesController {
       console.log("returning file", file)
     }
     const secureUrl = `${this.configService.get('HOST_API')}/files/product/${file.filename}`;
+    const filename = file.filename
 
-    return { secureUrl };
+    return { secureUrl, filename };
   }
 }

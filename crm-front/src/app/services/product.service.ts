@@ -19,6 +19,9 @@ export class ProductService {
   getProductsById(id: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.BASE_URL}/products/${id}`);
   }
+  getImagesByName(imageName: string) {
+    return this.http.get(`${this.BASE_URL}/files/product/${imageName}`)
+  }
   createProduct(Product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)
   }
@@ -28,7 +31,7 @@ export class ProductService {
   deleteProduct(id: string) {
     return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
   }
-  uploadImages(file: any) {
-    return this.http.post(`${this.BASE_URL}/files/product`, file);
+  uploadImages(x: any) {
+    return this.http.post(`${this.BASE_URL}/files/product`, x);
   }
 }

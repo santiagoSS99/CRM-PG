@@ -21,4 +21,8 @@ export class LiveReloadProductsComponent implements OnInit {
       this.products = res
     })
   }
+
+  getImages(imageName: string) {
+    this.productService.getImagesByName(imageName).subscribe(res => console.log(res))
+  }
 }

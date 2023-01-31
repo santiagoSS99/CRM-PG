@@ -10,6 +10,6 @@ export interface Product {
     provider: string;
     selled: number;
     // barcode?: string;
-    images?: string[]
+    images?: any
 
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
+
 @Component({
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
@@ -16,15 +17,14 @@ export class FormProductComponent implements OnInit {
     description: '',
     stock: 0,
     provider: '',
-    images: [],
+    images: new FormData(),
     selled: 0,
   }
   productsData: any
   productId: any
-  // selectedFiles?: FileList;
-  selectedFiles?: any;
+  selectedFiles?: FileList;
+  images!: string[];
 
-  // selectedFiles: FileList = [] as FileList;
   constructor(
     private productService: ProductService,
     private http: HttpClient,
@@ -33,11 +33,6 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts()
-    this.selectFiles(Event)
-  }
-
-  onFileChanged(event: any) {
-
   }
 
   getAllProducts() {
@@ -47,61 +42,40 @@ export class FormProductComponent implements OnInit {
     })
   }
 
-
   onFileChange(event: any) {
     console.log(event.target.files)
   }
 
-  uploadFile(event: Event) {
-    let images = (event.target as HTMLInputElement).files;
-    if (images) {
-      const formData = new FormData();
-      for (let i = 0; i < images.length; i++) {
-        formData.append('images', images[i]);
-      }
-      formData.append('productId', this.productId);
-
-    }
-  }
-
-  submitImages() {
-    console.log('has presionado el botón para subir imagenes')
-    this.productService.uploadImages(this.selectedFiles.nane).subscribe(res =>
-      console.log(res)
-    )
+  selectFiles(event: any): void {
+    this.selectedFiles = event.target.files
   }
 
   submitForm() {
-    let images_test = [];
+    let images_test: any = [];
 
+    const formData = new FormData();
     if (this.selectedFiles) {
-      console.log("🚀", this.selectedFiles)
       for (let i = 0; i < this.selectedFiles.length; i++) {
-        images_test.push(this.selectedFiles[i].name);
+        formData.append('images', this.selectedFiles[i]);
+        this.productService.uploadImages(formData).subscribe((res: any) => {
+          this.images = res.secureUrl;
+          images_test.push(this.images);
+          if (this.selectedFiles && i === this.selectedFiles.length - 1) {
+            let product = {
+              "product_name": this.product.product_name,
+              "price": this.product.price,
+              "description": this.product.description,
+              "stock": this.product.stock,
+              "images": images_test,
+              "provider": this.product.provider,
+              "selled": this.product.selled
+            };
+            this.productService.createProduct(product).subscribe((res) => {
+              this.productId = res!.id;
+            });
+          }
+        });
       }
-
     }
-    let product = {
-      "product_name": this.product.product_name,
-      "price": this.product.price,
-      "description": this.product.description,
-      "stock": this.product.stock,
-      "images": images_test,
-      "provider": this.product.provider,
-      "selled": this.product.selled
-    }
-    console.log(this.product)
-    this.productService.createProduct(product).subscribe((res) => {
-      console.log(res);
-      this.productId = res!.id
-      console.log(this.productId);
-    })
   }
-
-  selectFiles(event: any): void {
-    this.selectedFiles = event.target.files;
-    console.log("🚀 ~ file: form-product.component.ts:125 ~ FormProductComponent ~ selectFiles ~ this.selectedFiles", this.selectedFiles)
-
-  }
-
 }
