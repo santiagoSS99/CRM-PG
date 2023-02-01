@@ -20,7 +20,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.BASE_URL}/products/${id}`);
   }
   getImagesByName(imageName: string) {
-    return this.http.get(`${this.BASE_URL}/files/product/${imageName}`)
+    return this.http.get(`${this.BASE_URL}/files/product/${imageName}`, { responseType: 'blob' })
   }
   createProduct(Product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)

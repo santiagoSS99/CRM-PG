@@ -9,6 +9,8 @@ import { ProductService } from 'src/app/services/product.service';
 export class LiveReloadProductsComponent implements OnInit {
 
   products: any
+  product: any;
+  productImage: any;
 
   constructor(private productService: ProductService) { }
 
@@ -22,7 +24,4 @@ export class LiveReloadProductsComponent implements OnInit {
     })
   }
 
-  getImages(imageName: string) {
-    this.productService.getImagesByName(imageName).subscribe(res => console.log(res))
-  }
 }

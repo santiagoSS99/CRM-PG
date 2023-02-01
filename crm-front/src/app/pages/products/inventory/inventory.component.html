@@ -1,10 +1,15 @@
 <div class="container">
     <div class="row">
+        <div class="search-filter">
+            <input type="text" class="form-control" placeholder="🔍 Search product">
+            &nbsp;
+        </div>
         <div class="col-sm-3" *ngFor="let product of products">
             <div class="card">
-                <img src="" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">{{product.name}}</h5>
+                    <h5 class="card-title">{{product.product_name}}</h5>
+                    <img [src]=product.images alt="">
+                    <hr>
                     <p class="card-text">{{product.description}}</p>
                     <a href="#" class="btn btn-primary">Edit product / stock</a>
                 </div>

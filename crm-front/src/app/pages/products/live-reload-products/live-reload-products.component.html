@@ -6,7 +6,7 @@
         <div *ngFor="let items of products">
             <div class="card-products">
                 <div class="product-data">
-                    {{items}}
+                    <img class="productImage productImage" [src]=items.images alt="Image">
                 </div>
                 <div class="product-data">
                     {{items.product_name}}
