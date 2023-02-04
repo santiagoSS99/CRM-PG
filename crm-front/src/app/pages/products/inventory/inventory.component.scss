@@ -5,6 +5,8 @@
     grid-template-columns: repeat(auto-fill, minmax(5, 1fr));
 
     .row {
+        .search-filter {}
+
         .card {
             display: flex;
             flex-direction: column;
@@ -17,6 +19,17 @@
 
             .card-body {
                 text-align: center;
+
+                .buttons {
+                    display: flex;
+                    justify-content: center;
+
+
+                    .btn-primary {
+                        font-size: smaller;
+                        align-content: space-between
+                    }
+                }
             }
         }
     }
