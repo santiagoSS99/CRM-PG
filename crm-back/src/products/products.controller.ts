@@ -20,6 +20,7 @@ export class ProductsController {
     return this.productsService.findAll(paginationDto);
   }
 
+  // Funcin de busqueda por termino
   @Get(':term')
   findOne(@Param('term') term: string) {
     return this.productsService.findOnePlain(term);

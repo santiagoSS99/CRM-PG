@@ -9,6 +9,7 @@ import { CustomerModule } from './customer/customer.module';
 import { FilesModule } from './files/files.module';
 import { ChatController } from './chat/chat.controller';
 import { ChatService } from './chat/chat.service';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -29,7 +30,8 @@ import { ChatService } from './chat/chat.service';
     ProductsModule,
     CommonModule,
     CustomerModule,
-    FilesModule
+    FilesModule,
+    AuthModule
   ],
   controllers: [ChatController],
   providers: [ChatService],

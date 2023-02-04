@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { validate as IsUUIDd } from 'uuid'
+import { validate as isUUID } from 'uuid'
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { BadRequestException, InternalServerErrorException } from '@nestjs/common/exceptions';
 import { NotFoundException } from '@nestjs/common';
-import { isUUID } from 'class-validator';
+// import { isUUID } from 'class-validator';
 import { ProductImage, Product } from './entities';
 import { PaginatioonDto } from 'src/common/dtos/pagination.dto';
 
