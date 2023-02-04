@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="search-filter">
+            <input type="text" class="form-control" placeholder="Search product">
+            &nbsp;
+        </div>
+        <div class="col-sm-3" *ngFor="let product of products">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.product_name}}</h5>
+                    <img [src]=product.images alt="">
+                    <hr>
+                    <p class="card-text">{{product.description}}</p>
+                    <div class="buttons">
+                        <a href="#" class="btn btn-primary">Edit product / stock</a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"
+                            class="btn btn-primary">Add To Cart</button>
+                        <div class="modal-dialog modal-dialog-centered" id="exampleModal">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7704,3 +7704,4 @@ crm-front/src/assets/scss/widgets/to-do.scss
 crm-front/src/assets/scss/widgets/topbar-mail.scss
 crm-front/src/assets/scss/widgets/weather-widget.scss
 crm-front/src/assets/scss/widgets/widgets.scss
+crm-back/.env

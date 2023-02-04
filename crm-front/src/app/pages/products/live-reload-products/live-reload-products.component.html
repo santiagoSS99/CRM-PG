@@ -1,0 +1,22 @@
+<div class="form-container">
+    <div class="title">
+        <h1 class="title-header">Products movements</h1>
+    </div>
+    <div class="products-container">
+        <div *ngFor="let items of products">
+            <div class="card-products">
+                <div class="product-data">
+                    <img class="productImage" [src]=items.images alt="Image">
+                </div>
+                <div class="product-data">
+                    {{items.product_name}}
+                </div>
+                <div class="product-data">
+                    Selled: {{items.selled}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

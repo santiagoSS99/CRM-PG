@@ -8,24 +8,30 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  BASE_URL: string = 'http://localhost:3000'
+  BASE_URL: string = 'http://localhost:3000/api'
 
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/product`);
+    return this.http.get<Product[]>(`${this.BASE_URL}/products`);
   }
 
   getProductsById(id: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/product/${id}`);
+    return this.http.get<Product[]>(`${this.BASE_URL}/products/${id}`);
+  }
+  getImagesByName(imageName: string) {
+    return this.http.get(`${this.BASE_URL}/files/product/${imageName}`, { responseType: 'blob' })
   }
   createProduct(Product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.BASE_URL}/product/create`, Product)
+    return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)
   }
   updateProduct(id: string, Product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.BASE_URL}/product/update?productID=${id}`, Product)
+    return this.http.put<Product>(`${this.BASE_URL}/products/update?productID=${id}`, Product)
   }
   deleteProduct(id: string) {
-    return this.http.delete<Product>(`${this.BASE_URL}/product/delete?productID=${id}`)
+    return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
+  }
+  uploadImages(x: any) {
+    return this.http.post(`${this.BASE_URL}/files/product`, x);
   }
 }
