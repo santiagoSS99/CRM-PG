@@ -31,7 +31,10 @@ export class AuthService {
       })
       await this.userRepository.save(user)
       delete user.password
-      return user
+      return {
+        ...user,
+        token: this.getJWTToken({ id: user.id })
+      }
 
     } catch (error) {
       this.handleDBErrors(error)
@@ -39,10 +42,10 @@ export class AuthService {
   }
 
   async login(loginUserDto: LoginUserDto) {
-    const { password, email } = loginUserDto
+    const { password, email, id } = loginUserDto
     const user = await this.userRepository.findOne({
-      where: { email },
-      select: { email: true, password: true },
+      where: { id },
+      select: { email: true, password: true, id: true },
     });
     if (!user) {
       throw new UnauthorizedException('credentials are not valid, please try again');
@@ -52,12 +55,13 @@ export class AuthService {
     }
     return {
       ...user,
-      token: this.getJWTToken({ email: user.email })
+      token: this.getJWTToken({ id: user.id })
     }
   }
 
   getJWTToken(payload: JwtPayload) {
-    return this.jwtService.sign(payload);
+    const token = this.jwtService.sign(payload);
+    return token
   }
 
   private handleDBErrors(error: any): never {

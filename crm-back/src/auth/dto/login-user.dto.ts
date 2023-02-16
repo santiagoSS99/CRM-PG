@@ -3,6 +3,9 @@ import { IsEmail, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "cl
 
 export class LoginUserDto {
 
+    @IsString()
+    id: string
+
     @IsEmail()
     @IsString()
     email: string
