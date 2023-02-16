@@ -1,10 +1,13 @@
 import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
-import { CreateUserDto, LoginUserDto } from './dto';
-import { User } from './entities/user.entity';
 
 import * as bcrypt from 'bcrypt'
+
+import { User } from './entities/user.entity';
+import { CreateUserDto, LoginUserDto } from './dto';
+import { JwtPayload } from './interface/jwt-payload.interface';
 
 
 @Injectable()
@@ -13,7 +16,8 @@ export class AuthService {
   private readonly logger = new Logger('AuthService')
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>
+    private readonly userRepository: Repository<User>,
+    private readonly jwtService: JwtService
   ) {
 
   }
@@ -27,7 +31,10 @@ export class AuthService {
       })
       await this.userRepository.save(user)
       delete user.password
-      return user
+      return {
+        ...user,
+        token: this.getJWTToken({ id: user.id })
+      }
 
     } catch (error) {
       this.handleDBErrors(error)
@@ -35,10 +42,10 @@ export class AuthService {
   }
 
   async login(loginUserDto: LoginUserDto) {
-    const { password, email } = loginUserDto
+    const { password, email, id } = loginUserDto
     const user = await this.userRepository.findOne({
-      where: { email },
-      select: { email: true, password: true },
+      where: { id },
+      select: { email: true, password: true, id: true },
     });
     if (!user) {
       throw new UnauthorizedException('credentials are not valid, please try again');
@@ -46,7 +53,15 @@ export class AuthService {
     if (!bcrypt.compareSync(password, user.password)) {
       throw new UnauthorizedException('credentials are not valid, please try again');
     }
-    return user
+    return {
+      ...user,
+      token: this.getJWTToken({ id: user.id })
+    }
+  }
+
+  getJWTToken(payload: JwtPayload) {
+    const token = this.jwtService.sign(payload);
+    return token
   }
 
   private handleDBErrors(error: any): never {

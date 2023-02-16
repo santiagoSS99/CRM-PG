@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/interfaces/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
+  @Input() product: any
+  products: any
+  form!: FormGroup;
+  // selectedProduct: any = {}
 
-  constructor() { }
+  constructor(
+    private readonly productService: ProductService,
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

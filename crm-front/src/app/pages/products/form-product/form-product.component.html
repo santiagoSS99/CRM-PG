@@ -7,15 +7,15 @@
       <div class="wrapper-left">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="label" for="">Product Name</label>
+            <label class="label">Product Name</label>
             <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
           </div>
           <div class="form-input">
-            <label class="label" for="">Price</label>
+            <label class="label">Price</label>
             <input class="input" type="number" name="price" [(ngModel)]="product.price" />
           </div>
           <div class="form-input">
-            <label class="label" for="">Description</label>
+            <label class="label">Description</label>
             <input class="input" type="text" name="description" [(ngModel)]="product.description" />
           </div>
         </div>
@@ -23,15 +23,15 @@
       <div class="wrapper-right">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="label" for="">Quantity</label>
+            <label class="label">Quantity</label>
             <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
           </div>
           <div class="form-input">
-            <label class="label" for="">Provider</label>
+            <label class="label">Provider</label>
             <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
           </div>
           <div class="form-input">
-            <label class="label" for="">Image</label>
+            <label class="label">Image</label>
             <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
           </div>
         </div>
@@ -44,9 +44,6 @@
 
     </div>
   </div>
-  <!-- <div *ngFor="let items in ssssdD products">
-        {{items}}
-    </div> -->
   <div class="live-reload-component">
     <app-live-reload-products></app-live-reload-products>
   </div>
