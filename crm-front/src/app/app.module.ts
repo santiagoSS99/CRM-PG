@@ -20,6 +20,8 @@ import { FormProductComponent } from './pages/products/form-product/form-product
 import { LiveReloadProductsComponent } from './pages/products/live-reload-products/live-reload-products.component';
 import { InventoryComponent } from './pages/products/inventory/inventory.component';
 import { SalesComponent } from './pages/sales/sales.component';
+import { EditProductComponent } from './pages/products/edit-product/edit-product.component';
+import { CrmButtonComponent } from './custom-fields/crm-button/crm-button.component';
 // import { MatSelectModule } from '@angular/material/select';
 
 
@@ -37,7 +39,8 @@ import { SalesComponent } from './pages/sales/sales.component';
     FormProductComponent,
     LiveReloadProductsComponent,
     SalesComponent,
-
+    EditProductComponent,
+    CrmButtonComponent
   ],
   imports: [
     BrowserModule,

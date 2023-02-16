@@ -12,12 +12,10 @@
                     <hr>
                     <p class="card-text">{{product.description}}</p>
                     <div class="buttons">
-                        <a href="#" class="btn btn-primary">Edit product / stock</a>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"
-                            class="btn btn-primary">Add To Cart</button>
-                        <div class="modal-dialog modal-dialog-centered" id="exampleModal">
-                            ...
-                        </div>
+                        <button href="#" class="btn btn-primary">Add To Cart</button>
+                        <app-crm-button text="Edit product" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="getproductById(product.id)"></app-crm-button>
+                        <app-edit-product [product]="selectedProduct"></app-edit-product>
                     </div>
                 </div>
             </div>
