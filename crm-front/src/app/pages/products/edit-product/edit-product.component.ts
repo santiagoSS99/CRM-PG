@@ -10,9 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class EditProductComponent implements OnInit {
   @Input() product: any
-  products: any
-  form!: FormGroup;
-  // selectedProduct: any = {}
+  // products: any
+  // form!: FormGroup;
+  public products: Product[] = []
+
 
   constructor(
     private readonly productService: ProductService,
@@ -21,5 +22,20 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+
+
+  updateProduct(id: string) {
+    let updateProduct = {
+      product_name: this.product.product_name,
+      price: this.product.price,
+      description: this.product.description,
+      stock: this.product.stock,
+      selled: this.product.stock,
+      provider: this.product.provider,
+      images: this.product.images
+    }
+    this.productService.updateProduct(id, updateProduct).subscribe(res => console.log(res))
   }
 }
