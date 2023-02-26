@@ -26,7 +26,7 @@ export class ProductsController {
     return this.productsService.findOnePlain(term);
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateProductDto: UpdateProductDto

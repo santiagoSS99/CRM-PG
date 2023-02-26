@@ -5,7 +5,7 @@
 
     .form-container {
         background-color: #ffffff;
-        height: auto;
+        height: 100%;
         padding: 9px;
         width: 35%;
         border-radius: 10px;
@@ -27,8 +27,6 @@
             .wrapper-left,
             .wrapper-right {
                 background-color: rgba(81, 81, 81, 0);
-                display: flex;
-                justify-content: center;
 
                 .form-input {
                     position: relative;
@@ -41,6 +39,7 @@
                         top: 0px;
                         left: 0px;
                         height: 100%;
+                        width: 100%;
                         border: 1px solid #DADCE0;
                         border-radius: 7px;
                         font-size: 16px;
@@ -88,7 +87,7 @@
     .form-container {
         background-color: #ffffff;
         padding: 8px;
-        height: auto;
+        height: 100%;
         width: 35%;
         border-radius: 10px;
         -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
