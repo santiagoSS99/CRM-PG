@@ -1,15 +1,37 @@
-import { Injectable } from '@nestjs/common';
+
+
+import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateTableDto } from './dto/create-table.dto';
 import { UpdateTableDto } from './dto/update-table.dto';
+import { Tables } from './entities/table.entity';
 
 @Injectable()
 export class TablesService {
-  create(createTableDto: CreateTableDto) {
-    return 'This action adds a new table';
+
+  private readonly logger = new Logger('ProductsService');
+
+  constructor(
+    @InjectRepository(Tables)
+    private readonly tableRepo: Repository<Tables>
+  ) { }
+
+  async create(createTableDto: CreateTableDto) {
+    try {
+      const { ...tableDetails } = createTableDto
+      const table = this.tableRepo.create({
+        ...tableDetails
+      });
+      await this.tableRepo.save(table)
+    } catch (error) {
+      this.handleDBExceptions(error);
+    }
   }
 
-  findAll() {
-    return `This action returns all tables`;
+  async findAll() {
+    const tables = await this.tableRepo.find()
+    return { tables }
   }
 
   findOne(id: number) {
@@ -22,5 +44,13 @@ export class TablesService {
 
   remove(id: number) {
     return `This action removes a #${id} table`;
+  }
+
+  private handleDBExceptions(error: any) {
+    if (error.code === '23505')
+      throw new BadRequestException(error.detail);
+
+    this.logger.error(error)
+    throw new InternalServerErrorException('unexpected error, please check the logs')
   }
 }

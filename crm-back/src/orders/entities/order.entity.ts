@@ -1,6 +1,7 @@
 import { Tables } from "src/tables/entities/table.entity";
-import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Order {
     @PrimaryGeneratedColumn()
     id: number;
