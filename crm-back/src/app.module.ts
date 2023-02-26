@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
-// import { typeOrmConfig } from './config/config';
+
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
 import { CustomerModule } from './customer/customer.module';
@@ -10,6 +9,9 @@ import { FilesModule } from './files/files.module';
 import { ChatController } from './chat/chat.controller';
 import { ChatService } from './chat/chat.service';
 import { AuthModule } from './auth/auth.module';
+import { ReservationsModule } from './reservations/reservations.module';
+import { OrdersModule } from './orders/orders.module';
+import { TablesModule } from './tables/tables.module';
 
 
 @Module({
@@ -31,7 +33,10 @@ import { AuthModule } from './auth/auth.module';
     CommonModule,
     CustomerModule,
     FilesModule,
-    AuthModule
+    AuthModule,
+    ReservationsModule,
+    OrdersModule,
+    TablesModule
   ],
   controllers: [ChatController],
   providers: [ChatService],
