@@ -5,7 +5,7 @@ import { TableStatus } from "../enumTables/tableStatus";
 
 @Entity()
 export class Tables {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('increment')
     id: string
 
     @Column()
