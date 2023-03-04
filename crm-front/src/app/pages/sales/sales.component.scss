@@ -96,6 +96,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            overflow: auto;
+            height: 50vh;
 
             .card {
                 margin: 0px 15px 10px 15px;
