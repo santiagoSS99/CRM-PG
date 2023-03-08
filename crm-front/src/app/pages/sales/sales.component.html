@@ -1,8 +1,6 @@
 <div class="fullcontainer">
     <div class="form-container">
-        <app-crm-button class="crm_button" text="Add Table" data-bs-toggle="modal"
-            data-bs-target="#modalToCreateTable"></app-crm-button>
-        <app-create-table></app-create-table>
+        <h2 class="title">Tables</h2>
         <div class="search">
             <div class="search-box">
                 <input class="search-text" type="text" placeholder="Search Table">
@@ -12,7 +10,8 @@
             </div>
         </div>
         <div class="cards-container">
-            <div class="col-sm-4" class="cards" *ngFor="let table of tables.tables">
+            <div class="col-sm-4" class="cards" *ngFor="let table of tables.tables"
+                [ngClass]="table.status === 'available' ? 'available' : ''">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Table {{table.table_number}}</h5>
@@ -22,5 +21,8 @@
                 </div>
             </div>
         </div>
+        <app-crm-button class="crm_button" text="Add Table" data-bs-toggle="modal"
+            data-bs-target="#modalToCreateTable"></app-crm-button>
+        <app-create-table></app-create-table>
     </div>
 </div>
