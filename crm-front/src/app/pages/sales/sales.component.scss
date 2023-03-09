@@ -106,14 +106,6 @@
             height: 50vh;
 
             .cards {
-                .available {
-                    background-color: rgb(145, 234, 145);
-                }
-
-                .occupied {
-                    background-color: lightcoral;
-                }
-
                 .card {
                     margin: 0px 15px 10px 15px;
                     flex-basis: 33.33%;
@@ -133,11 +125,6 @@
                             justify-content: center;
                         }
                     }
-
-
-
-                    /* o flex-basis: calc(100% / 3); */
-
                 }
             }
 

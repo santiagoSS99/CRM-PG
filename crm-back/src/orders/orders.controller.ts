@@ -9,7 +9,7 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) { }
 
   @Post(':tableId/orders')
-  createOrder(@Param('tableId') tableId: number, @Body() order: Order) {
+  createOrder(@Param('tableId') tableId: number, @Body() order: CreateOrderDto) {
     return this.ordersService.create(tableId, order);
   }
 

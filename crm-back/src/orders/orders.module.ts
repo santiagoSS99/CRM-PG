@@ -8,6 +8,6 @@ import { Tables } from 'src/tables/entities/table.entity';
 @Module({
   controllers: [OrdersController],
   providers: [OrdersService],
-  imports: [TypeOrmModule.forFeature([Tables])]
+  imports: [TypeOrmModule.forFeature([Tables, Order])]
 })
 export class OrdersModule { }
