@@ -16,7 +16,7 @@ export class Customer {
     @Column()
     country: string;
 
-    @Column()
+    @Column('varchar', { length: 200 })
     email: string;
 
     @Column()
