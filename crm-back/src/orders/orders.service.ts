@@ -33,8 +33,13 @@ export class OrdersService {
     return this.orderRepository.save(order);
   }
 
-  findAll() {
-    return `This action returns all orders`;
+  async findAll() {
+    const orders = await this.orderRepository.
+      createQueryBuilder('order')
+      .leftJoinAndSelect('order.tables', 'tables')
+      .getMany();
+    console.log(orders)
+    return;
   }
 
   findOne(id: number) {

@@ -20,14 +20,6 @@ export class Customer {
     email: string;
 
     @Column()
-    password: string;
-
-    @Column({
-        default: 'profile.png',
-    })
-    profile: string;
-
-    @Column()
     t_number: string;
 
     @Column()
@@ -37,6 +29,6 @@ export class Customer {
     f_birthday: string;
 
     @Column()
-    identification: string;
+    notifications: boolean;
 
 }
