@@ -5,7 +5,7 @@ import { UpdateTableDto } from './dto/update-table.dto';
 
 @Controller('tables')
 export class TablesController {
-  constructor(private readonly tablesService: TablesService) {}
+  constructor(private readonly tablesService: TablesService) { }
 
   @Post()
   create(@Body() createTableDto: CreateTableDto) {
