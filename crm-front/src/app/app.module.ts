@@ -22,7 +22,9 @@ import { InventoryComponent } from './pages/products/inventory/inventory.compone
 import { SalesComponent } from './pages/sales/sales.component';
 import { EditProductComponent } from './pages/products/edit-product/edit-product.component';
 import { CrmButtonComponent } from './custom-fields/crm-button/crm-button.component';
-import { CreateTableComponent } from './pages/sales/create-table/create-table.component';
+import { CreateTableComponent } from './pages/tables/create-table/create-table.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
 // import { MatSelectModule } from '@angular/material/select';
 
 
@@ -42,7 +44,9 @@ import { CreateTableComponent } from './pages/sales/create-table/create-table.co
     SalesComponent,
     EditProductComponent,
     CrmButtonComponent,
-    CreateTableComponent
+    CreateTableComponent,
+    OrderDetailComponent,
+    ProductSelectionComponent
   ],
   imports: [
     BrowserModule,

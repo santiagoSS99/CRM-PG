@@ -5,7 +5,7 @@ import { UpdateTableDto } from './dto/update-table.dto';
 
 @Controller('tables')
 export class TablesController {
-  constructor(private readonly tablesService: TablesService) {}
+  constructor(private readonly tablesService: TablesService) { }
 
   @Post()
   create(@Body() createTableDto: CreateTableDto) {
@@ -19,7 +19,7 @@ export class TablesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.tablesService.findOne(+id);
+    return this.tablesService.findOne(id);
   }
 
   @Patch(':id')

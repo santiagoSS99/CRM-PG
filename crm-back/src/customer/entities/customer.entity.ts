@@ -16,16 +16,8 @@ export class Customer {
     @Column()
     country: string;
 
-    @Column()
+    @Column('varchar', { length: 200 })
     email: string;
-
-    @Column()
-    password: string;
-
-    @Column({
-        default: 'profile.png',
-    })
-    profile: string;
 
     @Column()
     t_number: string;
@@ -37,6 +29,6 @@ export class Customer {
     f_birthday: string;
 
     @Column()
-    identification: string;
+    notifications: boolean;
 
 }
