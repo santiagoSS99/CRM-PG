@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TablesService } from 'src/app/services/tables.service';
 
 @Component({
   selector: 'app-product-selection',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductSelectionComponent implements OnInit {
 
-  constructor() { }
+  @Input() tables: any
+
+  constructor(
+    private tableService: TablesService
+  ) { }
+
+  selectedTable: any
 
   ngOnInit(): void {
+  }
+
+  getTableById(id: any) {
+    this.tableService.getTableById(id).subscribe(res => {
+      this.selectedTable = res
+      console.log(id)
+    })
   }
 
 }
