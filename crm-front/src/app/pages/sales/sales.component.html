@@ -1,13 +1,30 @@
 <div class="fullcontainer">
     <div class="form-container">
+        <h2 class="title">Tables</h2>
+        <div class="search">
+            <div class="search-box">
+                <input class="search-text" type="text" placeholder="Search Table">
+                <a href="#" class="search-btn" style="text-decoration: none;">
+                    <i class="fa fa-search" style="color:black"></i>
+                </a>
+            </div>
+        </div>
+        <div class="cards-container">
+            <!-- [ngClass]="table.status === 'available' ? 'available' : ''" -->
+            <div class="col-sm-4" class="cards" *ngFor="let table of tables" data-bs-toggle="modal"
+                data-bs-target="#modalToAddProductToRable">
+                <div class="card" (click)="getTableById(table.id)">
+                    <div class="card-body">
+                        <h5 class="card-title">Table {{table.table_number}}</h5>
+                        <hr>
+                        <img src="./../../../assets/icons/table.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-product-selection [tables]="selectedTable"></app-product-selection>
         <app-crm-button class="crm_button" text="Add Table" data-bs-toggle="modal"
             data-bs-target="#modalToCreateTable"></app-crm-button>
         <app-create-table></app-create-table>
-        <div class="search-box">
-            <input class="search-text" type="text" placeholder="Search Table">
-            <a href="#" class="search-button">
-                <i class="fa fa-search"></i>
-            </a>
-        </div>
     </div>
 </div>
