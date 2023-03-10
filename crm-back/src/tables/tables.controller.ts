@@ -19,7 +19,7 @@ export class TablesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.tablesService.findOne(+id);
+    return this.tablesService.findOne(id);
   }
 
   @Patch(':id')

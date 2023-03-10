@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTableDto } from './dto/create-table.dto';
@@ -32,8 +32,16 @@ export class TablesService {
         return { tables }
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} table`;
+    async findOne(id: string) {
+        let table: Tables
+        if (id) {
+            table = await this.tableRepo.findOneBy({ id: id })
+        } else {
+            const queryBuilder = this.tableRepo.createQueryBuilder('table')
+            table = await queryBuilder.where(`id = :id`).getOne()
+        }
+        if (!table) throw new NotFoundException(`table with id ${id} not found`)
+        return table
     }
 
     update(id: number, updateTableDto: UpdateTableDto) {
