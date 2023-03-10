@@ -29,7 +29,7 @@ export class TablesService {
 
     async findAll() {
         const tables = await this.tableRepo.find()
-        return { tables }
+        return tables
     }
 
     async findOne(id: string) {

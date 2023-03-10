@@ -10,9 +10,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class EditProductComponent implements OnInit {
   @Input() product: any
-  // products: any
+  products: any
   // form!: FormGroup;
-  public products: Product[] = []
+  // public producs: Product[] = []
 
 
   constructor(
