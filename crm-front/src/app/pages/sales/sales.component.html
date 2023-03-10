@@ -10,7 +10,8 @@
             </div>
         </div>
         <div class="cards-container">
-            <div class="col-sm-4" class="cards" *ngFor="let table of tables.tables"
+            <div class="col-sm-4" class="cards" *ngFor="let table of tables.tables" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" (click)="getTableById(table.id)"
                 [ngClass]="table.status === 'available' ? 'available' : ''">
                 <div class="card">
                     <div class="card-body">

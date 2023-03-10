@@ -20,4 +20,8 @@ export class TablesService {
     return this.http.post<Tables>(`${this.BASE_URL}/tables`, Tables)
   }
 
+  getTableById(id: any) {
+    return this.http.get<Tables>(`${this.BASE_URL}/tables/${id}`)
+  }
+
 }

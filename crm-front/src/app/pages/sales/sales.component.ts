@@ -16,6 +16,7 @@ export class SalesComponent implements OnInit {
   }
 
   tables: any
+  selectedTable: any
   constructor(
     private tableService: TablesService
   ) { }
@@ -37,6 +38,12 @@ export class SalesComponent implements OnInit {
       "table_status": this.table.table_status
     }
     this.tableService.createTable(table).subscribe(res => console.log(res))
+  }
+
+  getTableById(id: any) {
+    this.tableService.getTableById(id).subscribe((res) => {
+      this.selectedTable = res
+    })
   }
 
 }
