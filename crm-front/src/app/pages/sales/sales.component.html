@@ -11,7 +11,7 @@
         </div>
         <div class="cards-container">
             <div class="col-sm-4" class="cards" *ngFor="let table of tables.tables" data-bs-toggle="modal"
-                data-bs-target="#exampleModal" (click)="getTableById(table.id)"
+                data-bs-target="#modalToAddProductToRable" (click)="getTableById(table.id)"
                 [ngClass]="table.status === 'available' ? 'available' : ''">
                 <div class="card">
                     <div class="card-body">
@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        <app-product-selection></app-product-selection>
         <app-crm-button class="crm_button" text="Add Table" data-bs-toggle="modal"
             data-bs-target="#modalToCreateTable"></app-crm-button>
         <app-create-table></app-create-table>

@@ -43,6 +43,7 @@ export class SalesComponent implements OnInit {
   getTableById(id: any) {
     this.tableService.getTableById(id).subscribe((res) => {
       this.selectedTable = res
+      console.log(id)
     })
   }
 
