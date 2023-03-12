@@ -25,6 +25,7 @@ import { CrmButtonComponent } from './custom-fields/crm-button/crm-button.compon
 import { CreateTableComponent } from './pages/tables/create-table/create-table.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
+import { ProductsgridComponent } from './pages/products/productsgrid/productsgrid.component';
 // import { MatSelectModule } from '@angular/material/select';
 
 
@@ -46,7 +47,8 @@ import { ProductSelectionComponent } from './pages/product-selection/product-sel
     CrmButtonComponent,
     CreateTableComponent,
     OrderDetailComponent,
-    ProductSelectionComponent
+    ProductSelectionComponent,
+    ProductsgridComponent
   ],
   imports: [
     BrowserModule,
