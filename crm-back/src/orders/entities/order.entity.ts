@@ -12,6 +12,12 @@ export class Order {
     @Column()
     order_details: string;
 
+    @Column()
+    quantity: number
+
+    @Column()
+    amount: number
+
     @ManyToOne(() => Tables, (table) => table.orders)
     table: Tables;
 }
