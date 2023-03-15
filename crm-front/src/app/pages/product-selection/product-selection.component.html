@@ -6,12 +6,68 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Table {{tables?.table_number}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <!-- <div class="modal-body">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+                        <div class="col-sm-6 col-md-4 col-lg-2 mb-5" *ngFor="let product of products">
+                            <div class="card h-100" style="cursor:pointer">
+                                <img [src]="product.images" class="card-img-top" alt="{{product.product_name}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.product_name}}</h5>
+                                    <p class="card-text">{{product.description}}</p>
+                                    <p class="card-text"><small class="text-muted">{{product.price}}</small></p>
+                                    <div class="input-quantity">
+                                        <button class="btn-primary" (click)="selectProduct(product)">Add
+                                            product</button>
+                                        <input class="col-xs-3" [(ngModel)]="order.quantity" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
             <div class="modal-body">
-                <app-productsgrid></app-productsgrid>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9 border-right">
+                            <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5">
+                                <div class="col-sm-6 col-md-5 col-lg-3 mb-5" *ngFor="let product of products">
+                                    <div class="card h-100" style="cursor:pointer" (click)="selectProduct(product)">
+                                        <img [src]="product.images" class="card-img-top" alt="{{product.product_name}}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{product.product_name}}</h5>
+                                            <p class="card-text">{{product.description}}</p>
+                                            <p class="card-text"><small class="text-muted">{{product.price}}</small></p>
+                                            <!-- <button class="btn-primary" (click)="selectProduct(product)">Add
+                                                product</button> -->
+                                            <!-- <div class="input-quantity">
+                                                <input class="col-xs-3" [(ngModel)]="order.quantity" type="number">
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="title">Products to set</div>
+                            <div class="container-products" *ngFor="let products of selectedProducts">
+                                <div class="products-quantity-section">
+                                    <div for="" class="product-name">{{products}} :</div>
+                                    <div class="quantity-input">
+                                        <input class="form-control" type="number" min="1" max="10" step="1" value="1"
+                                            [(ngModel)]="order.quantity" name="quantity">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add products to table</button>
+                <button type="button" class="btn btn-primary" (click)="setProductInTable(tables.table_number)">Add to
+                    table</button>
             </div>
         </div>
     </div>
