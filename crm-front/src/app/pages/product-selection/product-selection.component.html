@@ -25,14 +25,22 @@
                         </div>
                         <div class="col-md-3">
                             <div class="title">Products to set</div>
-                            <div class="container-products" *ngFor="let products of selectedProducts">
+                            <div class="container-products" *ngFor="let products of selectedProducts; let i = index">
                                 <div class="products-quantity-section">
-                                    <div for="" class="product-name">{{products}} :</div>
-                                    <div class="quantity-input">
-                                        <input class="form-control" type="number" min="1" max="10" step="1" value="1"
-                                            [(ngModel)]="order.quantity" name="quantity">
+                                    <div for="" class="product-name">{{products.product_name}} : {{products.price}}
+                                    </div>
+                                    <!-- <div class="quantity-input">
+                                        <input class="form-control" type="number" min="1" max="10" step="1"
+                                            [(ngModel)]="selectedProducts[i].quantity" name="quantity">
+                                    </div> -->
+                                    <div class="product-actions">
+                                        <i class="fa-solid fa-trash" style="cursor: pointer;"
+                                            (click)="removeProduct(products)"></i>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="total">
+                                <label for="">Total: {{total}}</label>
                             </div>
                         </div>
                     </div>

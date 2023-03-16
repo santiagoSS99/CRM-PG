@@ -89,6 +89,11 @@
                 border-left: 1px solid #000000;
                 border-radius: 20px;
 
+                .total {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
                 .title {
                     margin-top: 10px;
                     display: flex;

@@ -14,8 +14,10 @@ export class ProductSelectionComponent implements OnInit {
   @Input() tables: any
   selectedTable: any
   selectedProducts: any[] = [];
-  products: any
-  quantity: number | undefined
+  selectedProductsToSaveInTable: any[] = [];
+  products: any;
+  quantity: any;
+  total: number = 0;
 
 
   order: Order = {
@@ -52,48 +54,55 @@ export class ProductSelectionComponent implements OnInit {
 
   selectProduct(product: any) {
     if (product) {
-      const index = this.selectedProducts.indexOf(product.product_name);
-      if (index !== -1) {
-        // El producto ya está en selectedProducts, lo removemos
-        this.selectedProducts.splice(index, 1);
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-          if (card.querySelector('.card-title')?.textContent === product.product_name) {
-            card.classList.toggle('selected', false);
-          }
-        });
-      } else {
-        // El producto no está en selectedProducts, lo agregamos
-        this.selectedProducts.push(product.product_name);
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-          if (card.querySelector('.card-title')?.textContent === product.product_name) {
-            card.classList.toggle('selected', true);
-          }
-        });
-      }
+      this.selectedProducts.push(product);
+      this.selectedProductsToSaveInTable.push(product.product_name)
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (card.querySelector('.card-title')?.textContent === product.product_name) {
+          card.classList.toggle('selected', true);
+        }
+      });
       console.log(this.selectedProducts);
+    }
+    this.setTotal()
+  }
+
+  removeProduct(product: any) {
+    const index = this.selectedProducts.findIndex(p => p.product_name === product.product_name);
+    if (index !== -1) {
+      // El producto ya está en selectedProducts, lo removemos
+      this.selectedProducts.splice(index, 1);
+      this.selectedProductsToSaveInTable.splice(index, 1);
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (card.querySelector('.card-title')?.textContent === product.product_name) {
+          card.classList.toggle('selected', false);
+        }
+      });
+      this.setTotal();
     }
   }
 
   setProductInTable(tableId: any) {
-    console.log(this.selectedProducts)
-    // console.log(tableId)
-
-    this.selectedProducts.forEach(product => {
-      // console.log(product)
+    console.log(this.selectedProductsToSaveInTable)
+    this.selectedProductsToSaveInTable.forEach(product => {
       let orderDetail = {
         order_date: new Date(),
         order_details: product,
-        quantity: this.order.quantity // Otra manera de capturar la cantidad, en este caso se asume que es 1
+        quantity: 1
       };
-      console.log(this.order.quantity)
-
       console.log(orderDetail)
 
       this.orderService.createOrder(tableId, orderDetail).subscribe(res => {
         console.log(res);
       });
     });
+  }
+
+  setTotal() {
+    this.total = this.selectedProducts.reduce((acc, curr) => {
+      return acc + curr.price;
+    }, 0);
+    console.log(this.total);
   }
 }

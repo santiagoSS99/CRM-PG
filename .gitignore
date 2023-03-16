@@ -6,3 +6,4 @@ crm-back/dist
 crm-back/static
 crm-back/src/config/config.ts
 .env
+codigo_borrado.ts
