@@ -6,27 +6,6 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Table {{tables?.table_number}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- <div class="modal-body">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
-                        <div class="col-sm-6 col-md-4 col-lg-2 mb-5" *ngFor="let product of products">
-                            <div class="card h-100" style="cursor:pointer">
-                                <img [src]="product.images" class="card-img-top" alt="{{product.product_name}}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{product.product_name}}</h5>
-                                    <p class="card-text">{{product.description}}</p>
-                                    <p class="card-text"><small class="text-muted">{{product.price}}</small></p>
-                                    <div class="input-quantity">
-                                        <button class="btn-primary" (click)="selectProduct(product)">Add
-                                            product</button>
-                                        <input class="col-xs-3" [(ngModel)]="order.quantity" type="number">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
@@ -39,11 +18,6 @@
                                             <h5 class="card-title">{{product.product_name}}</h5>
                                             <p class="card-text">{{product.description}}</p>
                                             <p class="card-text"><small class="text-muted">{{product.price}}</small></p>
-                                            <!-- <button class="btn-primary" (click)="selectProduct(product)">Add
-                                                product</button> -->
-                                            <!-- <div class="input-quantity">
-                                                <input class="col-xs-3" [(ngModel)]="order.quantity" type="number">
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

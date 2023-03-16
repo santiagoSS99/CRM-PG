@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Order } from 'src/app/interfaces/order';
-import { Product } from 'src/app/interfaces/product';
 import { OrdersService } from 'src/app/services/orders.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TablesService } from 'src/app/services/tables.service';
@@ -16,6 +15,7 @@ export class ProductSelectionComponent implements OnInit {
   selectedTable: any
   selectedProducts: any[] = [];
   products: any
+  quantity: number | undefined
 
 
   order: Order = {
@@ -25,11 +25,6 @@ export class ProductSelectionComponent implements OnInit {
     quantity: 0
   }
 
-  quantity: number | undefined
-
-  // product = {
-  //   quantity: 0
-  // };
 
   constructor(
     private tableService: TablesService,
@@ -78,8 +73,6 @@ export class ProductSelectionComponent implements OnInit {
         });
       }
       console.log(this.selectedProducts);
-      // this.selectedProduct.emit(product);
-      // this.selectedProductEvent.emit(this.selectedProducts);
     }
   }
 
@@ -103,52 +96,4 @@ export class ProductSelectionComponent implements OnInit {
       });
     });
   }
-
-  // onInput(event: any) {
-  //   const value = event.target.value;
-  //   console.log(value)
-  //   // haz algo con el valor
-  // }
-
 }
-
-// // console.log(this.order.order_details)
-    // for (let i: any; i < this.selectProduct.length; i++) {
-    //   console.log(i)
-    //   const order = {
-    //     // "order_date": new Date(),
-    //     "order_details": this.selectedProducts,
-    //     // "tableId": tableId
-    //   }
-    //   this.orderService.createOrder(tableId, order).subscribe(res => {
-    //     console.log(res)
-
-    //   })
-    // }
-
-
-  // setProductInTable(tableId: any) {
-  //   let orderDetails = this.selectedProducts.map((product: any) => {
-  //     return { product_name: product };
-  //   });
-
-  //   let order = {
-  //     order_details: orderDetails
-  //   };
-
-  //   this.orderService.createOrder(tableId, order).subscribe(res => {
-  //     console.log(res)
-  //   });
-  // }
-
-
-  // productsSelected(product: any) {
-  //   console.log(product);
-  //   // Agrega los productos seleccionados a la lista de productos seleccionados
-  //   this.selectedProducts.push(product);
-  // }
-  // addSelectedProduct(product: any) {
-  //   console.log('adding products');
-  //   console.log(product)
-  //   this.selectedProducts.push(product);
-  // }
