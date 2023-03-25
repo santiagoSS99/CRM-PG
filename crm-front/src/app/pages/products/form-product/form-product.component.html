@@ -7,7 +7,7 @@
       <div class="wrapper-left col-md-6">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="label ">Product Name</label>
+            <label class="label">Product Name</label>
             <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
           </div>
           <div class="form-input">
@@ -38,10 +38,7 @@
       </div>
     </form>
     <div class="button-send">
-      <button (click)="submitForm()" type="button" class="btn btn-primary">
-        Create
-      </button>
-
+      <button class="btn btn-primary" type="button" (click)="submitForm()">Create</button>
     </div>
   </div>
   <div class="live-reload-component">

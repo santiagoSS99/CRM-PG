@@ -9,6 +9,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class InventoryComponent implements OnInit {
 
+  edit = 'edit';
+  shopping_cart = 'shopping_cart';
+
   constructor(private productService: ProductService) { }
   products: any
   selectedProduct: any = {};

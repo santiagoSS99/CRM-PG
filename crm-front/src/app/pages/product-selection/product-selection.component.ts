@@ -105,4 +105,8 @@ export class ProductSelectionComponent implements OnInit {
     }, 0);
     console.log(this.total);
   }
+
+  resetData() {
+    this.selectedProducts = []
+  }
 }
