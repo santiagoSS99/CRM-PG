@@ -106,7 +106,17 @@ export class ProductSelectionComponent implements OnInit {
     console.log(this.total);
   }
 
+  resetSelectedCards() {
+    const cards = document.querySelectorAll('.card.selected');
+    cards.forEach(card => {
+      card.classList.remove('selected');
+    });
+  }
+
   resetData() {
-    this.selectedProducts = []
+    this.selectedProducts = [];
+    this.selectedProductsToSaveInTable = [];
+    this.total = 0
+    this.resetSelectedCards()
   }
 }
