@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { text } from '@fortawesome/fontawesome-svg-core';
 import { Order } from 'src/app/interfaces/order';
 import { OrdersService } from 'src/app/services/orders.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TablesService } from 'src/app/services/tables.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-selection',
@@ -84,6 +86,16 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   setProductInTable(tableId: any) {
+
+    if (this.selectedProducts.length === 0) {
+      Swal.fire({
+        title: 'No products selected',
+        text: "Please make sure you select at least 1 (one) product",
+        icon: 'warning',
+        cancelButtonColor: '#d33',
+      })
+    }
+
     console.log(this.selectedProductsToSaveInTable)
     this.selectedProductsToSaveInTable.forEach(product => {
       let orderDetail = {
