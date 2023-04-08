@@ -13,5 +13,5 @@ export class CreateTableDto {
     table_location: string
 
     @IsOptional()
-    table_statusw
+    table_status
 }
