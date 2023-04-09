@@ -1,5 +1,7 @@
 <div class="lf-container">
-    <app-sidebar></app-sidebar>
+    <ng-template [ngIf]="showSidebar()">
+        <app-sidebar></app-sidebar>
+    </ng-template>
     <div class="content">
         <router-outlet></router-outlet>
     </div>
