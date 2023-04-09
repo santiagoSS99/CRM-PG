@@ -13,7 +13,7 @@ export class Customer {
     @Column()
     surnames: string;
 
-    @Column()
+    @Column({default: 'CO'})
     country: string;
 
     @Column('varchar', { length: 200 })
@@ -22,7 +22,7 @@ export class Customer {
     @Column()
     t_number: string;
 
-    @Column()
+    @Column({default: "3"})
     gender: string;
 
     @Column()
