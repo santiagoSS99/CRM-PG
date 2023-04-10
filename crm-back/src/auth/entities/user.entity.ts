@@ -7,10 +7,8 @@ export class User {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column('text', {
-        unique: true
-    })
-    email: string
+    @Column("varchar", { length: 200 })
+    email: string;
 
     @Column('text', {
         select: false
@@ -29,7 +27,7 @@ export class User {
     // @IsArray()
     // roles: string[]
 
-    @Column('simple-array', { default: "user" })
+    @Column('simple-array')
     roles: string[];
 
     @BeforeInsert()
