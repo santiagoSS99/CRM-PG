@@ -18,6 +18,9 @@ export class Order {
     @Column()
     amount: number
 
+    @Column()
+    observations: string
+
     @ManyToOne(() => Tables, (table) => table.orders)
     table: Tables;
 }
