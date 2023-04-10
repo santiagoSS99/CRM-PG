@@ -1,4 +1,4 @@
-import { IsString, MinLength, MaxLength, IsEmail, IsOptional, IsBoolean, IsDate } from 'class-validator';
+import { IsString, MinLength, MaxLength, IsEmail, IsOptional, IsBoolean, IsDateString } from 'class-validator';
 
 export class CreateCustomerDto {
 
@@ -13,7 +13,7 @@ export class CreateCustomerDto {
     surnames: string;
 
     @IsString()
-    @MinLength(3)
+    @MinLength(2)
     @MaxLength(50)
     @IsOptional()
     country: string;
@@ -31,7 +31,7 @@ export class CreateCustomerDto {
     @IsOptional()
     gender: string;
 
-    @IsDate()
+    @IsDateString()
     @IsOptional()
     f_birthday: string;
 

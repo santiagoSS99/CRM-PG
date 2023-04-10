@@ -26,6 +26,7 @@ import { CreateTableComponent } from './pages/tables/create-table/create-table.c
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { HomeComponent } from './pages/home/home.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
@@ -50,6 +51,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     OrderDetailComponent,
     ProductSelectionComponent,
     CalendarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
