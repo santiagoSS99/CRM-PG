@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
+import Swal from 'sweetalert2';
+import swal from 'sweetalert2'
+
 
 
 @Component({
@@ -22,7 +25,7 @@ export class FormProductComponent implements OnInit {
   }
   productsData: any
   productId: any
-  selectedFiles?: FileList;
+  selectedFiles?: FileList | undefined;
   images!: string[];
 
   constructor(
@@ -55,27 +58,40 @@ export class FormProductComponent implements OnInit {
 
     const formData = new FormData();
     if (this.selectedFiles) {
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        formData.append('images', this.selectedFiles[i]);
-        this.productService.uploadImages(formData).subscribe((res: any) => {
-          this.images = res.secureUrl;
-          images_test.push(this.images);
-          if (this.selectedFiles && i === this.selectedFiles.length - 1) {
-            let product = {
-              "product_name": this.product.product_name,
-              "price": this.product.price,
-              "description": this.product.description,
-              "stock": this.product.stock,
-              "images": images_test,
-              "provider": this.product.provider,
-              "selled": this.product.selled
-            };
-            this.productService.createProduct(product).subscribe((res) => {
-              this.productId = res!.id;
-            });
+      Swal.fire({
+        title: 'Are you sure to save this product?',
+        text: '¡Product will be saved permantly!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Save',
+        cancelButtonText: 'Cancel'
+      }).then((result: { isConfirmed: boolean }) => {
+        if (result.isConfirmed) {
+          if (this.selectedFiles) {
+            for (let i = 0; i < this.selectedFiles.length; i++) {
+              formData.append('images', this.selectedFiles[i]);
+              this.productService.uploadImages(formData).subscribe((res: any) => {
+                this.images = res.secureUrl;
+                images_test.push(this.images);
+                if (this.selectedFiles && i === this.selectedFiles.length - 1) {
+                  let product = {
+                    "product_name": this.product.product_name,
+                    "price": this.product.price,
+                    "description": this.product.description,
+                    "stock": this.product.stock,
+                    "images": images_test,
+                    "provider": this.product.provider,
+                    "selled": this.product.selled
+                  };
+                  this.productService.createProduct(product).subscribe((res) => {
+                    this.productId = res!.id;
+                  });
+                }
+              });
+            }
           }
-        });
-      }
+        }
+      })
     }
   }
 }

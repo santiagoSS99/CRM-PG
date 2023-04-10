@@ -1,0 +1,164 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center header-transparent">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <div id="logo">
+      <a routerLink="/home"><img src="./assets/images/logo.png" alt=""></a>
+      <!-- Uncomment below if you prefer to use a text logo -->
+      <!--<h1><a href="index.html">Regna</a></h1>-->
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="/home#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="/home#about">Nosotros</a></li>
+        <li><a class="nav-link scrollto" href="/home#contact">Contacto</a></li>
+        <li><a class="nav-link scrollto" href="/home#form">Registrate</a></li>
+        <li><a class="nav-link" routerLink="/login">Login</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+  </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero-container">
+    <h1>Living Night Club</h1>
+    <h2>Todos los artistas en un solo lugar 🎙</h2>
+    <a href="/home#about" class="btn-get-started">Conocenos</a>
+  </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+  <!-- ======= About Section ======= -->
+  <section id="about">
+    <div class="container">
+      <div class="row about-container">
+
+        <div class="col-lg-6 content order-lg-1 order-2">
+          <h2 class="title">Vive la experiencia LIVING</h2>
+          <p>
+            Miércoles de Salsa | Viernes y sábados Crossover.
+          </p>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-music-note"></i></div>
+            <h4 class="title">SALSA</h4>
+            <p class="description">La Salsa caleña se vive en Living</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-music-note-list"></i></div>
+            <h4 class="title">CROSSOVER</h4>
+            <p class="description">Puro Crossover Papa</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-music-note-beamed"></i></div>
+            <h4 class="title">RUMBA</h4>
+            <p class="description">La Mejor Rumba de Cali</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 background order-lg-2 order-1"></div>
+      </div>
+    </div>
+  </section><!-- End About Section -->
+
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-title">Contacto</h3>
+        <p class="section-description">Ubicada en el norte de la ciudad, zona Menga, Living Night club se caracteriza
+          por crear de la noche, una experiencia única.</p>
+      </div>
+    </div>
+
+    <!-- Uncomment below if you wan to use dynamic maps -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.402497702492!2d-76.52177104947044!3d3.493880351898015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a890b42b7561%3A0xc6cc29a5cef9000f!2sLiving%20Night%20Club!5e0!3m2!1ses-419!2sco!4v1681021302237!5m2!1ses-419!2sco"
+      width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+
+        <div class="col-lg-3 col-md-4">
+
+          <div class="info">
+            <div>
+              <i class="bi bi-geo-alt"></i>
+              <p>Cra. 40 #11-81, Acopi<br> Cali, Arroyo Hondo, Yumbo, Valle del Cauca</p>
+            </div>
+
+            <div>
+              <i class="bi bi-envelope"></i>
+
+              <p><a href="https://linktr.ee/livingclub">Living Linktree</a></p>
+            </div>
+
+            <div>
+              <i class="bi bi-phone"></i>
+              <p>+57 300 463 4864</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-5 col-md-8" id="form">
+          <div class="form">
+            <form role="form" class="customer-form">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control input" id="name" placeholder="Tu nombre" required
+                  [(ngModel)]="customer.name">
+              </div>
+              <div class="form-group">
+                <input type="text" name="surnames" class="form-control input" id="surnames" placeholder="Tus apellidos"
+                  required [(ngModel)]="customer.surnames">
+              </div>
+              <div class="form-group mt-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Tu e-mail" required
+                  [(ngModel)]="customer.email">
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" maxlength="10" name="t_number" id="t_number"
+                  placeholder="Tu Telefono" required [(ngModel)]="customer.t_number">
+              </div>
+              <div class="form-group mt-3">
+                <input type="date" class="form-control" name="f_birthday" id="f_birthday" placeholder="Tu Telefono"
+                  required [(ngModel)]="customer.f_birthday">
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="notifications" id="notifications"
+                  [(ngModel)]="customer.notifications">
+                <label class="form-check-label" for="notifications">
+                  ¡Deseo recibir todas las notificaciones de la mejor discoteca de Cali!
+                </label>
+              </div>
+
+              <div class="my-3">
+                <div *ngIf="loading" class="loading">Enviando</div>
+                <div *ngIf="error && !loading" class="error-message">{{errorMessage}}</div>
+                <div *ngIf="success && !loading" class="sent-message">¡Hemos registrado exitosamente tu información!
+                </div>
+              </div>
+              <div class="text-center"><button type="button" (click)="submitForm()">Subscribete</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
