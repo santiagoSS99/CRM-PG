@@ -1,0 +1,74 @@
+th{
+    padding: 1em 2em;
+}
+
+td,th{
+    text-align: center;
+}
+
+tr{
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+tr.active *{
+    background: #004f83;
+    color: white;
+    font-weight: bold;
+}
+
+.campaign-container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+    font-family: "Poppins", sans-serif;
+}
+
+.campaign-container *{
+    font-family: "Poppins", sans-serif;
+}
+
+.table-container{
+    grid-area: "table-container";
+}
+
+.form-container{
+    grid-area: "form";
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1255);
+    height: 100%;
+}
+
+.form-container h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-container .container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input{
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.125);
+    border: none;
+    border-radius: 0;
+}
+
+button[type=button]{
+    background-color: #004f83;
+    color: white;
+    font-weight: bold;
+    padding: 1em 3em;
+    outline: none;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.125);
+    transition: 0.3s ease;
+}
+
+button[type=button]:hover{
+    background-color: #0493be;
+}
