@@ -30,9 +30,16 @@
             <label class="label">Provider</label>
             <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
           </div>
-          <div class="form-input">
+          <!-- <div class="form-input file-input">
             <label class="label">Image</label>
             <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
+          </div> -->
+          <div class="form-input file-input">
+            <label class="label" for="file-input">Image</label>
+            <div class="file-input">
+              <input type="file" name="images" (change)="selectFiles($event)" />
+              <button class="custom-btn" type="file" name="images">Choose file</button>
+            </div>
           </div>
         </div>
       </div>
