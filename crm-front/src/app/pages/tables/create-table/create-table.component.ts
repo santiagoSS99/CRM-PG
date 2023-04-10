@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 import { map } from 'rxjs';
 import { Tables } from 'src/app/interfaces/tables';
 import { TablesService } from 'src/app/services/tables.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-table',
@@ -41,16 +43,27 @@ export class CreateTableComponent implements OnInit {
   }
 
   createTable() {
-    let table = {
-      table_number: this.tables,
-      table_capacity: this.table.table_capacity,
-      table_status: this.table.table_status,
-      table_location: this.table.table_location
-    }
-    console.log(table)
-    this.tableService.createTable(table).subscribe((res) => {
-      // this.tableId = res
-      console.log(res)
+    Swal.fire({
+      title: 'Are you sure to create this table?',
+      text: 'Table will be saved!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Create',
+      cancelButtonText: 'Cancel'
+    }).then((result: { isConfirmed: boolean }) => {
+      if (result.isConfirmed) {
+        let table = {
+          table_number: this.tables,
+          table_capacity: this.table.table_capacity,
+          table_status: this.table.table_status,
+          table_location: this.table.table_location
+        }
+        console.log(table)
+        this.tableService.createTable(table).subscribe((res) => {
+          // this.tableId = res
+          console.log(res)
+        })
+      }
     })
   }
 

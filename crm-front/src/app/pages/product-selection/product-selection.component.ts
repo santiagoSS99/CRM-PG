@@ -113,6 +113,7 @@ export class ProductSelectionComponent implements OnInit {
 
   setTotal() {
     this.total = this.selectedProducts.reduce((acc, curr) => {
+      // let _total = acc + curr.price
       return acc + curr.price;
     }, 0);
     console.log(this.total);
