@@ -9,19 +9,20 @@ import { Router } from '@angular/router';
 export class AppComponent {
   private viewsWithoutSidebar: RegExp[] = [
     /^\/home/,
+    /^\/login/,
   ]
   router: Router;
   title = 'crm-front';
 
-  constructor(router: Router) { 
+  constructor(router: Router) {
     this.router = router;
   }
 
   ngOnInit(): void {
-    
+
   }
 
-  showSidebar(): boolean{
+  showSidebar(): boolean {
     return !this.viewsWithoutSidebar.find((route) => {
       return this.router.url.match(route);
     });
