@@ -13,7 +13,10 @@
                             <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5">
                                 <div class="col-sm-6 col-md-5 col-lg-3 mb-5" *ngFor="let product of products">
                                     <div class="card h-100" style="cursor:pointer" (click)="selectProduct(product)">
-                                        <img [src]="product.images" class="card-img-top" alt="{{product.product_name}}">
+                                        <div class="img-center">
+                                            <img [src]="product.images" class="card-img-top"
+                                                alt="{{product.product_name}}">
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{product.product_name}}</h5>
                                             <p class="card-text">{{product.description}}</p>
