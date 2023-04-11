@@ -27,8 +27,10 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
 import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CampaignComponent } from './pages/campaign/campaign.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     OrderDetailComponent,
     ProductSelectionComponent,
     CalendarComponent,
-    HomeComponent
+    HomeComponent,
+    CampaignComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
