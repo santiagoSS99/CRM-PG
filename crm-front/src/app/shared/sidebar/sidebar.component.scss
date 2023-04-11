@@ -11,12 +11,12 @@ body {
 
 .sidebar-menu {
     min-height: 100vh;
+    height: 100%;
     width: 78px;
     padding: 6px 14px;
     z-index: 99;
     background-color: #004f83;
     transition: all .5s ease;
-    position: fixed;
     // top: 0;
     // left: 0;
 
