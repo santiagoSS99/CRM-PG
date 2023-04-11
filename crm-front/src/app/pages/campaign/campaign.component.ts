@@ -36,21 +36,12 @@ export class CampaignComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   getDate(date: string) {
     return new Date(date).toLocaleDateString();
   }
 
   selectCustomer(customer: Customer) {
     if (this.isCurrentCustomer(customer)) {
-=======
-  getDate(date: string){
-    return new Date(date).toLocaleDateString();
-  }
-
-  selectCustomer(customer: Customer){
-    if(this.isCurrentCustomer(customer)){
->>>>>>> dev
       this.selectedCustomer = null;
       return;
     }
