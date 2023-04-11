@@ -1116,7 +1116,8 @@ section {
   background-color: #212121;
 }
 
-#contact .customer-form button[type=submit], #contact .customer-form button[type=button] {
+#contact .customer-form button[type=submit],
+#contact .customer-form button[type=button] {
   background: #212121;
   border: 0;
   padding: 10px 24px;
@@ -1124,7 +1125,8 @@ section {
   transition: 0.4s;
 }
 
-#contact .customer-form button[type=submit]:hover, #contact .customer-form button[type=button]:hover {
+#contact .customer-form button[type=submit]:hover,
+#contact .customer-form button[type=button]:hover {
   background: #111111;
 }
 
