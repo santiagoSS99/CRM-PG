@@ -7,6 +7,7 @@ import { SalesComponent } from './pages/sales/sales.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CampaignComponent } from './pages/campaign/campaign.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'sales', component: SalesComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'campaign', component: CampaignComponent }
+  { path: 'campaign', component: CampaignComponent },
+  { path: 'user/management', component: UserManagementComponent }
 ];
 
 @NgModule({

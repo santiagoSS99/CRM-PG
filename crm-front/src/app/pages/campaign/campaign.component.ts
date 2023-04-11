@@ -36,32 +36,32 @@ export class CampaignComponent implements OnInit {
     });
   }
 
-  getDate(date: string){
+  getDate(date: string) {
     return new Date(date).toLocaleDateString();
   }
 
-  selectCustomer(customer: Customer){
-    if(this.isCurrentCustomer(customer)){
+  selectCustomer(customer: Customer) {
+    if (this.isCurrentCustomer(customer)) {
       this.selectedCustomer = null;
       return;
     }
     this.selectedCustomer = customer;
   }
 
-  isCurrentCustomer(customer: Customer){
+  isCurrentCustomer(customer: Customer) {
     return this.selectedCustomer?.id === customer.id
   }
 
-  showSelectedCustomer(){
+  showSelectedCustomer() {
     return JSON.stringify(this.selectedCustomer);
   }
 
-  async sendEmail(){
-    if(!this.selectedCustomer){
+  async sendEmail() {
+    if (!this.selectedCustomer) {
       return;
     }
-    try{
-      await emailjs.send(EMAIL_JS.SERVICE_ID,EMAIL_JS.TEMPLATE_ID,{
+    try {
+      await emailjs.send(EMAIL_JS.SERVICE_ID, EMAIL_JS.TEMPLATE_ID, {
         ...this.email,
         to_email: this.selectedCustomer.email,
       }, EMAIL_JS.PUBLIC_KEY);
@@ -70,12 +70,31 @@ export class CampaignComponent implements OnInit {
         this.email.message,
         'success'
       )
-    }catch(error){
+    } catch (error) {
       Swal.fire(
         'Hubo un Error',
         'Al enviar el mensaje hubo un error',
         'error'
       )
     }
+  }
+
+  async sendCampaign() {
+
+    this.customers.forEach(async (customer) => {
+      try {
+        await emailjs.send(EMAIL_JS.SERVICE_ID, EMAIL_JS.TEMPLATE_ID, {
+          ...this.email,
+          to_email: customer.email,
+        }, EMAIL_JS.PUBLIC_KEY);
+      } catch (error) {
+        console.log("Hubo un error con el cliente" + JSON.stringify(customer));
+      }
+    });
+    Swal.fire(
+      '¡El mensaje se ha enviado masivamente exitosamente!',
+      this.email.message,
+      'success'
+    )
   }
 }

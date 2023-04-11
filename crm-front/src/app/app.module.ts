@@ -30,6 +30,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CampaignComponent } from './pages/campaign/campaign.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     ProductSelectionComponent,
     CalendarComponent,
     HomeComponent,
-    CampaignComponent
+    CampaignComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
