@@ -15,6 +15,7 @@ import { TablesModule } from './tables/tables.module';
 import { SalesModule } from './sales/sales.module';
 import { join } from 'path';
 import { TableStatusModule } from './table-status/table-status.module';
+import { PurchaseModule } from './purchase/purchase.module';
 
 
 @Module({
@@ -42,6 +43,7 @@ import { TableStatusModule } from './table-status/table-status.module';
     TablesModule,
     SalesModule,
     TableStatusModule,
+    PurchaseModule,
   ],
   controllers: [ChatController],
   providers: [ChatService],

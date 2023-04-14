@@ -1,3 +1,4 @@
+import { Purchase } from 'src/purchase/entities/purchase.entity';
 import { text } from 'stream/consumers';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate, ManyToMany, OneToMany } from 'typeorm';
 import { ProductImage } from './';
@@ -75,4 +76,7 @@ export class Product {
             .replaceAll(' ', '_')
             .replaceAll("'", '')
     }
+
+    @OneToMany(() => Purchase, (purchase) => purchase.product)
+    purchases: Purchase[];
 }
