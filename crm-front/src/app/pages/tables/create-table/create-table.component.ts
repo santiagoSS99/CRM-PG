@@ -19,7 +19,7 @@ export class CreateTableComponent implements OnInit {
   table: Tables = {
     table_number: 0,
     table_capacity: 0,
-    table_status: '',
+    table_status: 1,
     table_location: ''
   }
   tableId: number | any

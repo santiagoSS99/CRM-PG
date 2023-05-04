@@ -13,9 +13,9 @@ export class SalesComponent implements OnInit {
   table: Tables = {
     table_number: 0,
     table_capacity: 0,
-    table_status: ''
+    table_status: 1
   }
-  text_to_search: string = '';
+  // text_to_search: string = '';
 
   tables: any
   selectedTable: any
