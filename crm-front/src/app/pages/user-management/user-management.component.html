@@ -1,1 +1,171 @@
-<p>user-management works!</p>
+<div class="container">
+    <div class="card card-custom card-shadowless rounded-top-0">
+        <!--begin::Body-->
+        <div class="card-header border-0 pt-5">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label font-weight-bolder text-dark">Nuevo colaborador</span>
+                <span class="text-muted mt-3 font-weight-bold font-size-sm">Formulario de un nuevo trabajador</span>
+            </h3>
+            <div class="card-toolbar">
+                <button class="btn btn-primary">Regresar</button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+                <div class="col-xl-12 col-xxl-10">
+                    <!--begin::Wizard Form-->
+                    <form class="form" id="kt_form">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9">
+                                <!--begin::Wizard Step 1-->
+                                <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                    <h5 class="text-dark font-weight-bold mb-10">Datos personales:</h5>
+
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Nombres</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <input class="form-control form-control-solid form-control-lg"
+                                                name="firstname" type="text" placeholder="Nombres" />
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Apellidos</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <input class="form-control form-control-solid form-control-lg"
+                                                name="lastname" type="text" placeholder="Apellidos" />
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Genero</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <select name="" class="form-control form-control-solid form-control-lg">
+                                                <option value="" selected disabled>Seleccionar</option>
+                                                <option value="Masculino">Masculino</option>
+                                                <option value="Femenino">Femenino</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Correo eletrónico</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <input class="form-control form-control-solid form-control-lg"
+                                                name="companyname" type="text" placeholder="Correo eletrónico" />
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Telefono</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <div class="input-group input-group-solid input-group-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-phone"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-lg" name="phone"
+                                                    placeholder="Telefono" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Documento</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <div class="input-group input-group-solid input-group-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-phone"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-lg" name="phone"
+                                                    placeholder="Número de documento" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Cargo</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <select name="" class="form-control form-control-solid form-control-lg">
+                                                <option value="" selected disabled>Seleccionar</option>
+                                                <option value="Administrador">Administrador</option>
+                                                <option value="Calidad">Calidad</option>
+                                                <option value="Marketing">Marketing</option>
+                                                <option value="Asesor">Asesor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                    <!--begin::Group-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">País</label>
+                                        <div class="col-lg-9 col-xl-9">
+                                            <select name="" class="form-control form-control-solid form-control-lg">
+                                                <option value="" selected disabled>Seleccionar país...</option>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Bolivia">Bolivia</option>
+                                                <option value="Brasil">Brasil</option>
+                                                <option value="Chile">Chile</option>
+                                                <option value="Colombia">Colombia</option>
+                                                <option value="Costa Rica">Costa Rica</option>
+                                                <option value="Cuba">Cuba</option>
+                                                <option value="Ecuador">Ecuador</option>
+                                                <option value="El Salvador">El Salvador</option>
+                                                <option value="España">España</option>
+                                                <option value="Estados Unidos">Estados Unidos</option>
+                                                <option value="Guatemala">Guatemala</option>
+                                                <option value="Haití">Haití</option>
+                                                <option value="Honduras">Honduras</option>
+                                                <option value="México">México</option>
+                                                <option value="Nicaragua">Nicaragua</option>
+                                                <option value="Panamá">Panamá</option>
+                                                <option value="Paraguay">Paraguay</option>
+                                                <option value="Perú">Perú</option>
+                                                <option value="República Dominican">República Dominican</option>
+                                                <option value="Uruguay">Uruguay</option>
+                                                <option value="Venezuela">Venezuela</option>
+                                                <option value="Otro">Otro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--end::Group-->
+                                </div>
+                                <!--end::Wizard Step 1-->
+
+                                <!--begin::Wizard Actions-->
+                                <div class="d-flex justify-content-between border-top pt-10 mt-15">
+                                    <div class="mr-2">
+                                        <a class="btn btn-light-primary font-weight-bolder px-9 py-4"
+                                            data-wizard-type="action-prev">Regresar</a>
+                                    </div>
+                                    <div>
+                                        <button type="button"
+                                            class="btn btn-success font-weight-bolder px-9 py-4">Enviar</button>
+
+                                    </div>
+                                </div>
+                                <!--end::Wizard Actions-->
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Wizard Form-->
+                </div>
+            </div>
+        </div>
+        <!--end::Body-->
+    </div>
+</div>
