@@ -3,10 +3,8 @@
         <h2 class="title">Tables</h2>
         <div class="search">
             <div class="search-box">
-                <input class="search-text" type="text" placeholder="Search Table" id="search" (click)="searchTable()">
-                <a class="search-btn" style="text-decoration: none;" (click)="searchTable()">
-                    <i class="fa fa-search" style="color:black"></i>
-                </a>
+                <input class="search-text" type="text" placeholder="Search Table" name="filter" [(ngModel)]="filter"
+                    (change)="filterTable()">
             </div>
         </div>
         <!-- Crear como un componente -->

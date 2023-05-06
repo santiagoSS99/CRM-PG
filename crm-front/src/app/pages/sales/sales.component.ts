@@ -15,9 +15,11 @@ export class SalesComponent implements OnInit {
     table_capacity: 0,
     table_status: 1
   }
-  // text_to_search: string = '';
+
+  filter = ''
 
   tables: any
+  tables_const: any
   selectedTable: any
   constructor(
     private tableService: TablesService,
@@ -31,6 +33,7 @@ export class SalesComponent implements OnInit {
   getTables() {
     this.tableService.getTables().subscribe((res) => {
       this.tables = res
+      this.tables_const = this.table
     })
   }
 
@@ -98,6 +101,15 @@ export class SalesComponent implements OnInit {
       tables.forEach(table => {
         (table as HTMLElement).style.display = 'block';
       });
+    }
+  }
+
+  filterTable() {
+    if (this.filter) {
+      var term = new RegExp(this.filter, 'i')
+      this.table = this.tables_const.filter((item: { table_number: any; }) => term.test(item.table_number))
+    } else {
+      this.table = this.tables_const
     }
   }
 
