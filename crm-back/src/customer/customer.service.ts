@@ -88,7 +88,6 @@ export class CustomerService {
 
 
     var customer = await this.customerRepo.findOneBy({ email: email })
-    // console.log(customer)
     var token = createToken(customer)
 
 
@@ -111,7 +110,6 @@ export class CustomerService {
       })
 
     })
-    // console.log('TOOOOOOOOOOOKEN', token)
     return token
   }
 
@@ -135,8 +133,6 @@ export class CustomerService {
           .execute();
         res.status(200).send({ data: true, payload })
       } catch (error) {
-        console.log(error)
-        console.log('im tokenchito', token)
         this.logger.error('Expired Token')
       }
     }
