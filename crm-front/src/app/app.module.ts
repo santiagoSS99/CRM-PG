@@ -33,6 +33,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { LoginComponent } from './pages/login/login.component';
 import { CustomersComponent } from './customer/customers/customer.component';
 import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
+import { VerificationComponent } from './customer/verification/verification.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { CreateCustomerComponent } from './customer/create-customer/create-custo
     CampaignComponent,
     UserManagementComponent,
     CustomersComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

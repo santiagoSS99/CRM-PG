@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CampaignComponent } from './pages/campaign/campaign.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { CustomersComponent } from './customer/customers/customer.component';
+import { VerificationComponent } from './customer/verification/verification.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'campaign', component: CampaignComponent },
   { path: 'user/management', component: UserManagementComponent },
   { path: 'customers', component: CustomersComponent },
+  { path: 'verification/:token', component: VerificationComponent },
 ];
 
 @NgModule({
