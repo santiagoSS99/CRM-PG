@@ -35,6 +35,9 @@ export class Customer {
     @Column()
     notifications: boolean;
 
+    @Column({ default: false })
+    verify: boolean
+
     @OneToMany(() => Purchase, (purchase) => purchase.customer)
     purchases: Purchase;
 

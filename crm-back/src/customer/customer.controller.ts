@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('customer')
 export class CustomerController {
@@ -10,6 +11,11 @@ export class CustomerController {
   @Post('register')
   create(@Body() createCustomerDto: CreateCustomerDto) {
     return this.customerService.create(createCustomerDto);
+  }
+
+  @Post()
+  createFromAdmin(@Body() createCustomerDto: CreateCustomerDto) {
+    return this.customerService.createFromAdmin(createCustomerDto);
   }
 
   @Get()
