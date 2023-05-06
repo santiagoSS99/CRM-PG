@@ -30,8 +30,10 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   registerCustomer(registerForm: any) {
-    if (!registerForm.valid) {
-      $.notify('Make sure required fields are filled', {
+    console.log(registerForm)
+
+    if (!registerForm.value.name) {
+      $.notify('Make sure to fill in the name field', {
         type: 'danger',
         spacing: 10,
         timer: 2000,
@@ -45,7 +47,53 @@ export class CreateCustomerComponent implements OnInit {
           exit: 'animated ' + 'bounce'
         }
       });
-    } else {
+    } else if (!registerForm.value.surnames) {
+      $.notify('Make sure to fill in the surnames field', {
+        type: 'danger',
+        spacing: 10,
+        timer: 2000,
+        placement: {
+          from: 'top',
+          align: 'right'
+        },
+        delay: 1000,
+        animate: {
+          enter: 'animated ' + 'bounce',
+          exit: 'animated ' + 'bounce'
+        }
+      });
+    } else if (!registerForm.value.email) {
+      $.notify('Make sure to fill in the email field', {
+        type: 'danger',
+        spacing: 10,
+        timer: 2000,
+        placement: {
+          from: 'top',
+          align: 'right'
+        },
+        delay: 1000,
+        animate: {
+          enter: 'animated ' + 'bounce',
+          exit: 'animated ' + 'bounce'
+        }
+      });
+    } if (!registerForm.value.t_number) {
+      $.notify('Make sure to fill in the number field', {
+        type: 'danger',
+        spacing: 10,
+        timer: 2000,
+        placement: {
+          from: 'top',
+          align: 'right'
+        },
+        delay: 1000,
+        animate: {
+          enter: 'animated ' + 'bounce',
+          exit: 'animated ' + 'bounce'
+        }
+      });
+    }
+    else {
       let customer: Customer = {
         name: this.customer.name,
         surnames: this.customer.surnames,
@@ -56,10 +104,22 @@ export class CreateCustomerComponent implements OnInit {
         notifications: false,
         t_number: this.customer.t_number
       }
-      this.customerService.createCustomer(customer).subscribe(response => {
-        console.log(response)
+      this.customerService.createCustomerFromAdmin(customer).subscribe(response => {
+        $.notify(response, {
+          type: 'success',
+          spacing: 10,
+          timer: 2000,
+          placement: {
+            from: 'top',
+            align: 'right'
+          },
+          delay: 1000,
+          animate: {
+            enter: 'animated ' + 'bounce',
+            exit: 'animated ' + 'bounce'
+          }
+        });
       })
     }
   }
-
 }
