@@ -23,4 +23,8 @@ export class CustomerService {
   createCustomer(Customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.BASE_URL}/customer/register`, Customer)
   }
+
+  createCustomerFromAdmin(Customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(`${this.BASE_URL}/customer`, Customer)
+  }
 }
