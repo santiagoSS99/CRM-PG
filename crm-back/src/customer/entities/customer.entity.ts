@@ -29,6 +29,9 @@ export class Customer {
     @Column()
     f_birthday: string;
 
+    @Column({ default: "prospect" })
+    type: string
+
     @Column()
     notifications: boolean;
 
