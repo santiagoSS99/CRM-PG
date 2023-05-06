@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div class="modal fade" id="modalToCreateCustomer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog .modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Customer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form" id="createCustomerForm" #registerForm="ngForm"
+                    (ngSubmit)="registerCustomer(registerForm)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input required type="text" class="form-control" id="exampleInputName"
+                                    [(ngModel)]="customer.name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Surnames</label>
+                                <input required type="text" class="form-control" id="exampleInputSurnames"
+                                    [(ngModel)]="customer.surnames" name="surnames">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Country</label>
+                                <input type="text" class="form-control" id="exampleInputCountry"
+                                    [(ngModel)]="customer.country" name="country">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input required type="email" class="form-control" id="exampleInputEmail"
+                                    [(ngModel)]="customer.email" name="email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Telephone</label>
+                                <input required type="email" class="form-control" id="exampleInputTNumber"
+                                    [(ngModel)]="customer.t_number" name="t_number">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <input required type="text" class="form-control" id="exampleInputGender"
+                                    [(ngModel)]="customer.gender" name="gender">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Birthday</label>
+                                <input type="date" class="form-control" id="exampleInputBirthday"
+                                    [(ngModel)]="customer.f_birthday" name="f_birthday">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleInputNotifications"
+                                    [(ngModel)]="customer.notifications" name="notifications">
+                                <label class="form-check-label" for="exampleInputNotifications">Notifications</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" (click)="registerCustomer(registerForm)">Create
+                    Customer</button>
+            </div>
+        </div>
