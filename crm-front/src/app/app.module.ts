@@ -31,6 +31,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CustomersComponent } from './customer/customers/customer.component';
+import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 
 
 @NgModule({
@@ -55,7 +57,9 @@ import { LoginComponent } from './pages/login/login.component';
     CalendarComponent,
     HomeComponent,
     CampaignComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    CustomersComponent,
+    CreateCustomerComponent
   ],
   imports: [
     BrowserModule,
