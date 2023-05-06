@@ -4,17 +4,17 @@ import { Repository } from 'typeorm';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Customer } from './entities/customer.entity';
-import { isUUID } from 'class-validator';
-import handlebars from 'handlebars';
-import { MailerService } from '@nestjs-modules/mailer';
-import { Subject } from 'rxjs';
-import ejs = require('ejs');
+import { createToken } from '../auth/helpers/jwt-client';
+
 import { JwtPayload } from 'src/auth/interface/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
+import ejs = require('ejs');
+import handlebars from 'handlebars';
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var fs = require('fs');
 var jwt = require('../auth/helpers/jwt-client')
+const _jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 
@@ -23,6 +23,7 @@ require("dotenv").config();
 export class CustomerService {
 
   private readonly logger = new Logger('CostumerService');
+
 
   constructor(
     @InjectRepository(Customer)
@@ -54,7 +55,7 @@ export class CustomerService {
       this.sendMailVerification(client.email)
       return {
         client,
-        // token: this.getJWTToken({ id: client.id }),
+        // token: createToken(Customer),
         message: 'Customer has been registered'
       }
     } catch (error) {
@@ -62,7 +63,7 @@ export class CustomerService {
     }
   }
 
-  async sendMailVerification(email) {
+  async sendMailVerification(email): Promise<string> {
 
     var readHTMLFile = function (path, callback) {
       fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
@@ -88,8 +89,7 @@ export class CustomerService {
 
     var customer = await this.customerRepo.findOneBy({ email: email })
     // console.log(customer)
-    var token = jwt.createToken(customer)
-    // console.log(token)
+    var token = createToken(customer)
 
 
     readHTMLFile(process.cwd() + '/src/mails/account_verify.html', (err, html) => {
@@ -111,6 +111,35 @@ export class CustomerService {
       })
 
     })
+    // console.log('TOOOOOOOOOOOKEN', token)
+    return token
+  }
+
+  async email_validation(req?, res?) {
+    var token_params = req.params['token']
+    var token = token_params.replace(/['"]+/g, '');
+    var segment = token.split('.')
+
+
+    if (segment.length != 3) {
+      this.logger.error('Invalid Token')
+    } else {
+      try {
+        var payload = _jwt.decode(token, process.env.JWT_SECRET, { complete: true });
+        await this.customerRepo.createQueryBuilder()
+          .update(Customer)
+          .set({
+            verify: true
+          })
+          .where("email = :email", { email: payload.email })
+          .execute();
+        res.status(200).send({ data: true, payload })
+      } catch (error) {
+        console.log(error)
+        console.log('im tokenchito', token)
+        this.logger.error('Expired Token')
+      }
+    }
   }
 
   async findAll() {

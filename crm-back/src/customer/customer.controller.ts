@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, Res } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
@@ -16,6 +16,11 @@ export class CustomerController {
   @Post()
   createFromAdmin(@Body() createCustomerDto: CreateCustomerDto) {
     return this.customerService.createFromAdmin(createCustomerDto);
+  }
+
+  @Get('verification/:token')
+  validateEmail(@Req() req, @Res() res) {
+    return this.customerService.email_validation(req, res);
   }
 
   @Get()
