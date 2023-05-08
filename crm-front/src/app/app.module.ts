@@ -34,6 +34,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CustomersComponent } from './customer/customers/customer.component';
 import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 import { VerificationComponent } from './customer/verification/verification.component';
+import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { VerificationComponent } from './customer/verification/verification.comp
     UserManagementComponent,
     CustomersComponent,
     CreateCustomerComponent,
-    VerificationComponent
+    VerificationComponent,
+    CustomerTableComponent
   ],
   imports: [
     BrowserModule,
