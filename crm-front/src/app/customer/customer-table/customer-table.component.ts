@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Customer } from 'src/app/interfaces/customer';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-table',
@@ -7,9 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerTableComponent implements OnInit {
 
-  constructor() { }
+  suscription: Subscription | undefined;
+
+  public token = localStorage.getItem('token')
+
+  @Input() customer: any
+
+  customers: any = {};
+  selectedCustomer: any = {}
+
+  constructor(
+    private customerService: CustomerService
+  ) { }
 
   ngOnInit(): void {
+    this.getCustomers();
+  }
+
+  getCustomers() {
+    this.customerService.getCustomers().subscribe((res => {
+      console.log(res)
+      this.customers = res
+    }))
+  }
+
+  getCustomerById(id: number) {
+    this.customerService.getCustomerById(id).subscribe(res => {
+      this.selectedCustomer = res
+      // console.log(res)
+    })
+  }
+
+  deleteCustomer(id: number) {
+    this.customerService.deleteCustomer(id, this.token).subscribe(res => {
+      console.log(res)
+      this.customers = this.customers.filter((customer: any) => customer.id !== id);
+      this.customerService.refresh$.next();
+    })
   }
 
 }

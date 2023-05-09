@@ -1,7 +1,117 @@
-<tbody>
-    <tr>
-        <td>
+<div class="card card-custom">
+    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+        <div class="card-title">
+            <h3 class="card-label">Customers
+                <span class="text-muted pt-2 font-size-sm d-block">Complete list of all clients</span>
+            </h3>
+        </div>
+        <div class="card-toolbar">
+            <!--begin::Button-->
 
-        </td>
-    </tr>
-</tbody>
+
+            <!--end::Button-->
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin: Search Form-->
+
+        <!-- <div class="mb-7">
+            <div class="row align-items-center">
+                <div class="col-lg-9 col-xl-8">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 my-2 my-md-0">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-12">
+
+                <div class="table-responsive">
+                    <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                            <tr class="text-left text-uppercase">
+                                <th style="min-width: 250px" class="pl-7">
+                                    <span class="text-dark-75">Names</span>
+                                </th>
+                                <th style="min-width: 100px">Email</th>
+                                <th style="min-width: 100px">Verified</th>
+                                <th style="min-width: 100px">Type</th>
+
+                                <th style="min-width: 80px"></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="customers.length > 0">
+                            <tr *ngFor="let customer of customers">
+                                <td class="pl-0 py-8">
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-40 flex-shrink-0 symbol-success mr-3">
+                                            <div class="symbol-label">
+                                                {{customer.name.substr(0,1)}}{{customer.surnames.substr(0,1)}}</div>
+                                        </div>
+                                        <div>
+                                            <a
+                                                class="text-primary font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                {{customer.name}} {{customer.surnames}}
+                                            </a>
+                                            <span class="text-muted font-weight-bold d-block">Full Names</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span
+                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">{{customer.email}}</span>
+                                    <span class="text-muted font-weight-bold">Email</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success" *ngIf="customer.verify">verified</span>
+                                    <span class="badge badge-danger" *ngIf="!customer.verify">not verified
+                                    </span>
+                                    <span class="text-muted font-weight-bold d-block">Status</span>
+                                </td>
+                                <td>
+
+                                    <span class="badge badge-warning"
+                                        *ngIf="customer.type == 'prospect'">Prospect</span>
+                                    <span class="badge badge-primary" *ngIf="customer.type == 'partner'">Partner</span>
+                                    <span class="text-muted font-weight-bold d-block">Customer Type</span>
+                                </td>
+
+
+                                <td class="pr-0 text-left ">
+                                    <button class="btn btn-facebook" (click)="getCustomerById(customer.id)"
+                                        data-bs-toggle="modal" data-bs-target="#modalToUpdateCustomer">Update</button>
+                                    <app-edit-customer [customer]="selectedCustomer"></app-edit-customer>
+                                    <button class="btn btn-danger text-center"
+                                        (click)="deleteCustomer(customer.id)">Delete</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <tbody *ngIf="customers.length == 0">
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <p class="font-size-h3 text-muted font-weight-normal mt-5">There are not customers
+                                        to
+                                        show</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
