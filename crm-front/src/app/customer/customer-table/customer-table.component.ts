@@ -35,7 +35,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   getCustomerById(id: number) {
-    this.customerService.getCustomerById(id).subscribe(res => {
+    this.customerService.getCustomerById(id, this.token).subscribe(res => {
       this.selectedCustomer = res
       // console.log(res)
     })

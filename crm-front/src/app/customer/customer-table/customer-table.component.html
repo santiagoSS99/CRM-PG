@@ -59,7 +59,9 @@
                                                 {{customer.name.substr(0,1)}}{{customer.surnames.substr(0,1)}}</div>
                                         </div>
                                         <div>
-                                            <a
+                                            <a target="_blank"
+                                                [routerLink]="['/customer/' + customer.id + '/dashboard']"
+                                                routerLinkActive="router-link-active"
                                                 class="text-primary font-weight-bolder text-hover-primary mb-1 font-size-lg">
                                                 {{customer.name}} {{customer.surnames}}
                                             </a>
