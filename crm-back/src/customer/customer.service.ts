@@ -201,7 +201,7 @@ export class CustomerService {
     try {
       const customer = await this.customerRepo.findOneBy({ id: String(id) });
       await this.customerRepo.remove(customer);
-      return `This action removed the customer with id #${id}`;
+      return customer
     } catch (error) {
       this.handleDBExceptions(error);
     }

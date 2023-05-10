@@ -35,6 +35,10 @@ import { CustomersComponent } from './customer/customers/customer.component';
 import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 import { VerificationComponent } from './customer/verification/verification.component';
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
+import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
+import { CustomerProspectionComponent } from './customer/customer-prospection/customer-prospection.component';
+import { CustomerAsideComponent } from './customer/customer-aside/customer-aside.component';
 
 
 @NgModule({
@@ -63,7 +67,11 @@ import { CustomerTableComponent } from './customer/customer-table/customer-table
     CustomersComponent,
     CreateCustomerComponent,
     VerificationComponent,
-    CustomerTableComponent
+    CustomerTableComponent,
+    EditCustomerComponent,
+    CustomerDashboardComponent,
+    CustomerProspectionComponent,
+    CustomerAsideComponent
   ],
   imports: [
     BrowserModule,
