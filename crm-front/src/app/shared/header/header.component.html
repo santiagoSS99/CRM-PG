@@ -38,9 +38,14 @@
                                 class="symbol-label font-size-h5 font-weight-bold">{{user.fullName.substr(0,1)}}</span>
                         </span>
                     </div>
-                    <div class="logout">
+                    <!-- <div class="logout">
                         <button (click)="logout()">logout</button>
-                    </div>
+                    </div> -->
+
+                    <button class="btn btn-bg-warning" style="background-color: #282f48;">
+                        <span class="menu-text" style="color: white !important" (click)="logout()">Logout</span>
+                        <i class="menu-arrow"></i>
+                    </button>
                 </div>
                 <!--end::User-->
             </div>
