@@ -11,7 +11,10 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { CustomersComponent } from './customer/customers/customer.component';
 import { VerificationComponent } from './customer/verification/verification.component';
 import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
-import { CustomerProspectionComponent } from './customer/customer-prospection/customer-prospection.component';
+import { CustomerProspectionComponent } from './customer/prospection/customer-prospection/customer-prospection.component';
+import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
+import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
+import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
 
 
 const routes: Routes = [
@@ -31,6 +34,10 @@ const routes: Routes = [
   { path: 'customers', component: CustomersComponent },
   { path: 'customer/:id/dashboard', component: CustomerDashboardComponent },
   { path: 'customer/:id/prospection', component: CustomerProspectionComponent },
+  { path: 'customer/:id/prospection/interests', component: CustomerInterestsComponent },
+  { path: 'customer/:id/prospection/calls', component: CustomerCallsComponent },
+  { path: 'customer/:id/prospection/mails', component: CustomerMailsComponent },
+  // { path: 'customer/:id/prospection', component: CustomerProspectionComponent },
 
 ];
 

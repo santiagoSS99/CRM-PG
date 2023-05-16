@@ -37,8 +37,11 @@ import { VerificationComponent } from './customer/verification/verification.comp
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
-import { CustomerProspectionComponent } from './customer/customer-prospection/customer-prospection.component';
+import { CustomerProspectionComponent } from './customer/prospection/customer-prospection/customer-prospection.component';
 import { CustomerAsideComponent } from './customer/customer-aside/customer-aside.component';
+import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
+import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
+import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
 
 
 @NgModule({
@@ -71,7 +74,10 @@ import { CustomerAsideComponent } from './customer/customer-aside/customer-aside
     EditCustomerComponent,
     CustomerDashboardComponent,
     CustomerProspectionComponent,
-    CustomerAsideComponent
+    CustomerAsideComponent,
+    CustomerCallsComponent,
+    CustomerMailsComponent,
+    CustomerInterestsComponent
   ],
   imports: [
     BrowserModule,
