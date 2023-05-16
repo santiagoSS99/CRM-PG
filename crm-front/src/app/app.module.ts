@@ -42,6 +42,7 @@ import { CustomerAsideComponent } from './customer/customer-aside/customer-aside
 import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
 import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
 import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
+import { TimepickerComponent } from './custom-fields/timepicker/timepicker.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { CustomerInterestsComponent } from './customer/prospection/customer-inte
     CustomerAsideComponent,
     CustomerCallsComponent,
     CustomerMailsComponent,
-    CustomerInterestsComponent
+    CustomerInterestsComponent,
+    TimepickerComponent
   ],
   imports: [
     BrowserModule,
