@@ -4,6 +4,7 @@ import { Product } from '../interfaces/product';
 import { Customer } from '../interfaces/customer';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Call } from '../interfaces/call';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,23 @@ export class CustomerService {
           this._refresh$.next()
         })
       )
+  }
+
+  // Calls
+
+  createCustomerCall(call: Call, token: any): Observable<Call> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.post<Call>(`${this.BASE_URL}/customer-calls`, call, { headers })
+  }
+
+  getCalls(token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/customer-calls`, { headers })
+  }
+
+  getCallsByCustomer(id: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/customer-calls/${id}`, { headers })
   }
 
 }
