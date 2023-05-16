@@ -30,6 +30,86 @@
                 <!--end::Header-->
                 <!--begin::Form-->
                 <div class="card-body">
+                    <a class="btn btn-info font-weight-bolder font-size-sm mr-3" style="cursor: pointer;"
+                        data-toggle="modal" [attr.data-target]="'#modalLlamada'">
+                        Nueva llamada
+                    </a>
+
+                    <hr class="mb-5">
+
+                    <div class="mb-3">
+                        <!--begin::Content-->
+                        <div class="d-flex align-items-center flex-grow-1">
+
+                            <!--begin::Section-->
+                            <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column align-items-cente py-2 w-75">
+                                    <!--begin::Title-->
+                                    <a class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
+                                        Ocupado
+                                        &nbsp; | &nbsp;
+                                        Sheldon Cooper
+                                    </a>
+                                    <!--end::Title-->
+                                    <!--begin::Data-->
+                                    <span class="text-muted font-weight-bold">
+                                        Lunes 17, Enero - 07:58PM
+                                    </span>
+                                    <span class="text-muted font-weight-bold">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus
+                                        recusandae ullam veniam fuga vel.
+                                    </span>
+                                    <!--end::Data-->
+                                </div>
+                                <!--end::Info-->
+                                <!--begin::Label-->
+                                <span class="label label-lg label-light-primary label-inline font-weight-bold py-4">
+                                    17/01/2022</span>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Section-->
+
+                        </div>
+                        <!--end::Content-->
+                    </div>
+
+                    <div class="mb-3">
+                        <!--begin::Content-->
+                        <div class="d-flex align-items-center flex-grow-1">
+
+                            <!--begin::Section-->
+                            <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column align-items-cente py-2 w-75">
+                                    <!--begin::Title-->
+                                    <a class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
+                                        Ocupado
+                                        &nbsp; | &nbsp;
+                                        Sheldon Cooper
+                                    </a>
+                                    <!--end::Title-->
+                                    <!--begin::Data-->
+                                    <span class="text-muted font-weight-bold">
+                                        Lunes 17, Enero - 07:58PM
+                                    </span>
+                                    <span class="text-muted font-weight-bold">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus
+                                        recusandae ullam veniam fuga vel.
+                                    </span>
+                                    <!--end::Data-->
+                                </div>
+                                <!--end::Info-->
+                                <!--begin::Label-->
+                                <span class="label label-lg label-light-primary label-inline font-weight-bold py-4">
+                                    17/01/2022</span>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Section-->
+
+                        </div>
+                        <!--end::Content-->
+                    </div>
 
                 </div>
                 <!--end::Form-->
@@ -38,3 +118,71 @@
         <!--end::Content-->
     </div>
 </div>
+
+
+<div class="modal fade" id="modalLlamada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new call 📞</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="font-size-lg text-dark font-weight-bold mb-6">1. General:</h3>
+                <div class="mb-15">
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-form-label">Fecha (*):</label>
+                        <div class="col-lg-8">
+                            <input type="date" name="date" [(ngModel)]="call.date" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-form-label">Resultado (*):</label>
+                        <div class="col-lg-8">
+                            <select name="resultado" [(ngModel)]="call.result" class="form-control">
+                                <option value="" selected disabled>Seleccionar</option>
+                                <option value="Ocupado">Ocupado</option>
+                                <option value="Conectado">Conectado</option>
+                                <option value="Dejo un mensaje">Dejo un mensaje</option>
+                                <option value="Sin respuesta">Sin respuesta</option>
+                                <option value="N° Incorrecto">N° Incorrecto</option>
+                                <option value="Proxima llamada">Proxima llamada</option>
+                                <option value="Venta cerrada">Venta cerrada</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-form-label">Hora (*):</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="time" [(ngModel)]="call.time" class="form-control timepicker" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <textarea rows="4" placeholder="Algúna nota o información" [(ngModel)]="call.note"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold"
+                    data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary font-weight-bold">Crear</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    flatpickr('.timepicker', {
+        enableTime: true,
+        noCalendar: true
+        ,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+</script>
