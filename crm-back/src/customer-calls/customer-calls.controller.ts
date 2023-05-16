@@ -5,7 +5,7 @@ import { UpdateCustomerCallDto } from './dto/update-customer-call.dto';
 
 @Controller('customer-calls')
 export class CustomerCallsController {
-  constructor(private readonly customerCallsService: CustomerCallsService) {}
+  constructor(private readonly customerCallsService: CustomerCallsService) { }
 
   @Post()
   create(@Body() createCustomerCallDto: CreateCustomerCallDto) {
@@ -18,7 +18,7 @@ export class CustomerCallsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.customerCallsService.findOne(+id);
   }
 
