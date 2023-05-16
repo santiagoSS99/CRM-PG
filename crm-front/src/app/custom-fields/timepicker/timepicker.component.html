@@ -1,0 +1,12 @@
+<div class="timepicker">
+    <div class="hours">
+        <button (click)="decrementHour()">-</button>
+        <input type="number" [(ngModel)]="hour" (ngModelChange)="onTimeChange()" min="0" max="23" />
+        <button (click)="incrementHour()">+</button>
+    </div>
+    <div class="minutes">
+        <button (click)="decrementMinutes()">-</button>
+        <input type="number" [(ngModel)]="minutes" (ngModelChange)="onTimeChange()" min="0" max="59" />
+        <button (click)="incrementMinutes()">+</button>
+    </div>
+</div>
