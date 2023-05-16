@@ -28,6 +28,7 @@ export class CustomerAsideComponent implements OnInit {
         this.spinner = true
         this.customerService.getCustomerById(this.id, this.token).subscribe(
           res => {
+            console.log(res)
             if (res != undefined) {
               this.customer = res
               this.data = true
