@@ -40,7 +40,10 @@ export class CustomerCallsService {
     const customerCall = await this.callRepo
       .createQueryBuilder('customerCall')
       .leftJoinAndSelect('customerCall.customer', 'customer')
-      .where('customer.id = :customerId', { customerId: id }).getMany()
+      .leftJoinAndSelect('customerCall.assesor', 'assesor')
+      .orderBy('customerCall.created_date', 'DESC') // Ordenar por createdAt en orden descendente
+      .where('customer.id = :customerId', { customerId: id })
+      .getMany()
 
     return customerCall
   }
