@@ -17,20 +17,133 @@
                     <div class="card-toolbar">
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a [routerLink]="['/customer/'+ id +'/prospection']"
-                                class="btn btn-outline-primary">Activities</a>
+                                class="btn btn-outline-primary">Actividades</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/interests']"
-                                class="btn btn-outline-primary">Interests</a>
+                                class="btn btn-outline-primary">Intereses</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/calls']"
-                                class="btn btn-outline-primary">Calls</a>
+                                class="btn btn-outline-primary">Llamadas</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/mails']"
-                                class="btn btn-outline-primary">mails</a>
+                                class="btn btn-outline-primary">Correos</a>
                         </div>
                     </div>
                 </div>
                 <!--end::Header-->
                 <!--begin::Form-->
-                <div class="card-body">
+                <div class="card-header">
+                    <div class="card-toolbar">
+                        <a *ngIf="!load_data" class="btn btn-info font-weight-bolder font-size-sm mr-3"
+                            style="cursor: pointer;" data-toggle="modal" [attr.data-target]="'#modalCorreo'">
+                            Nuevo correo
+                        </a>
+                        <button disabled class="btn btn-info font-weight-bolder font-size-sm mr-3"
+                            *ngIf="load_data">Nuevo correo</button>
 
+                        <div class="modal fade" id="modalCorreo" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document"
+                                style="max-width: 600px !important;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Nuevo correo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12 form-group">
+                                                <input type="text" class="form-control form-control-solid"
+                                                    placeholder="Asunto" name="asunto">
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light-primary font-weight-bold"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary font-weight-bold">Crear</button>
+                                        <!-- <button type="button" class="btn btn-primary font-weight-bold spinner spinner-white spinner-left">
+                                            Creando
+                                        </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-5 mb-6" *ngIf="load_data">
+                        <div class="col-12 text-center">
+                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="!load_data">
+
+                        <div class="row" *ngIf="data">
+                            <div class="col-12">
+                                <div>
+                                    <!--begin::Message-->
+                                    <div class="cursor-pointer shadow-xs toggle-off mb-3" data-inbox="message">
+                                        <!--begin::Info-->
+                                        <div class="d-flex align-items-start card-spacer-x py-4">
+
+                                            <!--end::User Photo-->
+                                            <!--begin::User Details-->
+                                            <div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
+                                                <div class="d-flex">
+                                                    <a
+                                                        class="font-size-lg font-weight-bolder text-dark-75 text-hover-primary mr-2">
+                                                        Promocion de verano
+                                                    </a>
+                                                    <div class="font-weight-bold text-muted">
+                                                        <span class="label label-success label-dot mr-2">
+                                                        </span>Enviado
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <div class="text-muted font-weight-bold toggle-on-item"
+                                                        data-inbox="toggle">
+                                                        <span class="label label-warning label-dot mr-2">
+                                                        </span>Enviado por: Diego Arroyo Campos
+                                                    </div>
+                                                    <div class="text-muted font-weight-bold toggle-on-item"
+                                                        data-inbox="toggle">
+                                                        <a style="cursor: pointer;" class="text-primary">Ver mensaje</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="font-weight-bold text-muted mr-2">Hace 2 días</div>
+                                            </div>
+                                            <!--end::User Details-->
+                                        </div>
+                                        <!--end::Info-->
+                                        <!--begin::Comment-->
+                                        <div class="card-spacer-x pt-2 pb-5 toggle-off-item">
+                                            <!--begin::Text-->
+                                            <div class="mb-1">
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nihil
+                                                    id explicabo officiis soluta nostrum error quaerat nisi eos, ea quia
+                                                    earum velit veniam, corrupti corporis beatae assumenda, quisquam
+                                                    quis.</p>
+                                            </div>
+                                        </div>
+                                        <!--end::Comment-->
+                                    </div>
+                                    <!--end::Message-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container class="row" *ngIf="!data">
+                        <h1 class="text-center">No se encntró registros para este cliente, por favor verifique que
+                            existe</h1>
+                    </ng-container>
                 </div>
                 <!--end::Form-->
             </div>

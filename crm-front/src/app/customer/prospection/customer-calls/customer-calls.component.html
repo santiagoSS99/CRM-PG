@@ -11,19 +11,19 @@
                 <!--begin::Header-->
                 <div class="card-header py-3">
                     <div class="card-title align-items-start flex-column">
-                        <h3 class="card-label font-weight-bolder text-dark">Customer calls</h3>
-                        <span class="text-muted font-weight-bold font-size-sm mt-1">Customer Stats</span>
+                        <h3 class="card-label font-weight-bolder text-dark">Llamadas a clientes</h3>
+                        <span class="text-muted font-weight-bold font-size-sm mt-1">Estadisticas del cliente</span>
                     </div>
                     <div class="card-toolbar">
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a [routerLink]="['/customer/'+ id +'/prospection']"
-                                class="btn btn-outline-primary">Activities</a>
+                                class="btn btn-outline-primary">Actividades</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/interests']"
-                                class="btn btn-outline-primary">Interests</a>
+                                class="btn btn-outline-primary">Intereses</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/calls']"
-                                class="btn btn-outline-primary">Calls</a>
+                                class="btn btn-outline-primary">Llamadas</a>
                             <a [routerLink]="['/customer/'+ id +'/prospection/mails']"
-                                class="btn btn-outline-primary">mails</a>
+                                class="btn btn-outline-primary">Correos</a>
                         </div>
                     </div>
                 </div>
@@ -36,12 +36,12 @@
                     </a> -->
                     <button type="button" class="btn btn-info font-weight-bolder font-size-sm mr-3"
                         data-bs-toggle="modal" data-bs-target="#modalLlamada">
-                        New Call
+                        Agregar nueva llamada
                     </button>
 
                     <hr class="mb-5">
 
-                    <div class="mb-3">
+                    <div class="mb-3" *ngFor="let call of calls">
                         <!--begin::Content-->
                         <div class="d-flex align-items-center flex-grow-1">
 
@@ -51,25 +51,24 @@
                                 <div class="d-flex flex-column align-items-cente py-2 w-75">
                                     <!--begin::Title-->
                                     <a class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                        Ocupado
+                                        {{call.result}}
                                         &nbsp; | &nbsp;
-                                        Sheldon Cooper
+                                        {{call.assesor.fullName}}
                                     </a>
                                     <!--end::Title-->
                                     <!--begin::Data-->
                                     <span class="text-muted font-weight-bold">
-                                        Lunes 17, Enero - 07:58PM
+                                        {{call.date}}, &nbsp; {{call.hour}}
                                     </span>
-                                    <span class="text-muted font-weight-bold">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus
-                                        recusandae ullam veniam fuga vel.
+                                    <span class="text-muted font-weight-bold" *ngIf="call.note">
+                                        {{call.note}}
                                     </span>
                                     <!--end::Data-->
                                 </div>
                                 <!--end::Info-->
                                 <!--begin::Label-->
                                 <span class="label label-lg label-light-primary label-inline font-weight-bold py-4">
-                                    17/01/2022</span>
+                                    {{call.created_date | date}}</span>
                                 <!--end::Label-->
                             </div>
                             <!--end::Section-->
@@ -78,42 +77,7 @@
                         <!--end::Content-->
                     </div>
 
-                    <div class="mb-3">
-                        <!--begin::Content-->
-                        <div class="d-flex align-items-center flex-grow-1">
 
-                            <!--begin::Section-->
-                            <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column align-items-cente py-2 w-75">
-                                    <!--begin::Title-->
-                                    <a class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">
-                                        Ocupado
-                                        &nbsp; | &nbsp;
-                                        Sheldon Cooper
-                                    </a>
-                                    <!--end::Title-->
-                                    <!--begin::Data-->
-                                    <span class="text-muted font-weight-bold">
-                                        Lunes 17, Enero - 07:58PM
-                                    </span>
-                                    <span class="text-muted font-weight-bold">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus
-                                        recusandae ullam veniam fuga vel.
-                                    </span>
-                                    <!--end::Data-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Label-->
-                                <span class="label label-lg label-light-primary label-inline font-weight-bold py-4">
-                                    17/01/2022</span>
-                                <!--end::Label-->
-                            </div>
-                            <!--end::Section-->
-
-                        </div>
-                        <!--end::Content-->
-                    </div>
 
                 </div>
                 <!--end::Form-->
@@ -133,7 +97,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registrar llamada</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -175,8 +139,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="registerCall()">Understood</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="registerCall()">Guardar</button>
             </div>
         </div>
     </div>

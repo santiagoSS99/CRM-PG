@@ -24,7 +24,7 @@ export class CustomerCallsComponent implements OnInit {
   public token = localStorage.getItem('token');
   btn_load = false
 
-  calls: any = {}
+  calls: any = []
 
 
 
@@ -100,7 +100,8 @@ export class CustomerCallsComponent implements OnInit {
     id = this.id
     console.log(id)
     this.customerService.getCallsByCustomer(id, this.token).subscribe(
-      res => {
+      (res: any[]) => {
+        this.calls = res
         console.log(res)
       })
   }
