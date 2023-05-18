@@ -1,4 +1,4 @@
-import { IsDateString, IsNumber, IsString, MinLength } from "class-validator";
+import { IsDateString, IsNumber, IsString, MinLength, IsOptional } from "class-validator";
 
 export class CreateOrderDto {
     @IsString()
@@ -12,5 +12,6 @@ export class CreateOrderDto {
     quantity
 
     @IsString()
+    @IsOptional()
     observations
 }
