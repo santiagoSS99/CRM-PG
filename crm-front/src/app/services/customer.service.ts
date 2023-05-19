@@ -71,6 +71,12 @@ export class CustomerService {
     return this.http.post<Call>(`${this.BASE_URL}/customer-calls`, call, { headers })
   }
 
+  createCustomerMail(data: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.post(`${this.BASE_URL}/customer-mail`, data, { headers })
+  }
+
+
   getCalls(token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
     return this.http.get(`${this.BASE_URL}/customer-calls`, { headers })
@@ -79,6 +85,18 @@ export class CustomerService {
   getCallsByCustomer(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
     return this.http.get(`${this.BASE_URL}/customer-calls/${id}`, { headers })
+  }
+
+  ////////////////////
+
+  getMails(token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/customer-mail`, { headers })
+  }
+
+  getMailsByCustomer(id: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/customer-mail/${id}`, { headers })
   }
 
 }
