@@ -43,6 +43,7 @@ import { CustomerCallsComponent } from './customer/prospection/customer-calls/cu
 import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
 import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
 import { TimepickerComponent } from './custom-fields/timepicker/timepicker.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { TimepickerComponent } from './custom-fields/timepicker/timepicker.compo
     HttpClientModule,
     FormsModule,
     FullCalendarModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,6 +14,14 @@ export class CustomerMailsComponent implements OnInit {
   data = false
   load_data = true
 
+  // editorconfig = {
+  //   base_url: '/tinymce',
+  //   suffix: '.min',
+  //   plugins: 'link list image table wordcount'
+  // }
+
+
+
   constructor(
     private _route: ActivatedRoute,
     private customerService: CustomerService
@@ -25,6 +33,7 @@ export class CustomerMailsComponent implements OnInit {
         this.id = parseInt(params['id'], 10)
         this.customerService.getCustomerById(this.id, this.token).subscribe(
           response => {
+            console.warn('Mails Section')
             console.log(response)
             if (response != undefined) {
               this.data = true;
@@ -35,6 +44,10 @@ export class CustomerMailsComponent implements OnInit {
         )
       }
     )
+
+    // this.tinymce.init({
+    //   selector: 'textarea#default'
+    // });
   }
 
   initData() {

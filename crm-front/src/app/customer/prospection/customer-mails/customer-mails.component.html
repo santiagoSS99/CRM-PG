@@ -56,8 +56,9 @@
                                                     placeholder="Asunto" name="asunto">
                                             </div>
                                             <div class="col-lg-12 form-group">
-
                                             </div>
+                                            <editor [init]="{ plugins: 'lists link image table code help wordcount' }">
+                                            </editor>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
