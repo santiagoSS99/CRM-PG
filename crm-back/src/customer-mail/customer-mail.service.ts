@@ -41,7 +41,8 @@ export class CustomerMailService {
       let customer = await this.customerRepo.findOneBy({ id: String(mail.customer) })
       console.log(customer)
       await this.customerMailRepo.save(mail)
-      this.sendProspectionEmail(customer, mail.subject, customer.email, mail.content)
+      this.sendProspectionEmail(customer.name, mail.subject, customer.email, mail.content)
+      return { mail, message: 'Email stored succesfully' }
 
     } catch (err) {
 
@@ -103,12 +104,21 @@ export class CustomerMailService {
     })
   }
 
-  findAll() {
-    return `This action returns all customerMail`;
+  async findAll() {
+    const mails = await this.customerMailRepo.find()
+    return mails
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} customerMail`;
+  async findOne(id: number) {
+    const customerMail = await this.customerMailRepo
+      .createQueryBuilder('customerMail')
+      .leftJoinAndSelect('customerMail.customer', 'customer')
+      .leftJoinAndSelect('customerMail.assesor', 'assesor')
+      .orderBy('customerMail.created_date', 'DESC')
+      .where('customer.id = :customerId', { customerId: id })
+      .getMany()
+
+    return customerMail
   }
 
   update(id: number, updateCustomerMailDto: UpdateCustomerMailDto) {

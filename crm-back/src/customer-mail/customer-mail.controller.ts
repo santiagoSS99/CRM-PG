@@ -5,7 +5,7 @@ import { UpdateCustomerMailDto } from './dto/update-customer-mail.dto';
 
 @Controller('customer-mail')
 export class CustomerMailController {
-  constructor(private readonly customerMailService: CustomerMailService) {}
+  constructor(private readonly customerMailService: CustomerMailService) { }
 
   @Post()
   create(@Body() createCustomerMailDto: CreateCustomerMailDto) {
