@@ -4,61 +4,61 @@
     <div class="modal-dialog .modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Customer</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class=" row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
+                            <label class="form-label">Nombres</label>
                             <input required type="text" class="form-control" id="exampleInputName"
                                 [(ngModel)]="customer.name" name="name">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Surnames</label>
+                            <label class="form-label">Apellidos</label>
                             <input required type="text" class="form-control" id="exampleInputSurnames"
                                 [(ngModel)]="customer.surnames" name="surnames">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Country</label>
+                            <label class="form-label">Pais</label>
                             <input type="text" class="form-control" id="exampleInputCountry"
                                 [(ngModel)]="customer.country" name="country">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
+                            <label class="form-label">Correo</label>
                             <input required type="email" class="form-control" id="exampleInputEmail"
                                 [(ngModel)]="customer.email" name="email">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">Telephone</label>
+                            <label class="form-label">Telefono</label>
                             <input required type="email" class="form-control" id="exampleInputTNumber"
                                 [(ngModel)]="customer.t_number" name="t_number">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Gender</label>
+                            <label class="form-label">Genero</label>
                             <input required type="text" class="form-control" id="exampleInputGender"
                                 [(ngModel)]="customer.gender" name="gender">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Birthday</label>
+                            <label class="form-label">Fecha de nacimiento</label>
                             <input type="date" class="form-control" id="exampleInputBirthday"
                                 [(ngModel)]="customer.f_birthday" name="f_birthday">
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleInputNotifications"
                                 [(ngModel)]="customer.notifications" name="notifications">
-                            <label class="form-check-label" for="exampleInputNotifications">Notifications</label>
+                            <label class="form-check-label" for="exampleInputNotifications">Notificaciones</label>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" (click)="updateCustomer(customer.id)">Update
-                    Customer</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" (click)="updateCustomer(customer.id)">Actualizar
+                    cliente</button>
             </div>
         </div>
