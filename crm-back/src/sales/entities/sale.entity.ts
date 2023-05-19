@@ -1,16 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Purchase } from "src/purchase/entities/purchase.entity";
+import { TableStatus } from "src/table-status/entities/table-status.entity";
+import { Tables } from "src/tables/entities/table.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Sale {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    total: number;
+    // @Column()
+    // total: number;
 
-    @Column('json')
-    products: any[];
+    // @Column('json')
+    // products: any[];
 
-    @Column()
-    paymentMethod: string;
+    @ManyToOne(() => Tables)
+    table: Tables
+
+    @ManyToOne(() => TableStatus)
+    tableStatus: TableStatus
+
+    @ManyToOne(() => Purchase)
+    purchase: Purchase
+
+    // @Column()
+    // paymentMethod: string;
 }

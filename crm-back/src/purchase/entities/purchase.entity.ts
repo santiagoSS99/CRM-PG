@@ -18,4 +18,10 @@ export class Purchase {
 
     @ManyToOne(() => Customer, (customer) => customer.purchases)
     customer: Customer;
+
+    @Column()
+    total: number;
+
+    @Column()
+    paymentMethod: string;
 }

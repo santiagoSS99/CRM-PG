@@ -34,14 +34,24 @@ export class CustomerService {
   ) { }
   async create(createCustomerDto: CreateCustomerDto) {
     try {
-      const { ...costumer } = createCustomerDto
+      const { t_number, ...costumer } = createCustomerDto
+
+      const existingCustomer = await this.customerRepo.findOneBy({ t_number: t_number });
+
+      if (existingCustomer) {
+        console.log(existingCustomer, 'cliente existente')
+        throw new Error('El número de teléfono ya está presente y no se permite crearlo.');
+        // return { message: 'El número de teléfono ya está presente y no se permite crearlo.' }
+      }
+
       const client = this.customerRepo.create({
         ...costumer
       });
       await this.customerRepo.save(client)
-      return { client, message: 'Customer has been registered' }
+      return { client, message: 'El cliente ha sido registrado correcta' }
     } catch (error) {
       this.handleDBExceptions(error)
+      return { message: 'Ocurrió un error al crear el cliente.' };
     }
   }
 
