@@ -1,8 +1,8 @@
 <div class="card card-custom">
     <div class="card-header flex-wrap border-0 pt-6 pb-0">
         <div class="card-title">
-            <h3 class="card-label">Customers
-                <span class="text-muted pt-2 font-size-sm d-block">Complete list of all clients</span>
+            <h3 class="card-label">Clientes
+                <span class="text-muted pt-2 font-size-sm d-block">Lista completa de clientes</span>
             </h3>
         </div>
         <div class="card-toolbar">
@@ -41,11 +41,11 @@
                         <thead>
                             <tr class="text-left text-uppercase">
                                 <th style="min-width: 250px" class="pl-7">
-                                    <span class="text-dark-75">Names</span>
+                                    <span class="text-dark-75">Nombres</span>
                                 </th>
-                                <th style="min-width: 100px">Email</th>
-                                <th style="min-width: 100px">Verified</th>
-                                <th style="min-width: 100px">Type</th>
+                                <th style="min-width: 100px">Correo</th>
+                                <th style="min-width: 100px">Verificado</th>
+                                <th style="min-width: 100px">Tipo</th>
 
                                 <th style="min-width: 80px"></th>
                             </tr>
@@ -64,36 +64,37 @@
                                                 class="text-primary font-weight-bolder text-hover-primary mb-1 font-size-lg">
                                                 {{customer.name}} {{customer.surnames}}
                                             </a>
-                                            <span class="text-muted font-weight-bold d-block">Full Names</span>
+                                            <span class="text-muted font-weight-bold d-block">Nombre completo</span>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <span
                                         class="text-dark-75 font-weight-bolder d-block font-size-lg">{{customer.email}}</span>
-                                    <span class="text-muted font-weight-bold">Email</span>
+                                    <span class="text-muted font-weight-bold">Correo</span>
                                 </td>
                                 <td>
-                                    <span class="badge badge-success" *ngIf="customer.verify">verified</span>
-                                    <span class="badge badge-danger" *ngIf="!customer.verify">not verified
+                                    <span class="badge badge-success" *ngIf="customer.verify">Verificado</span>
+                                    <span class="badge badge-danger" *ngIf="!customer.verify">Sin verificar
                                     </span>
-                                    <span class="text-muted font-weight-bold d-block">Status</span>
+                                    <span class="text-muted font-weight-bold d-block">Estado</span>
                                 </td>
                                 <td>
 
                                     <span class="badge badge-warning"
-                                        *ngIf="customer.type == 'prospect'">Prospect</span>
-                                    <span class="badge badge-primary" *ngIf="customer.type == 'partner'">Partner</span>
-                                    <span class="text-muted font-weight-bold d-block">Customer Type</span>
+                                        *ngIf="customer.type == 'prospect'">Prospecto</span>
+                                    <span class="badge badge-primary" *ngIf="customer.type == 'partner'">Socio</span>
+                                    <span class="text-muted font-weight-bold d-block">Tipo de cliente</span>
                                 </td>
 
 
                                 <td class="pr-0 text-left ">
                                     <button class="btn btn-facebook" (click)="getCustomerById(customer.id)"
-                                        data-bs-toggle="modal" data-bs-target="#modalToUpdateCustomer">Update</button>
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalToUpdateCustomer">Actualizar</button>
                                     <app-edit-customer [customer]="selectedCustomer"></app-edit-customer>
                                     <button class="btn btn-danger text-center"
-                                        (click)="deleteCustomer(customer.id)">Delete</button>
+                                        (click)="deleteCustomer(customer.id)">Eliminar</button>
                                 </td>
                             </tr>
 
@@ -101,9 +102,8 @@
                         <tbody *ngIf="customers.length == 0">
                             <tr>
                                 <td colspan="5" class="text-center">
-                                    <p class="font-size-h3 text-muted font-weight-normal mt-5">There are not customers
-                                        to
-                                        show</p>
+                                    <p class="font-size-h3 text-muted font-weight-normal mt-5">No hay clientes para
+                                        mostrar</p>
                                 </td>
                             </tr>
 
