@@ -1,6 +1,11 @@
-<div class="lf-container">
+<div class="lf-container ">
     <ng-template [ngIf]="showSidebar()">
-        <app-sidebar></app-sidebar>
+        <div class="d-flex flex-column flex-root">
+            <div class="d-flex flex-row flex-column-fluid page">
+                <app-sidebar></app-sidebar>
+                <app-header></app-header>
+            </div>
+        </div>
     </ng-template>
     <div class="content">
         <router-outlet></router-outlet>

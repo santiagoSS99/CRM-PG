@@ -1,5 +1,6 @@
 import { profile } from "console";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Purchase } from "src/purchase/entities/purchase.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Customer {
@@ -13,7 +14,7 @@ export class Customer {
     @Column()
     surnames: string;
 
-    @Column({default: 'CO'})
+    @Column({ default: 'CO' })
     country: string;
 
     @Column('varchar', { length: 200 })
@@ -22,13 +23,22 @@ export class Customer {
     @Column()
     t_number: string;
 
-    @Column({default: "3"})
+    @Column({ default: "3" })
     gender: string;
 
     @Column()
     f_birthday: string;
 
+    @Column({ default: "prospect" })
+    type: string
+
     @Column()
     notifications: boolean;
+
+    @Column({ default: false })
+    verify: boolean
+
+    @OneToMany(() => Purchase, (purchase) => purchase.customer)
+    purchases: Purchase;
 
 }

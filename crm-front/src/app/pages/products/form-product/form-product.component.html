@@ -7,15 +7,15 @@
       <div class="wrapper-left col-md-6">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="label">Product Name</label>
+            <label class="field">Product Name</label>
             <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
           </div>
           <div class="form-input">
-            <label class="label">Price</label>
+            <label class="field">Price</label>
             <input class="input" type="number" name="price" [(ngModel)]="product.price" />
           </div>
           <div class="form-input">
-            <label class="label">Description</label>
+            <label class="field">Description</label>
             <input class="input" type="text" name="description" [(ngModel)]="product.description" />
           </div>
         </div>
@@ -23,19 +23,19 @@
       <div class="wrapper-right col-md-6">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="label">Quantity</label>
+            <label class="field">Quantity</label>
             <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
           </div>
           <div class="form-input">
-            <label class="label">Provider</label>
+            <label class="field">Provider</label>
             <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
           </div>
           <!-- <div class="form-input file-input">
-            <label class="label">Image</label>
+            <label class="field">Image</label>
             <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
           </div> -->
           <div class="form-input file-input">
-            <label class="label" for="file-input">Image</label>
+            <label class="field" for="file-input">Image</label>
             <div class="file-input">
               <input type="file" name="images" (change)="selectFiles($event)" />
               <button class="custom-btn" type="file" name="images">Choose file</button>

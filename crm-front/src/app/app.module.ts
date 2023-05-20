@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -27,8 +26,25 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
 import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CampaignComponent } from './pages/campaign/campaign.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CustomersComponent } from './customer/customers/customer.component';
+import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
+import { VerificationComponent } from './customer/verification/verification.component';
+import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
+import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
+import { CustomerProspectionComponent } from './customer/prospection/customer-prospection/customer-prospection.component';
+import { CustomerAsideComponent } from './customer/customer-aside/customer-aside.component';
+import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
+import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
+import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
+import { TimepickerComponent } from './custom-fields/timepicker/timepicker.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -51,7 +67,21 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     OrderDetailComponent,
     ProductSelectionComponent,
     CalendarComponent,
-    HomeComponent
+    HomeComponent,
+    CampaignComponent,
+    UserManagementComponent,
+    CustomersComponent,
+    CreateCustomerComponent,
+    VerificationComponent,
+    CustomerTableComponent,
+    EditCustomerComponent,
+    CustomerDashboardComponent,
+    CustomerProspectionComponent,
+    CustomerAsideComponent,
+    CustomerCallsComponent,
+    CustomerMailsComponent,
+    CustomerInterestsComponent,
+    TimepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +92,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     HttpClientModule,
     FormsModule,
     FullCalendarModule,
+    EditorModule,
+    NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

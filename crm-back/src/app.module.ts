@@ -15,6 +15,11 @@ import { TablesModule } from './tables/tables.module';
 import { SalesModule } from './sales/sales.module';
 import { join } from 'path';
 import { TableStatusModule } from './table-status/table-status.module';
+import { PurchaseModule } from './purchase/purchase.module';
+import { CustomerActivityModule } from './customer-activity/customer-activity.module';
+import { CustomerInterestModule } from './customer-interest/customer-interest.module';
+import { CustomerCallsModule } from './customer-calls/customer-calls.module';
+import { CustomerMailModule } from './customer-mail/customer-mail.module';
 
 
 @Module({
@@ -42,6 +47,11 @@ import { TableStatusModule } from './table-status/table-status.module';
     TablesModule,
     SalesModule,
     TableStatusModule,
+    PurchaseModule,
+    CustomerActivityModule,
+    CustomerInterestModule,
+    CustomerCallsModule,
+    CustomerMailModule,
   ],
   controllers: [ChatController],
   providers: [ChatService],

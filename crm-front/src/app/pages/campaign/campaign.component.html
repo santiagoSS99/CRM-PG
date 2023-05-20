@@ -1,0 +1,79 @@
+<div class="campaign-container">
+    <div class="table-container">
+        <table>
+            <thead>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellidos
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Celular
+                </th>
+                <th>
+                    Fecha de Nacimiento
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers" (click)="selectCustomer(customer)"
+                    [ngClass]="{'active': isCurrentCustomer(customer)}">
+                    <td>
+                        {{customer.name}}
+                    </td>
+                    <td>
+                        {{customer.surnames}}
+                    </td>
+                    <td>
+                        {{customer.email}}
+                    </td>
+                    <td>
+                        {{customer.t_number}}
+                    </td>
+                    <td>
+                        {{getDate(customer.f_birthday)}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-container">
+        <h1 class="py-2">Campañas</h1>
+        <div class="container">
+            <div *ngIf="this.selectedCustomer">
+                <p class="py-2">
+                    Enviar mensaje a correo : <b>{{this.selectedCustomer.email}}</b>
+                </p>
+
+                <form role="form" class="customer-form">
+                    <div class="form-group">
+                        <input type="text" name="from_name" class="form-control input" id="from_name"
+                            placeholder="Nombre de Discoteca" required [(ngModel)]="email.from_name">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control input" name="message_title" id="message_title"
+                            placeholder="Titulo del Mensaje" required [(ngModel)]="email.message_title">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control input" name="title" id="title"
+                            placeholder="Titulo Banner" required [(ngModel)]="email.title">
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea type="text" name="message" class="form-control input" id="message"
+                            placeholder="Mensaje" required [(ngModel)]="email.message"></textarea>
+                    </div>
+
+                    <div class="text-center mt-3"><button type="button" (click)="sendEmail()">Enviar</button></div>
+                    <div class="text-center mt-3"><button type="button" (click)="sendCampaign()">Enviar
+                            Masivamente</button></div>
+                </form>
+            </div>
+            <div *ngIf="!this.selectedCustomer">
+                <h3>¡Selecciona un cliente!</h3>
+            </div>
+        </div>
+    </div>
+</div>

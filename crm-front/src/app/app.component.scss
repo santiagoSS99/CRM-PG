@@ -2,9 +2,13 @@
     display: flex;
     box-sizing: border-box;
     z-index: 0;
+    background-color: #eaeaea;
 
     .content {
+        // margin-top: 110px;
         width: 100%;
         flex-direction: column;
+        // padding: 0;
+        // background-color: #eaeaea;
     }
 }

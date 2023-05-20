@@ -1,7 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Reservation } from "src/reservations/entities/reservation.entity";
 import { Order } from "src/orders/entities/order.entity";
-import { TableStatus } from "../enumTables/tableStatus";
+import { TableStatus } from "src/table-status/entities/table-status.entity";
 
 @Entity()
 export class Tables {
@@ -14,8 +14,9 @@ export class Tables {
     @Column('int')
     table_capacity: number;
 
-    @Column({ type: 'enum', enum: TableStatus, default: TableStatus.AVAILABLE })
-    table_status: string;
+    @ManyToOne(() => TableStatus, { eager: true })
+    @JoinColumn({ name: 'table_status_code' })
+    table_status: TableStatus;
 
     @Column('text')
     table_location: string;

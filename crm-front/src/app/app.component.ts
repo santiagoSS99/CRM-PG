@@ -10,6 +10,7 @@ export class AppComponent {
   private viewsWithoutSidebar: RegExp[] = [
     /^\/home/,
     /^\/login/,
+    /^\/verification/,
   ]
   router: Router;
   title = 'crm-front';
