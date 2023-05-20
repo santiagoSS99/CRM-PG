@@ -24,4 +24,7 @@ export class Purchase {
 
     @Column()
     paymentMethod: string;
+
+    @Column({ default: new Date().getFullYear() })
+    year: number;
 }
