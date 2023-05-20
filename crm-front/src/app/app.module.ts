@@ -25,7 +25,10 @@ import { CrmButtonComponent } from './custom-fields/crm-button/crm-button.compon
 import { CreateTableComponent } from './pages/tables/create-table/create-table.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { ProductSelectionComponent } from './pages/product-selection/product-selection.component';
-// import { MatSelectModule } from '@angular/material/select';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { HomeComponent } from './pages/home/home.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import { ProductSelectionComponent } from './pages/product-selection/product-sel
     CrmButtonComponent,
     CreateTableComponent,
     OrderDetailComponent,
-    ProductSelectionComponent
+    ProductSelectionComponent,
+    CalendarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,7 @@ import { ProductSelectionComponent } from './pages/product-selection/product-sel
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

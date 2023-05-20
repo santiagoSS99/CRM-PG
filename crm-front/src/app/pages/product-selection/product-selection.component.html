@@ -7,11 +7,53 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9 border-right">
+                            <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5">
+                                <div class="col-sm-6 col-md-5 col-lg-3 mb-5" *ngFor="let product of products">
+                                    <div class="card h-100" style="cursor:pointer" (click)="selectProduct(product)">
+                                        <div class="img-center">
+                                            <img [src]="product.images" class="card-img-top"
+                                                alt="{{product.product_name}}">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{product.product_name}}</h5>
+                                            <p class="card-text">{{product.description}}</p>
+                                            <p class="card-text"><small class="text-muted">{{product.price}}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="title">Products to set</div>
+                            <div class="container-products" *ngFor="let products of selectedProducts; let i = index">
+                                <div class="products-quantity-section">
+                                    <div for="" class="product-name">{{products.product_name}} : {{products.price}}
+                                    </div>
+                                    <!-- <div class="quantity-input">
+                                        <input class="form-control" type="number" min="1" max="10" step="1"
+                                            [(ngModel)]="selectedProducts[i].quantity" name="quantity">
+                                    </div> -->
+                                    <div class="product-actions">
+                                        <i class="fa-solid fa-trash" style="cursor: pointer;"
+                                            (click)="removeProduct(products)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="total">
+                                <label for="">Total: {{total}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add products to table</button>
+                <button type="button" class="btn btn-secondary" (click)="resetData()"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="setProductInTable(tables.table_number)">Add to
+                    table</button>
             </div>
         </div>
     </div>

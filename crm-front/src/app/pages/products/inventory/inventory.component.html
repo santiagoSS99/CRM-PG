@@ -1,22 +1,24 @@
 <div class="container">
-    <div class="row">
-        <div class="search-filter">
-            <input type="text" class="form-control" placeholder="Search product">
-            &nbsp;
-        </div>
-        <div class="col-sm-2" *ngFor="let product of products">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{product.product_name}}</h5>
-                    <img [src]=product.images alt="">
-                    <hr>
-                    <p class="card-text">{{product.description}}</p>
-                    <div class="buttons">
-                        <!-- <button href="#" class="btn btn-primary">Add To Cart</button> -->
-                        <app-crm-button icon="fa fa-pen" data-bs-toggle="modal">Cart</app-crm-button>
-                        <app-crm-button text="Edit product" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            (click)="getproductById(product.id)"></app-crm-button>
-                        <app-edit-product [product]="selectedProduct"></app-edit-product>
+    <div class="search-filter">
+        <input type="text" class="form-control" placeholder="Search product">
+    </div>
+    <div class="card-container">
+        <div class="row">
+            <div class="col-md-2" *ngFor="let product of products">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.product_name}}</h5>
+                        <div class="card-img-wrapper">
+                            <img [src]=product.images alt="">
+                        </div>
+                        <hr>
+                        <p class="card-text">{{product.description}}</p>
+                        <div class="buttons">
+                            <app-crm-button [icon]="shopping_cart" data-bs-toggle="modal">Cart</app-crm-button>
+                            <app-crm-button [icon]="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="getproductById(product.id)"></app-crm-button>
+                            <app-edit-product [product]="selectedProduct"></app-edit-product>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,9 @@ import { AuthModule } from './auth/auth.module';
 import { ReservationsModule } from './reservations/reservations.module';
 import { OrdersModule } from './orders/orders.module';
 import { TablesModule } from './tables/tables.module';
+import { SalesModule } from './sales/sales.module';
+import { join } from 'path';
+import { TableStatusModule } from './table-status/table-status.module';
 
 
 @Module({
@@ -26,7 +29,7 @@ import { TablesModule } from './tables/tables.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      // entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+      entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true
     }),
     ProductsModule,
@@ -36,7 +39,9 @@ import { TablesModule } from './tables/tables.module';
     AuthModule,
     ReservationsModule,
     OrdersModule,
-    TablesModule
+    TablesModule,
+    SalesModule,
+    TableStatusModule,
   ],
   controllers: [ChatController],
   providers: [ChatService],

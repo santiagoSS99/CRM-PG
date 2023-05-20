@@ -3,20 +3,21 @@
         <h2 class="title">Tables</h2>
         <div class="search">
             <div class="search-box">
-                <input class="search-text" type="text" placeholder="Search Table">
-                <a href="#" class="search-btn" style="text-decoration: none;">
+                <input class="search-text" type="text" placeholder="Search Table" id="search" (click)="searchTable()"
+                    [(ngModel)]="this.text_to_search">
+                <a class="search-btn" style="text-decoration: none;" (click)="searchTable()">
                     <i class="fa fa-search" style="color:black"></i>
                 </a>
             </div>
         </div>
+        <!-- Crear como un componente -->
         <div class="cards-container">
             <!-- [ngClass]="table.status === 'available' ? 'available' : ''" -->
             <div class="col-sm-4" class="cards" *ngFor="let table of tables" data-bs-toggle="modal"
                 data-bs-target="#modalToAddProductToRable">
-                <div class="card" (click)="getTableById(table.id)">
-                    <div class="card-body">
+                <div class="card" id="myUL" (click)="getTableById(table.id)">
+                    <div class="card-body table">
                         <h5 class="card-title">Table {{table.table_number}}</h5>
-                        <hr>
                         <img src="./../../../assets/icons/table.svg" alt="">
                     </div>
                 </div>

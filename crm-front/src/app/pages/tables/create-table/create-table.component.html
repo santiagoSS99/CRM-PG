@@ -10,39 +10,51 @@
                 <div>
                     <div>
                         <label class="col-sm-3 control-label">Table Number</label>
-                        <!-- <input type="text" name="product_name" [value]="product.product_name" id="name"
-                            [(ngModel)]="product.product_name"> -->
+                        <input [value]="tables" readonly type="number" class="form-control"
+                            [(ngModel)]="table.table_number">
+                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small> -->
                     </div>
                     <div>
                         <label class="col-sm-3 control-label">Table Capacity</label>
                         <!-- <input type="text" name="description" [value]="product.description" id="description"
                             [(ngModel)]="product.description"> -->
+                        <input type="number" class="form-control" id="exampleInputTableCapacity"
+                            aria-describedby="tableCapacity" [(ngModel)]="table.table_capacity">
                     </div>
                     <div>
                         <label class="col-sm-3 control-label">Table Status</label>
                         <!-- <input type="number" name="price" [value]="product.price" id="price"
                             [(ngModel)]="product.price"> -->
+                        <input type="text" class="form-control" id="exampleInputTableStatus"
+                            aria-describedby="tableStatus" [(ngModel)]="table.table_status">
                     </div>
                     <div>
                         <label class="col-sm-3 control-label">Table Location</label>
                         <!-- <input type="number" inputmode="numeric" name="stock" [value]="product.quantity" id="stock"
                             [(ngModel)]="product.quantity"> -->
+                        <input type="text" class="form-control" id="exampleInputTableLocation"
+                            aria-describedby="tableLocation" [(ngModel)]="table.table_location">
                     </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Table Reservations</label>
-                        <!-- <input type="number" inputmode="numeric" name="provider" [value]="product.provider"
+                    <!-- <div>
+                        <label class="col-sm-2 control-label">Table Reservations</label> -->
+                    <!-- <input type="number" inputmode="numeric" name="provider" [value]="product.provider"
                             id="provider" [(ngModel)]="product.provider"> -->
-                    </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Table Orders</label>
-                        <!-- <input type="number" readonly inputmode="numeric" name="selled" [value]="product.selled"
+                    <!-- <input type="text" class="form-control" id="exampleInputTableReservations"
+                            aria-describedby="tableReservations">
+                    </div> -->
+                    <!-- <div>
+                        <label class="col-sm-3 control-label">Table Orders</label> -->
+                    <!-- <input type="number"  inputmode="numeric" name="selled" [value]="product.selled"
                             id="selled" [(ngModel)]="product.selled"> -->
-                    </div>
+                    <!-- <input type="text" class="form-control" id="exampleInputTableLocation"
+                            aria-describedby="tableLocation">
+                    </div> -->
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="createTable()">Create</button>
             </div>
         </div>
     </div>
