@@ -15,6 +15,7 @@ import { CustomerProspectionComponent } from './customer/prospection/customer-pr
 import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
 import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
 import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
+import { PerformanceComponent } from './pages/performance/performance.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,7 @@ const routes: Routes = [
   { path: 'customer/:id/prospection/interests', component: CustomerInterestsComponent },
   { path: 'customer/:id/prospection/calls', component: CustomerCallsComponent },
   { path: 'customer/:id/prospection/mails', component: CustomerMailsComponent },
-  // { path: 'customer/:id/prospection', component: CustomerProspectionComponent },
+  { path: 'performance', component: PerformanceComponent },
 
 ];
 

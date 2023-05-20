@@ -45,6 +45,7 @@ import { CustomerInterestsComponent } from './customer/prospection/customer-inte
 import { TimepickerComponent } from './custom-fields/timepicker/timepicker.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { PerformanceComponent } from './pages/performance/performance.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap'
     CustomerCallsComponent,
     CustomerMailsComponent,
     CustomerInterestsComponent,
-    TimepickerComponent
+    TimepickerComponent,
+    PerformanceComponent
   ],
   imports: [
     BrowserModule,
