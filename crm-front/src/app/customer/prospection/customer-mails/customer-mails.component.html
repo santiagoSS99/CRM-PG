@@ -88,7 +88,8 @@
                     <ng-container *ngIf="!load_data">
 
                         <div class="row" *ngIf="data">
-                            <div *ngFor="let mail of mails" class="col-12">
+                            <div *ngFor="let mail of mails | slice: (page-1) * pageSize : page * pageSize"
+                                class="col-12">
                                 <div>
                                     <!--begin::Message-->
                                     <div class="cursor-pointer shadow-xs toggle-off mb-3" data-inbox="message">
@@ -142,6 +143,9 @@
 
                                 </div>
                             </div>
+
+                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="mails.length"
+                                [maxSize]="10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
                         </div>
                     </ng-container>
                     <ng-container class="row" *ngIf="!data">

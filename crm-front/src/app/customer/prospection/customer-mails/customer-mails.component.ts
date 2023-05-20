@@ -23,7 +23,10 @@ export class CustomerMailsComponent implements OnInit {
     customer: '',
   }
 
-  mails: any = []
+  mails: Array<any> = []
+
+  page = 1;
+  pageSize = 5;
 
 
   constructor(
