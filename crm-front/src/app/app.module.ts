@@ -44,6 +44,7 @@ import { CustomerMailsComponent } from './customer/prospection/customer-mails/cu
 import { CustomerInterestsComponent } from './customer/prospection/customer-interests/customer-interests.component';
 import { TimepickerComponent } from './custom-fields/timepicker/timepicker.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -91,7 +92,9 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     HttpClientModule,
     FormsModule,
     FullCalendarModule,
-    EditorModule
+    EditorModule,
+    NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
