@@ -18,7 +18,6 @@
                             <app-crm-button [icon]="shopping_cart" data-bs-toggle="modal">Cart</app-crm-button>
                             <app-crm-button [icon]="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 (click)="getproductById(product.id)"></app-crm-button>
-                            <app-edit-product [product]="selectedProduct"></app-edit-product>
                         </div>
                     </div>
                 </div>
@@ -26,3 +25,4 @@
         </div>
     </div>
 </div>
+<app-edit-product [product]="selectedProduct"></app-edit-product>
