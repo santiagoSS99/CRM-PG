@@ -24,6 +24,11 @@ export class PurchaseController {
     return this.purchaseService.findAll();
   }
 
+  @Get('total-amount')
+  getDataPurchasePerMonth(res) {
+    return this.purchaseService.findAllToDashboard(res)
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.purchaseService.findOne(+id);

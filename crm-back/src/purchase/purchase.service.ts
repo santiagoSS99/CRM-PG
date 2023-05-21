@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from 'src/customer/entities/customer.entity';
 import { Product } from 'src/products/entities';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { CreatePurchaseDto } from './dto/create-purchase.dto';
 import { UpdatePurchaseDto } from './dto/update-purchase.dto';
 import { Purchase } from './entities/purchase.entity';
@@ -34,15 +34,18 @@ export class PurchaseService {
 
     if (!product) throw new NotFoundException(`Product with id ${productId} not found`);
 
+    const total = product.price * createPurchaseDto.quantity
+    console.log(total)
+
     const purchase = this.purchaseRepository.create({
       ...createPurchaseDto,
       product,
-      customer
+      customer,
+      total
     })
 
     return this.purchaseRepository.save(purchase)
   }
-
   // Without customer register
 
   async createPurchaseWithoutCustomer(productId, createPurchaseDto) {
@@ -60,8 +63,31 @@ export class PurchaseService {
     return this.purchaseRepository.save(purchaseWC)
   }
 
-  findAll() {
-    return `This action returns all purchase`;
+  async findAll() {
+    const purchases = await this.purchaseRepository.find()
+    return purchases
+  }
+
+  async findAllToDashboard(res) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const firstyr = new Date(year, 0, 1);
+    const lastyr = new Date(year, 11, 31, 23, 59, 59);
+
+    const purchases = await this.purchaseRepository.find({
+      where: {
+        created_date: Between(firstyr, lastyr)
+      }
+    });
+
+    const months = Array(12).fill(0);
+
+    purchases.forEach(purchase => {
+      const month = purchase.created_date.getMonth();
+      months[month] += purchase.total;
+    });
+
+    return ({ data: months })
   }
 
   findOne(id: number) {
