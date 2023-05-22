@@ -1,7 +1,6 @@
-import { Purchase } from 'src/purchase/entities/purchase.entity';
-import { text } from 'stream/consumers';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate, ManyToMany, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert, BeforeUpdate, OneToMany } from 'typeorm';
 import { ProductImage } from './';
+import { PurchaseLine } from '../../purchase-line/entities/purchase-line.entity';
 
 @Entity()
 export class Product {
@@ -28,45 +27,27 @@ export class Product {
     @Column({ type: 'char', length: 100, unique: true })
     slug: string;
 
-
     @Column()
     provider: string;
 
-    // @Column('int')
-    // quantity: number;
-
-    // @Column()
-    // barcode: string;
-
     @Column('int')
-    selled: number
+    selled: number;
 
-    // @CreateDateColumn({})
-    // updatedAt?: Date;
-
-    // @CreateDateColumn({
-    // })
-    // createdAt: Date;
-
-    // @Column("json", { default: [] })
-    // tags: string[];
-
-    @OneToMany(
-        () => ProductImage,
-        (productImage) => productImage.product,
-        { cascade: true, eager: true }
-    )
+    @OneToMany(() => ProductImage, (productImage) => productImage.product, { cascade: true, eager: true })
     images?: ProductImage[];
+
+    @OneToMany(() => PurchaseLine, (purchaseLine) => purchaseLine.product)
+    purchaseLines: PurchaseLine[];
 
     @BeforeInsert()
     checkSlugInsert() {
         if (!this.slug) {
-            this.slug = this.product_name
+            this.slug = this.product_name;
         }
         this.slug = this.slug
             .toLowerCase()
             .replaceAll(' ', '_')
-            .replaceAll("'", '')
+            .replaceAll("'", '');
     }
 
     @BeforeUpdate()
@@ -74,9 +55,6 @@ export class Product {
         this.slug = this.slug
             .toLowerCase()
             .replaceAll(' ', '_')
-            .replaceAll("'", '')
+            .replaceAll("'", '');
     }
-
-    @OneToMany(() => Purchase, (purchase) => purchase.product)
-    purchases: Purchase[];
 }
