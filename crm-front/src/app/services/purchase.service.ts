@@ -18,7 +18,7 @@ export class PurchaseService {
 
   getDataAmountToDash(token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
-    return this.http.get(`${this.BASE_URL}/purchase/total-amount`, { headers: headers })
+    return this.http.get(`${this.BASE_URL}/purchase-line/dash`, { headers: headers })
   }
 
 }
