@@ -8,12 +8,6 @@ export class Sale {
     @PrimaryGeneratedColumn()
     id: number;
 
-    // @Column()
-    // total: number;
-
-    // @Column('json')
-    // products: any[];
-
     @ManyToOne(() => Tables)
     table: Tables
 
@@ -23,6 +17,4 @@ export class Sale {
     @ManyToOne(() => Purchase)
     purchase: Purchase
 
-    // @Column()
-    // paymentMethod: string;
 }

@@ -7,7 +7,7 @@ export class PurchaseController {
   constructor(private readonly purchaseService: PurchaseService) { }
 
   @Post()
-  createtest(@Body() createPurchaseDto: CreatePurchaseDto) {
+  create(@Body() createPurchaseDto: CreatePurchaseDto) {
     return this.purchaseService.create(createPurchaseDto);
   }
   // // Create Without customer
