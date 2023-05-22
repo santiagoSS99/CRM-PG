@@ -29,7 +29,7 @@ export class ProductsController {
   }
 
   @Patch('update/:id')
-  @UseGuards(AuthGuard())
+  // @UseGuards(AuthGuard())
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateProductDto: UpdateProductDto
