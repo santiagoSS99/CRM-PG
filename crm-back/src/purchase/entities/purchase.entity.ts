@@ -1,7 +1,6 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Customer } from "src/customer/entities/customer.entity";
-import { Product } from "src/products/entities";
-
+import { PurchaseLine } from "../../purchase-line/entities/purchase-line.entity"
 @Entity()
 export class Purchase {
     @PrimaryGeneratedColumn()
@@ -10,17 +9,11 @@ export class Purchase {
     @Column()
     purchase_date: string;
 
-    @Column()
-    quantity: number;
-
-    @ManyToOne(() => Product, (product) => product.purchases)
-    product: Product;
+    @OneToMany(() => PurchaseLine, (purchaseLine) => purchaseLine.purchase)
+    purchaseLines: PurchaseLine[];
 
     @ManyToOne(() => Customer, (customer) => customer.purchases)
     customer: Customer;
-
-    @Column()
-    total: number;
 
     @Column()
     paymentMethod: string;
