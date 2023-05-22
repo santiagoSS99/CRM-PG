@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Customer } from "src/customer/entities/customer.entity";
 import { PurchaseLine } from "../../purchase-line/entities/purchase-line.entity"
+import { PayMethod } from "src/enums/paymenMethod";
 @Entity()
 export class Purchase {
     @PrimaryGeneratedColumn()
@@ -15,7 +16,11 @@ export class Purchase {
     @ManyToOne(() => Customer, (customer) => customer.purchases)
     customer: Customer;
 
-    @Column()
+    @Column({
+        type: 'enum',
+        enum: PayMethod,
+        default: PayMethod.Efectivo,
+    })
     paymentMethod: string;
 
     @CreateDateColumn({
