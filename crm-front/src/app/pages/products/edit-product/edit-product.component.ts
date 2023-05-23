@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
+import Swal from 'sweetalert2';
+declare var $: any
 
 @Component({
   selector: 'app-edit-product',
@@ -36,8 +38,32 @@ export class EditProductComponent implements OnInit {
       selled: this.product.stock,
       provider: this.product.provider,
       images: this.product.images
-    }
-    console.log(updateProduct)
-    this.productService.updateProduct(id, updateProduct).subscribe(res => console.log(res))
+    };
+
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas actualizar el producto?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, actualizar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(updateProduct);
+        this.productService.updateProduct(id, updateProduct).subscribe(
+          res => {
+            this.closeModal();
+            if (res) {
+              // Aquí puedes mostrar una alerta de éxito si lo deseas
+            }
+          }
+        );
+      }
+    });
+  }
+
+
+  closeModal() {
+    $(`#exampleModal  `).modal(`hide`);
   }
 }
