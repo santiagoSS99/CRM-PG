@@ -29,6 +29,7 @@ export class EditProductComponent implements OnInit {
   updateProduct(id: string) {
     let updateProduct = {
       product_name: this.product.product_name,
+      purchaseprice: this.product.purchaseprice,
       price: this.product.price,
       description: this.product.description,
       stock: this.product.stock,
@@ -36,6 +37,7 @@ export class EditProductComponent implements OnInit {
       provider: this.product.provider,
       images: this.product.images
     }
+    console.log(updateProduct)
     this.productService.updateProduct(id, updateProduct).subscribe(res => console.log(res))
   }
 }

@@ -1,49 +1,58 @@
 <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit {{product.product_name}}</h5>
+                <h5 class="modal-title">Editar Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div>
-                    <div>
-                        <label class="col-sm-3 control-label">Product Name</label>
-                        <input type="text" name="product_name" [value]="product.product_name" id="name"
-                            [(ngModel)]="product.product_name">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre del producto</label>
+                            <input type="text" class="form-control" name="product_name" [value]="product.product_name"
+                                id="name" [(ngModel)]="product.product_name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" name="description" [value]="product.description"
+                                id="description" [(ngModel)]="product.description">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio de compra</label>
+                            <input type="number" class="form-control" name="purchaseprice"
+                                [value]="product.purchaseprice" id="purchaseprice" [(ngModel)]="product.purchaseprice">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio de venta</label>
+                            <input type="number" class="form-control" name="price" [value]="product.price" id="price"
+                                [(ngModel)]="product.price">
+                        </div>
                     </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Descripción</label>
-                        <input type="text" name="description" [value]="product.description" id="description"
-                            [(ngModel)]="product.description">
-                    </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Precio</label>
-                        <input type="number" name="price" [value]="product.price" id="price"
-                            [(ngModel)]="product.price">
-                    </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Stock</label>
-                        <input type="number" inputmode="numeric" name="stock" [value]="product.quantity" id="stock"
-                            [(ngModel)]="product.quantity">
-                    </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Provider</label>
-                        <input type="number" inputmode="numeric" name="provider" [value]="product.provider"
-                            id="provider" [(ngModel)]="product.provider">
-                    </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Selled</label>
-                        <input type="number" readonly inputmode="numeric" name="selled" [value]="product.selled"
-                            id="selled" [(ngModel)]="product.selled">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" name="stock" [value]="product.stock" id="stock"
+                                [(ngModel)]="product.stock">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Proveedor</label>
+                            <input type="number" class="form-control" name="provider" [value]="product.provider"
+                                id="provider" [(ngModel)]="product.provider">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Vendidos</label>
+                            <input type="number" class="form-control" readonly name="sold" [value]="product.sold"
+                                id="sold" [(ngModel)]="product.sold">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="updateProduct(product.id)">Save
-                    changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="updateProduct(product.id)">Actualizar
+                    producto</button>
             </div>
         </div>
     </div>
