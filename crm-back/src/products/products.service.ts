@@ -165,4 +165,30 @@ export class ProductsService {
       this.handleDBExceptions(error)
     }
   }
+
+  //Get One product with most sales
+  async getProductWithMostSales(): Promise<Product[]> {
+    return this.productRepo.find({
+      order: {
+        selled: 'DESC',
+      },
+      take: 1,
+    });
+  }
+
+  //Get One product with sales
+  async getProductsWithMostSales() {
+    const products = await this.productRepo.find({
+      order: {
+        selled: 'DESC',
+      },
+    });
+
+    const productNames = products.map(({ product_name }) => product_name);
+    const selled = products.map(({ selled }) => selled);
+
+    return ({ data: { productNames, selled } });
+
+  }
+
 }
