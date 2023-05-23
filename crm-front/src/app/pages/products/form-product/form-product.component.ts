@@ -16,6 +16,7 @@ import swal from 'sweetalert2'
 export class FormProductComponent implements OnInit {
   product: Product = {
     product_name: '',
+    purchasePrice: 0,
     price: 0,
     description: '',
     stock: 0,
@@ -77,6 +78,7 @@ export class FormProductComponent implements OnInit {
                   let product = {
                     "product_name": this.product.product_name,
                     "price": this.product.price,
+                    "purchasePrice": this.product.purchasePrice,
                     "description": this.product.description,
                     "stock": this.product.stock,
                     "images": images_test,

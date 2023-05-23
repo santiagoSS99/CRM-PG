@@ -1,21 +1,25 @@
 <div class="fullcontainer">
   <div class="form-container">
     <div class="title">
-      <h1 class="title-header">Create product</h1>
+      <h3 class="title-header">Añadir producto</h3>
     </div>
     <form class="inputs">
       <div class="wrapper-left col-md-6">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="field">Product Name</label>
+            <label class="field">Nombre del producto</label>
             <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
           </div>
           <div class="form-input">
-            <label class="field">Price</label>
+            <label class="field">Precio de venta</label>
             <input class="input" type="number" name="price" [(ngModel)]="product.price" />
           </div>
           <div class="form-input">
-            <label class="field">Description</label>
+            <label class="field">Precio de compra</label>
+            <input class="input" type="number" name="price" [(ngModel)]="product.purchasePrice" />
+          </div>
+          <div class="form-input">
+            <label class="field">Descripción</label>
             <input class="input" type="text" name="description" [(ngModel)]="product.description" />
           </div>
         </div>
@@ -23,11 +27,11 @@
       <div class="wrapper-right col-md-6">
         <div class="center-wrapper">
           <div class="form-input">
-            <label class="field">Quantity</label>
+            <label class="field">Cantidad</label>
             <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
           </div>
           <div class="form-input">
-            <label class="field">Provider</label>
+            <label class="field">Proveedor</label>
             <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
           </div>
           <!-- <div class="form-input file-input">
@@ -35,18 +39,18 @@
             <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
           </div> -->
           <div class="form-input file-input">
-            <label class="field" for="file-input">Image</label>
+            <label class="field" for="file-input">Imagen</label>
             <div class="file-input">
               <input type="file" name="images" (change)="selectFiles($event)" />
-              <button class="custom-btn" type="file" name="images">Choose file</button>
+              <button class="custom-btn" type="file" name="images">Elegir imagen</button>
             </div>
           </div>
         </div>
+        <div class="button-send">
+          <button class="btn btn-primary" type="button" (click)="submitForm()">Crear producto</button>
+        </div>
       </div>
     </form>
-    <div class="button-send">
-      <button class="btn btn-primary" type="button" (click)="submitForm()">Create</button>
-    </div>
   </div>
   <div class="live-reload-component">
     <app-live-reload-products></app-live-reload-products>
