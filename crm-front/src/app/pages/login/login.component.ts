@@ -25,16 +25,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.token) {
-      this._router.navigate(['/'])
-    } else {
-      this._router.navigate(['/'])
+      this._router.navigate(['/dashboard'])
     }
   }
 
   login() {
     console.log(this.user)
     if (!this.user.email) {
-      $.notify('Make sure you`re fill the email', {
+      $.notify('Asegurate de haber digitado el correo', {
         type: 'danger',
         spacing: 10,
         timer: 2000,
@@ -49,7 +47,7 @@ export class LoginComponent implements OnInit {
         }
       });
     } else if (!this.user.password) {
-      $.notify('Make sure you`re fill the password', {
+      $.notify('Asegurate de haber digitado la contraseña', {
         type: 'danger',
         spacing: 10,
         timer: 2000,
