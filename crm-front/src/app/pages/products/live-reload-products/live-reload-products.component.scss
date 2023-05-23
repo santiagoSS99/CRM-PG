@@ -18,6 +18,9 @@
     .products-container {
         display: flex;
         justify-content: space-around;
+        height: 200px;
+        /* Ajusta la altura según tus necesidades */
+        overflow-y: auto;
 
 
         .card-products {
