@@ -34,4 +34,8 @@ export class ProductService {
   uploadImages(x: any) {
     return this.http.post(`${this.BASE_URL}/files/product`, x);
   }
+  productsWithSales(token: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/products/dash/productsWithMostSales`, token)
+  }
+
 }
