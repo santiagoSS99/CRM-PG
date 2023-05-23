@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.token) {
-      this._router.navigate(['/dashboard'])
+      this._router.navigate(['/'])
+    } else {
+      this._router.navigate(['/'])
     }
   }
 
