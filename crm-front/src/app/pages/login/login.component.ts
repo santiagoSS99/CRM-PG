@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.user)
     if (!this.user.email) {
       $.notify('Asegurate de haber digitado el correo', {
         type: 'danger',
@@ -63,7 +62,6 @@ export class LoginComponent implements OnInit {
       });
     } else {
       this.collaboratorService.login(this.user).subscribe(res => {
-        console.log(res)
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res));
         localStorage.setItem('id', res.id);
