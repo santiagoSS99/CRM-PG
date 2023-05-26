@@ -1,6 +1,6 @@
 <div class="fullcontainer">
     <div class="form-container">
-        <h2 class="title">Tables</h2>
+        <h2 class="title">Mesas</h2>
         <div class="search">
             <div class="search-box">
                 <input class="search-text" type="text" placeholder="Search Table" name="filter" [(ngModel)]="filter"
@@ -13,7 +13,7 @@
             <div class="col-sm-4" class="cards" *ngFor="let table of tables" data-bs-toggle="modal"
                 data-bs-target="#modalToAddProductToRable">
                 <div class="card" id="myUL" (click)="getTableById(table.id)">
-                    <div class="card-body table">
+                    <div class="card-body table" [ngClass]="{'red-cream': table.table_status.id === 1}">
                         <h5 class="card-title">Table {{table.table_number}}</h5>
                         <img src="./../../../assets/icons/table.svg" alt="">
                     </div>

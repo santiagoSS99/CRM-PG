@@ -13,7 +13,7 @@ export class SalesComponent implements OnInit {
   table: Tables = {
     table_number: 0,
     table_capacity: 0,
-    table_status: 1
+    table_status: 1,
   }
 
   filter = ''
@@ -34,6 +34,8 @@ export class SalesComponent implements OnInit {
     this.tableService.getTables().subscribe((res) => {
       this.tables = res
       this.tables_const = this.table
+      console.log(this.tables.table_status)
+      console.log(res)
     })
   }
 
@@ -41,7 +43,7 @@ export class SalesComponent implements OnInit {
     let table: Tables = {
       "table_number": this.table.table_number,
       "table_capacity": this.table.table_capacity,
-      "table_status": this.table.table_status
+      "table_status": this.table.table_status,
     }
     this.tableService.createTable(table).subscribe(res => console.log(res))
   }
