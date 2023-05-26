@@ -47,6 +47,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerformanceComponent } from './pages/performance/performance.component';
 import { ProfitSortPipe } from './pipes/profit-sort.pipe';
+import { PaymentProcessComponent } from './pages/payment-process/payment-process.component';
 
 
 
@@ -87,6 +88,7 @@ import { ProfitSortPipe } from './pipes/profit-sort.pipe';
     TimepickerComponent,
     PerformanceComponent,
     ProfitSortPipe,
+    PaymentProcessComponent,
 
   ],
   imports: [
