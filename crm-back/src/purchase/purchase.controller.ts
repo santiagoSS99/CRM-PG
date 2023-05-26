@@ -22,4 +22,10 @@ export class PurchaseController {
   findAll() {
     return this.purchaseService.findAll();
   }
+
+  @Get('payment-methods')
+  async getPaymentMethodtoDash() {
+    const paymentMethods = await this.purchaseService.getPaymentMethodtoDash();
+    return paymentMethods;
+  }
 }

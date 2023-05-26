@@ -50,4 +50,34 @@ export class PurchaseService {
     const purchases = await this.purchaseRepository.find()
     return purchases
   }
+
+  // async getPaymentMethodtoDash(){
+  //   const method = await this.purchaseRepository.find({})
+
+  //   const pmethod = method.map(({paymentMethod}) => paymentMethod)
+
+  //   return
+  // }
+
+  async getPaymentMethodtoDash() {
+    const purchases = await this.purchaseRepository.find({});
+    const paymentMethods = purchases.map(({ paymentMethod }) => paymentMethod);
+
+    // Calcular la frecuencia de cada método de pago
+    const paymentMethodCounts = paymentMethods.reduce((counts, paymentMethod) => {
+      counts[paymentMethod] = (counts[paymentMethod] || 0) + 1;
+      return counts;
+    }, {});
+
+    // Ordenar los métodos de pago por frecuencia de mayor a menor
+    // const sortedPaymentMethods = Object.entries(paymentMethodCounts).sort((a, b) => b[1] - a[1]);
+
+    // Extraer los nombres de los métodos de pago
+    // const paymentMethodNames = sortedPaymentMethods.map(([paymentMethod]) => paymentMethod);
+
+    return { data: paymentMethodCounts };
+  }
+
+
+
 }
