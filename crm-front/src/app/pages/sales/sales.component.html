@@ -20,8 +20,9 @@
                 </div>
             </div>
         </div>
-        <app-product-selection [tables]="selectedTable"></app-product-selection>
-        <app-crm-button class="crm_button" text="Add Table" data-bs-toggle="modal"
+        <app-product-selection *ngIf="table.table_status.id === 2 && table.table_status.id === 3"
+            [tables]="selectedTable"></app-product-selection>
+        <app-crm-button class="crm_button" text="Añadir nueva mesa" data-bs-toggle="modal"
             data-bs-target="#modalToCreateTable"></app-crm-button>
         <app-create-table></app-create-table>
     </div>
