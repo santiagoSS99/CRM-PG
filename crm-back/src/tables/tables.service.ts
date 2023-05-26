@@ -48,7 +48,7 @@ export class TablesService {
         const { status } = updateTableDto;
 
         try {
-            const table = await this.tableRepo.findOneBy({ id });
+            const table = await this.tableRepo.findOneBy({ id: id });
 
             if (!table) {
                 throw new NotFoundException(`Table with id ${id} not found`);
