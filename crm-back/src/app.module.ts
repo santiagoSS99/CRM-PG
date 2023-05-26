@@ -21,6 +21,7 @@ import { CustomerInterestModule } from './customer-interest/customer-interest.mo
 import { CustomerCallsModule } from './customer-calls/customer-calls.module';
 import { CustomerMailModule } from './customer-mail/customer-mail.module';
 import { PurchaseLineModule } from './purchase-line/purchase-line.module';
+import { OrderStatusModule } from './order-status/order-status.module';
 
 
 @Module({
@@ -54,6 +55,7 @@ import { PurchaseLineModule } from './purchase-line/purchase-line.module';
     CustomerCallsModule,
     CustomerMailModule,
     PurchaseLineModule,
+    OrderStatusModule,
   ],
   controllers: [ChatController],
   providers: [ChatService],
