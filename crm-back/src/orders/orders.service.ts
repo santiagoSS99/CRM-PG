@@ -50,20 +50,45 @@ export class OrdersService {
     return;
   }
 
+  // async getProductsByTableId(tableId: any) {
+
+  //   const table = await this.tableRepository.find({
+  //     where: { id: tableId }
+  //   })
+
+  //   console.log(table)
+  //   const orders = await this.orderRepository.find({
+  //     where: { table: tableId },
+  //   });
+
+  //   console.log(orders)
+
+  //   if (!orders) {
+  //     throw new NotFoundException(`No orders found for table with ID ${tableId}`);
+  //   }
+
+  //   return orders;
+  // }
+
   async getProductsByTableId(tableId: any) {
     const orders = await this.orderRepository.find({
       where: {
-        table: tableId,
-        // order_status: Equal({ status: 'En proceso' })
+        table: {
+          id: tableId,
+        },
+        order_status: {
+          id: "1", // Aquí puedes especificar el orderStatusId que deseas filtrar
+        },
       },
     });
 
-    if (!orders) {
+    if (orders.length === 0) {
       throw new NotFoundException(`No orders found for table with ID ${tableId}`);
     }
 
     return orders;
   }
+
 
   findOne(id: number) {
     return `This action returns a #${id} order`;

@@ -23,9 +23,9 @@ export class OrdersController {
     return this.ordersService.findOne(+id);
   }
 
-  @Get('productsintable/:id')
-  getProductsByTableId(id: string) {
-    return this.ordersService.getProductsByTableId(id);
+  @Get('productsintable/:tableId')
+  getProductsByTableId(@Param('tableId') tableId: string) {
+    return this.ordersService.getProductsByTableId(tableId);
   }
 
   @Patch(':id')

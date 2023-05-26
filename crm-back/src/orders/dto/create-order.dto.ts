@@ -13,7 +13,7 @@ export class CreateOrderDto {
     quantity
 
     @IsNumber()
-    order_status
+    order_status: any
 
     @IsString()
     @IsOptional()
