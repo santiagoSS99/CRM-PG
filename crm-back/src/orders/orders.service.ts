@@ -1,10 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tables } from 'src/tables/entities/table.entity';
-import { Repository } from 'typeorm';
+import { Equal, Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { Order } from './entities/order.entity';
+import { Product } from 'src/products/entities';
 
 @Injectable()
 export class OrdersService {
@@ -13,21 +14,28 @@ export class OrdersService {
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
     @InjectRepository(Tables)
-    private tableRepository: Repository<Tables>,) { }
+    private tableRepository: Repository<Tables>,
+  ) { }
 
   // create order with table assigned
   async create(tableId, createOrderDto: CreateOrderDto) {
-    console.log(tableId)
+    const { product, ...restOrder } = createOrderDto;
+
+    console.log(tableId);
+    console.log(product, 'im priduyctttt');
     const table = await this.tableRepository.findOne({
       where: { id: tableId },
       relations: ['orders']
-    })
+    });
 
-    if (!table) throw new NotFoundException(`Table with id ${tableId} not found`)
+    if (!table) {
+      throw new NotFoundException(`Table with id ${tableId} not found`);
+    }
 
     const order = this.orderRepository.create({
-      ...createOrderDto,
-      table
+      ...restOrder,
+      product: product,
+      table,
     });
 
     return this.orderRepository.save(order);
@@ -40,6 +48,21 @@ export class OrdersService {
       .getMany();
     console.log(orders)
     return;
+  }
+
+  async getProductsByTableId(tableId: any) {
+    const orders = await this.orderRepository.find({
+      where: {
+        table: tableId,
+        // order_status: Equal({ status: 'En proceso' })
+      },
+    });
+
+    if (!orders) {
+      throw new NotFoundException(`No orders found for table with ID ${tableId}`);
+    }
+
+    return orders;
   }
 
   findOne(id: number) {

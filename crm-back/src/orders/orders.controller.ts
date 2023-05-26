@@ -23,6 +23,11 @@ export class OrdersController {
     return this.ordersService.findOne(+id);
   }
 
+  @Get('productsintable/:id')
+  getProductsByTableId(id: string) {
+    return this.ordersService.getProductsByTableId(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
     return this.ordersService.update(+id, updateOrderDto);

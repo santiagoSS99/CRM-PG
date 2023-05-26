@@ -1,3 +1,5 @@
+import { OrderStatus } from "src/order-status/entities/order-status.entity";
+import { Product } from "src/products/entities";
 import { Tables } from "src/tables/entities/table.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -12,6 +14,9 @@ export class Order {
     @Column()
     order_details: string;
 
+    @ManyToOne(() => Product)
+    product: Product
+
     @Column()
     quantity: number
 
@@ -23,4 +28,11 @@ export class Order {
 
     @ManyToOne(() => Tables, (table) => table.orders)
     table: Tables;
+
+    // @ManyToOne(() => OrderStatus, { eager: true })
+    // @JoinColumn({ name: 'order_status_code' })
+    // order_status: OrderStatus;
+
+    @ManyToOne(() => OrderStatus)
+    order_status: OrderStatus
 }
