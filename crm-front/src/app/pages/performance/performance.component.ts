@@ -51,11 +51,16 @@ export class PerformanceComponent implements OnInit {
               }]
             },
             options: {
-              // scales: {
-              //   y: {
-              //     beginAtZero: true
-              //   }
-              // }
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Ventas por mes',
+                  padding: {
+                    top: 10,
+                    bottom: 30
+                  }
+                }
+              }
             }
           });
         }
@@ -84,9 +89,14 @@ export class PerformanceComponent implements OnInit {
               }]
             },
             options: {
-              scales: {
-                y: {
-                  beginAtZero: true
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Productos con mas demanda',
+                  padding: {
+                    top: 10,
+                    bottom: 30
+                  }
                 }
               }
             }
