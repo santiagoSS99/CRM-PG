@@ -98,6 +98,14 @@ export class ProductSelectionComponent implements OnInit {
       })
     }
 
+    let occupiedStatus = {
+      status: 1
+    }
+
+    this.tableService.setOcuppiedTable(tableId, occupiedStatus).subscribe(
+      res => {
+        console.log(res);
+      })
     this.selectedProducts.forEach((product, index) => {
       const productId = this.selectedProductsIdToSaveInTable[index];
       let orderDetail = {
@@ -109,9 +117,10 @@ export class ProductSelectionComponent implements OnInit {
       };
       console.log(orderDetail)
 
-      this.orderService.createOrder(tableId, orderDetail).subscribe(res => {
-        console.log(res);
-      });
+      this.orderService.createOrder(tableId, orderDetail).subscribe(
+        res => {
+          console.log(res);
+        });
     });
   }
 
