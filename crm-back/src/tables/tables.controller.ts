@@ -24,7 +24,7 @@ export class TablesController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTableDto: UpdateTableDto) {
-    return this.tablesService.update(+id, updateTableDto);
+    return this.tablesService.updateStatus(id, updateTableDto);
   }
 
   @Delete(':id')
