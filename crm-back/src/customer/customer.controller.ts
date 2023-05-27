@@ -33,6 +33,11 @@ export class CustomerController {
     return this.customerService.findOne(+id);
   }
 
+  @Get('bytel/:t_number')
+  findOneByTelNum(@Param('t_number') t_number: string) {
+    return this.customerService.findByTelNum(+t_number);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
     return this.customerService.update(+id, updateCustomerDto);
