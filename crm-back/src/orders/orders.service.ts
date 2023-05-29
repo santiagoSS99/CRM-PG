@@ -44,31 +44,11 @@ export class OrdersService {
   async findAll() {
     const orders = await this.orderRepository.
       createQueryBuilder('order')
-      .leftJoinAndSelect('order.tables', 'tables')
+      // .leftJoinAndSelect('order.tables', 'tables')
       .getMany();
     console.log(orders)
     return;
   }
-
-  // async getProductsByTableId(tableId: any) {
-
-  //   const table = await this.tableRepository.find({
-  //     where: { id: tableId }
-  //   })
-
-  //   console.log(table)
-  //   const orders = await this.orderRepository.find({
-  //     where: { table: tableId },
-  //   });
-
-  //   console.log(orders)
-
-  //   if (!orders) {
-  //     throw new NotFoundException(`No orders found for table with ID ${tableId}`);
-  //   }
-
-  //   return orders;
-  // }
 
   async getProductsByTableId(tableId: any) {
     const orders = await this.orderRepository.find({
