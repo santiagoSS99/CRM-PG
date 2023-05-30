@@ -54,7 +54,54 @@ export class FormProductComponent implements OnInit {
     this.selectedFiles = event.target.files
   }
 
+  validateFields():boolean{
+    let message = '';
+
+    if(!this.product.product_name){
+      message = 'Debes ingresar el nombre del producto';
+    }
+
+    if(this.product.purchaseprice < 0 && !message){
+      this.product.purchaseprice = 0;
+      message = 'El precio de compra del producto debe ser un número positivo';
+    }
+    if(!this.product.price && !message){
+      message = 'Debes ingresar el precio de venta del producto';
+    }
+    if(this.product.price < 0 && !message){
+      this.product.price = 0;
+      message = 'El precio de venta del producto debe ser un número positivo';
+    }
+    if(!this.product.description && !message){
+      message = 'Debes ingresar la descripción del producto';
+    }
+    if(!this.product.stock && !message){
+      message = 'Debes ingresar el stock del producto';
+    }
+    if(this.product.stock < 0 && !message){
+      this.product.stock = 0;
+      message = 'El stock del producto debe ser un número positivo';
+    }
+
+    if(message){
+      Swal.fire({
+        title: 'Error en Campo',
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText: 'Salir'
+      })
+      return false;
+    }
+   
+
+    return true;
+  }
+
   submitForm() {
+    if(!this.validateFields()){
+      return;
+    }
     let images_test: any = [];
 
     const formData = new FormData();
@@ -87,12 +134,19 @@ export class FormProductComponent implements OnInit {
                   };
                   this.productService.createProduct(product).subscribe((res) => {
                     this.productId = res!.id;
+                    this.productService.reloadProducts();
                   });
                 }
               });
             }
           }
         }
+      })
+    }else{
+      Swal.fire({
+        title: 'Falta cargar las imagenes',
+        text: 'Debes cargar la imagen del producto',
+        icon: 'warning',
       })
     }
   }

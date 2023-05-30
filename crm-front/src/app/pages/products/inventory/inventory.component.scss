@@ -12,87 +12,71 @@
     width: 96%;
     position: relative;
     border-radius: 10px;
-    -webkit-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
     z-index: 2;
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -15px;
+    .card-container {
+        background-color: #fff; // color de fondo del contenedor
+        border-radius: 15px; // bordes redondeados
+        padding: 1.25rem; // espacio interno alrededor del contenedor
+        display: flex; // utilizar el modelo de diseño flexible
+        flex-wrap: wrap; // permitir que las tarjetas se envuelvan en varias filas
+        row-gap: 10px;
+    }
 
-        .card-container {
-            background-color: #fff; // color de fondo del contenedor
-            border-radius: 15px; // bordes redondeados
-            -webkit-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-            -moz-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-            box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-            padding: 20px; // espacio interno alrededor del contenedor
-            display: flex; // utilizar el modelo de diseño flexible
-            flex-wrap: wrap; // permitir que las tarjetas se envuelvan en varias filas
-            justify-content: space-between; // distribuir el espacio restante entre las columnas
+    & .card-body {
+        width: 100%;
+        border-radius: 15px; // bordes redondeados
+        overflow: hidden;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.125);
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .card-img-wrapper {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    hr {
+        margin: 10px 0;
+        border-top: 1px solid #ccc;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #777;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10px;
+
+        button {
+            margin-right: 10px;
         }
 
-        .col-md-2 {
-            width: calc(20% - 30px);
-            margin: 0 15px 30px;
-
-
-            .card {
-                border: none;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
-                .card-title {
-                    font-size: 1.2rem;
-                    margin-bottom: 10px;
-                    font-weight: bold;
-                }
-
-                .card-img-wrapper {
-                    // width: 100%;
-                    display: flex;
-                    justify-content: center;
-                    height: 200px;
-                    overflow: hidden;
-                    margin-bottom: 10px;
-
-                    img {
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-
-                hr {
-                    margin: 10px 0;
-                    border-top: 1px solid #ccc;
-                }
-
-                .card-text {
-                    font-size: 1rem;
-                    color: #777;
-                    margin-bottom: 10px;
-                }
-
-                .buttons {
-                    display: flex;
-                    justify-content: center;
-
-                    button {
-                        margin-right: 10px;
-                    }
-
-                    app-crm-button {
-                        padding: 0 8px;
-                    }
-                }
-            }
+        app-crm-button {
+            padding: 0 8px;
         }
     }
 
     .search-filter {
         width: 100%;
-        margin-bottom: 30px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -109,7 +93,7 @@
 
             &:focus {
                 outline: none;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0)
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2) !important;
             }
         }
     }

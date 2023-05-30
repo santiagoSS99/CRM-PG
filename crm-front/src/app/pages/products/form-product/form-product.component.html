@@ -8,19 +8,40 @@
         <div class="center-wrapper">
           <div class="form-input">
             <label class="field">Nombre del producto</label>
-            <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
-          </div>
-          <div class="form-input">
-            <label class="field">Precio de venta</label>
-            <input class="input" type="number" name="price" [(ngModel)]="product.price" />
+            <input
+              class="input"
+              type="text"
+              name="name"
+              [(ngModel)]="product.product_name"
+            />
           </div>
           <div class="form-input">
             <label class="field">Precio de compra</label>
-            <input class="input" type="number" name="purchaseprice" [(ngModel)]="product.purchaseprice" />
+            <input
+              class="input"
+              type="number"
+              name="purchaseprice"
+              [(ngModel)]="product.purchaseprice"
+            />
           </div>
           <div class="form-input">
+            <label class="field">Precio de venta</label>
+            <input
+              class="input"
+              type="number"
+              name="price"
+              [(ngModel)]="product.price"
+            />
+          </div>
+
+          <div class="form-input">
             <label class="field">Descripción</label>
-            <input class="input" type="text" name="description" [(ngModel)]="product.description" />
+            <input
+              class="input"
+              type="text"
+              name="description"
+              [(ngModel)]="product.description"
+            />
           </div>
         </div>
       </div>
@@ -28,11 +49,21 @@
         <div class="center-wrapper">
           <div class="form-input">
             <label class="field">Cantidad</label>
-            <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
+            <input
+              class="input"
+              type="number"
+              name="quantity"
+              [(ngModel)]="product.stock"
+            />
           </div>
           <div class="form-input">
             <label class="field">Proveedor</label>
-            <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
+            <input
+              class="input"
+              type="search"
+              name="provider"
+              [(ngModel)]="product.provider"
+            />
           </div>
           <!-- <div class="form-input file-input">
             <label class="field">Image</label>
@@ -42,12 +73,16 @@
             <label class="field" for="file-input">Imagen</label>
             <div class="file-input">
               <input type="file" name="images" (change)="selectFiles($event)" />
-              <button class="custom-btn" type="file" name="images">Elegir imagen</button>
+              <button class="custom-btn" type="file" name="images">
+                Elegir imagen
+              </button>
             </div>
           </div>
         </div>
         <div class="button-send">
-          <button class="btn btn-primary" type="button" (click)="submitForm()">Crear producto</button>
+          <button class="custom-btn" type="button" (click)="submitForm()">
+            Crear producto
+          </button>
         </div>
       </div>
     </form>
