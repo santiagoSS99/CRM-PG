@@ -18,6 +18,10 @@ input[type=number] {
     margin-top: 110px;
     // margin-right: -30px;
 
+    & h3.title-header{
+        font-weight: bold;
+    }
+
     .form-container {
         background-color: #ffffff;
         height: 100%;
@@ -25,9 +29,6 @@ input[type=number] {
         width: 40%;
         /* Increased the width of the container */
         border-radius: 10px;
-        -webkit-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
 
         .title {
             font-weight: bold;
@@ -66,7 +67,8 @@ input[type=number] {
 
                     .custom-btn {
                         display: inline-block;
-                        background-color: #2196f3;
+                        background-color: var(--primary-color);
+                        width: 100%;
                         color: #fff;
                         border: none;
                         padding: 8px 12px;
@@ -115,6 +117,21 @@ input[type=number] {
             margin-top: 60px;
             display: flex;
             justify-content: center;
+
+            .custom-btn {
+                display: inline-block;
+                background-color: var(--primary-color);
+                width: 100%;
+                color: #fff;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .custom-btn:hover {
+                background-color: var(--secondary-color);
+            }
         }
     }
 
@@ -136,9 +153,6 @@ input[type=number] {
         height: 100%;
         width: 35%;
         border-radius: 10px;
-        -webkit-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        box-shadow: -1px 35px 55px 1px rgba(0, 0, 0, 0.3);
 
         .title {
             font-weight: bold;
@@ -147,10 +161,19 @@ input[type=number] {
             // padding: 20px;
         }
 
+        .title-header{
+            font-family: 'Poppins','Roboto',sans-serif;
+            font-size: 1.5rem;
+        }
+
         .inputs {
             display: block;
             justify-content: space-around;
 
+        }
+
+        label.field{
+            font-weight: bold;
         }
     }
 }

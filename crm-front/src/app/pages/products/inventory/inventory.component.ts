@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inventory',
@@ -14,22 +15,33 @@ export class InventoryComponent implements OnInit {
 
   filter = ''
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) { 
+    this.subscription = this.productService.products.subscribe((prods) => {
+      this.products = prods;
+      this.products_const = prods;
+    })
+  }
   products: any
   products_const: any
   selectedProduct: any = {};
+  subscription: Subscription;
+
   onSelect(product: Product): void {
     this.selectedProduct = product;
   }
   // selectedProduct
   ngOnInit(): void {
+    this.productService.reloadProducts();
     this.getDataAsEcommerce()
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   getDataAsEcommerce() {
     this.productService.getProducts().subscribe((res) => {
       this.products = res
-      this.products_const = this.products
     })
   }
 

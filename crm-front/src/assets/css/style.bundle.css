@@ -35,6 +35,8 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-xxl: 1400px;
+  --primary-color: #1a1a27;
+  --secondary-color: #222258;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
@@ -60564,3 +60566,54 @@ body {
 @media (max-width: 425px) {
   .offcanvas-mobile {
     width: 90% !important; } }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/*
+Customize SWAL
+*/
+
+.swal2-popup .swal2-icon{
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.swal2-popup .swal2-title{
+  font-family: 'Poppins', 'Roboto',sans-serif;
+  font-weight: bold;
+}
+
+.swal2-html-container{
+  font-family: 'Poppins', 'Roboto',sans-serif;
+}
+
+.swal2-styled{
+  font-family: 'Poppins', 'Roboto',sans-serif;
+}
+
+.swal2-cancel{
+  background-color: var(--secondary-color);
+}
+
+.swal2-confirm{
+  background-color: var(--primary-color) !important;
+}

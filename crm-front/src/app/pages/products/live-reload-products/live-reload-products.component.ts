@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-live-reload-products',
@@ -12,18 +12,22 @@ export class LiveReloadProductsComponent implements OnInit {
   products: any
   product: any;
   productImage: any;
+  subscription: Subscription;
 
-
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) { 
+    this.subscription = this.productService.products.subscribe((prods) => this.products = prods)
+  }
 
   ngOnInit(): void {
     this.getProductData()
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   getProductData() {
-    this.productService.getProducts().subscribe((res) => {
-      this.products = res
-    })
+    this.productService.reloadProducts();
   }
 
 }

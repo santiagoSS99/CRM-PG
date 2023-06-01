@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/product';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,16 @@ export class ProductService {
   BASE_URL: string = 'http://localhost:3000/api'
 
   constructor(private http: HttpClient) { }
+
+  public _products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  products = this._products.asObservable();
+
+  reloadProducts(){
+    this.http.get<Product[]>(`${this.BASE_URL}/products`)
+                    .subscribe((newProducts: Product[]) => {
+                      this._products.next(newProducts)
+                    });
+  }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.BASE_URL}/products`);
