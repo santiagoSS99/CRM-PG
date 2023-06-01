@@ -7,6 +7,8 @@ import { OrdersService } from 'src/app/services/orders.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TablesService } from 'src/app/services/tables.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { PurchaseService } from 'src/app/services/purchase.service';
+import { PurchaseLinesService } from 'src/app/services/purchase-lines.service';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
 import { PaymentMethodsLabelMapping, PaymentMethods } from 'src/app/enums';
@@ -33,9 +35,7 @@ export class ProductSelectionComponent implements OnInit {
   customerCellphone: string = '';
 
   public PaymentMethodsLabelMapping = PaymentMethodsLabelMapping;
-  public paymentMethods = Object.values(PaymentMethods).filter(
-    (value) => typeof value === 'number'
-  );
+  public paymentMethods = Object.keys(PaymentMethods);
   paymentMethod: any = PaymentMethods.Efectivo;
 
   tablesSubscription: Subscription;
@@ -60,7 +60,9 @@ export class ProductSelectionComponent implements OnInit {
     private tableService: TablesService,
     private orderService: OrdersService,
     private productService: ProductService,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private purchaseService: PurchaseService,
+    private purchaseLinesService: PurchaseLinesService
   ) {
     this.customerSubscription = this.customerService.currentCustomer.subscribe(
       (customer) => {
@@ -217,6 +219,7 @@ export class ProductSelectionComponent implements OnInit {
             console.log('After request of createOrder');
             this.modalClose.click();
           });
+
         } else {
           orderDetail = {
             order_date: currentOrder.order_date,
@@ -243,11 +246,47 @@ export class ProductSelectionComponent implements OnInit {
             .updateOrder(currentOrder.id, orderDetail)
             .subscribe((res) => {
               console.log('After request of updateOrder');
-              this.modalClose.click();
+              if(!this.customer){
+                this.modalClose.click();
+              } 
             });
         }
       }
     );
+
+    let purchase;
+    if(this.customer){
+      purchase = {
+        purchase_date: new Date(),
+        customerId: this.customer.id,
+        paymentMethod: this.paymentMethod
+      }
+      this.purchaseService.createPurchase(purchase).subscribe((newPurchase: any) =>{
+        console.log(newPurchase);
+        Object.entries(this.selectedProductsMap).forEach(
+          (product: any, index: number) => {
+            const [productId, productData] = product;
+            let purchaseLine;
+            if(productData.quantity > 0){
+              purchaseLine = {
+                quantity: productData.quantity,
+                total: productData.quantity * productData.product.price,
+                productId,
+                purchaseId: newPurchase.id
+              }
+              const token = localStorage.getItem('token') ?? '';
+              console.log(token)
+              this.purchaseLinesService.createPurchaseLine(purchaseLine,token).subscribe((res: any) => {
+                console.log(res);
+                console.log("PurchaseLine")
+                this.modalClose.click();
+              })
+
+            }
+            
+        })
+      })
+    }
   }
 
   getProducts() {
@@ -443,6 +482,7 @@ export class ProductSelectionComponent implements OnInit {
     this.total = 0;
     this.selectedProductsMap = {};
     this.orders = [];
+    this.customer = null;
     this.resetSelectedCards();
   }
 }

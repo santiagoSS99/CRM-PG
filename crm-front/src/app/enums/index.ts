@@ -10,16 +10,18 @@ export const TableStatusLabelMapping: Record<TableStatus | string, string> = {
     [TableStatus.Reservado]: "Reservado",
 };
 
-export enum PaymentMethods { 
-    Efectivo,
-    Tarjeta,
-    Otro
+export enum PaymentMethods {
+    Efectivo = 'Efectivo',
+    Tarjeta = 'Tarjeta',
+    Transferencia = 'Transferencia',
+    Otros = 'Otros',
 }
 
 export const PaymentMethodsLabelMapping: Record<PaymentMethods | string, string> = {
     [PaymentMethods.Efectivo]: "Efectivo",
     [PaymentMethods.Tarjeta]: "Tarjeta",
-    [PaymentMethods.Otro]: "Otro",
+    [PaymentMethods.Transferencia]: 'Transferencia',
+    [PaymentMethods.Otros]: "Otro",
 };
 
 export enum OrderStatus { 

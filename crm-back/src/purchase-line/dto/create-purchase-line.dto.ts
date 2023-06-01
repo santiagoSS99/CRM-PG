@@ -3,20 +3,20 @@ import { Product } from "src/products/entities";
 import { Purchase } from "src/purchase/entities/purchase.entity";
 
 export class CreatePurchaseLineDto {
-    @IsDateString()
-    purchase_date: string;
-
     @IsNumber()
     quantity: number;
+
+    @IsNumber()
+    total: number;
 
     @IsNumber()
     @IsOptional()
     customer: number;
 
     @IsNumber()
-    purchase: Purchase
+    purchaseId: number;
 
-    @IsArray()
-    products: Product[];
+    @IsString()
+    productId: string;
 
 }
