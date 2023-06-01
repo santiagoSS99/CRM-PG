@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../interfaces/product';
 import { Customer } from '../interfaces/customer';
 import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Call } from '../interfaces/call';
 
@@ -12,6 +12,9 @@ import { Call } from '../interfaces/call';
 export class CustomerService {
   BASE_URL: string = 'http://localhost:3000/api'
   private _refresh$ = new Subject<void>();
+  public _currentCustomer: BehaviorSubject<Partial<Customer>> = new BehaviorSubject<Partial<Customer>>({});
+  currentCustomer = this._currentCustomer.asObservable();
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +22,15 @@ export class CustomerService {
   get refresh$() {
     return this._refresh$
   }
+
   getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.BASE_URL}/customer`);
+  }
+
+  getCustomerByCellphone(cellphone: string): void {
+    this.http.get<Customer>(`${this.BASE_URL}/customer/bytel/${cellphone}`).subscribe((customer: Customer)=>{
+      this._currentCustomer.next(customer);
+    })
   }
 
   getCustomerById(id: number, token: any): Observable<Customer[]> {

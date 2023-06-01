@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class CreateTableComponent implements OnInit {
   public TableStatusLabelMapping = TableStatusLabelMapping;
-  public tableStatuses = Object.values(TableStatus).filter(value => typeof value === 'number');;
+  public tableStatuses = Object.values(TableStatus).filter(value => typeof value === 'number');
   constructor(
     private tableService: TablesService
   ) { }

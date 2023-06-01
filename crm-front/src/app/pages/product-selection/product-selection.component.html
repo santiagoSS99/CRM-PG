@@ -47,7 +47,19 @@
                             </div>
                         </div>
                         <div class="col-md-3" *ngIf="paymentEnabled">
-                            Pago habilitado papa
+                            <label>Por favor digite su número</label>
+                            <input class="form-control" type="text" [(ngModel)]="customerCellphone" name="customerCellphone">
+                            <button (click)="searchCurrentCustomer()">Buscar Usuario</button>
+                        </div>
+                        <div class="col-md-3" *ngIf="paymentEnabled && customer">
+                            <h4>{{customer.name}} {{customer.surnames}}</h4>
+                        </div>
+                        <div class="col-md-3" *ngIf="paymentEnabled">
+                            <label class="col-sm-3 control-label">Métodos de Pago</label>
+                            <select class="form-control" id="exampleInputPaymentMethods"
+                            aria-describedby="tableStatus" [(ngModel)]="paymentMethod">
+                                <option *ngFor="let method of paymentMethods" [value]="method"> {{PaymentMethodsLabelMapping[method]}} </option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -57,6 +69,9 @@
                     data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" (click)="setProductInTable()">Add to
                     table</button>
+                    <button *ngIf="paymentEnabled" type="button" class="btn btn-secondary" (click)="pay()">
+                        Pagar
+                    </button>
             </div>
         </div>
     </div>

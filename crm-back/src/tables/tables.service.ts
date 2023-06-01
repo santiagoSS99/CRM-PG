@@ -17,7 +17,6 @@ export class TablesService {
 
     async create(createTableDto: CreateTableDto) {
         try {
-            console.log(createTableDto)
             const { ...tableDetails } = createTableDto
             const table = this.tableRepo.create({
                 ...tableDetails

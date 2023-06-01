@@ -6,8 +6,10 @@ import { TableStatus, OrderStatus } from 'src/app/enums';
 import { OrdersService } from 'src/app/services/orders.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TablesService } from 'src/app/services/tables.service';
+import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
+import { PaymentMethodsLabelMapping, PaymentMethods } from 'src/app/enums';
 @Component({
   selector: 'app-product-selection',
   templateUrl: './product-selection.component.html',
@@ -23,13 +25,22 @@ export class ProductSelectionComponent implements OnInit {
       product: Product;
     }
   > = {};
-  scope: ProductSelectionComponent;
   products: any;
   quantity: any;
   total: number = 0;
 
+  customer: any;
+  customerCellphone: string = '';
+
+  public PaymentMethodsLabelMapping = PaymentMethodsLabelMapping;
+  public paymentMethods = Object.values(PaymentMethods).filter(
+    (value) => typeof value === 'number'
+  );
+  paymentMethod: any = PaymentMethods.Efectivo;
+
   tablesSubscription: Subscription;
   productsSubscription: Subscription;
+  customerSubscription: Subscription;
 
   modalClose: any;
   modalProductSelection: any;
@@ -48,9 +59,16 @@ export class ProductSelectionComponent implements OnInit {
   constructor(
     private tableService: TablesService,
     private orderService: OrdersService,
-    private productService: ProductService
+    private productService: ProductService,
+    private customerService: CustomerService
   ) {
-    this.scope = this;
+    this.customerSubscription = this.customerService.currentCustomer.subscribe(
+      (customer) => {
+        console.log(customer);
+        this.customer = customer;
+      }
+    );
+
     this.tablesSubscription = this.tableService.currentTable.subscribe(
       (table) => {
         this.selectedTable = table;
@@ -77,17 +95,19 @@ export class ProductSelectionComponent implements OnInit {
             TableStatus.Ocupado + 1
           ) {
             controller.paymentEnabled = true;
-            controller.orderService.reloadOrders(controller.selectedTable.id).subscribe((newOrders: Order[]) => {
-              controller.orders = newOrders;
-              controller.orders.forEach((order) => {
-                const { product } = order;
-                controller.selectedProductsMap[product.id] = {
-                  product,
-                  quantity: order.quantity,
-                };
+            controller.orderService
+              .reloadOrders(controller.selectedTable.id)
+              .subscribe((newOrders: Order[]) => {
+                controller.orders = newOrders;
+                controller.orders.forEach((order) => {
+                  const { product } = order;
+                  controller.selectedProductsMap[product.id] = {
+                    product,
+                    quantity: order.quantity,
+                  };
+                });
+                controller.setTotal();
               });
-              controller.setTotal();
-            });
           }
         } else {
           /**
@@ -105,7 +125,9 @@ export class ProductSelectionComponent implements OnInit {
     this.modalProductSelection = document.querySelector(
       '#modalToAddProductToRable'
     );
-    this.modalClose = document.querySelector('#modalToAddProductToRable .btn-close');
+    this.modalClose = document.querySelector(
+      '#modalToAddProductToRable .btn-close'
+    );
     this.modalMutationObserver = new MutationObserver(this.observerFunction);
 
     this.modalMutationObserver.observe(this.modalProductSelection, {
@@ -116,7 +138,116 @@ export class ProductSelectionComponent implements OnInit {
   ngOnDestroy() {
     this.tablesSubscription.unsubscribe();
     this.productsSubscription.unsubscribe();
+    this.customerSubscription.unsubscribe();
     this.modalMutationObserver?.disconnect();
+  }
+
+  pay() {
+    if (Object.keys(this.selectedProductsMap).length === 0) {
+      Swal.fire({
+        title: 'No hay productos selecionados',
+        text: 'Por favor asegurese de seleccionar al menos un producto',
+        icon: 'warning',
+        cancelButtonColor: '#d33',
+      });
+      return;
+    }
+
+    let noQuantity = 0;
+    Object.entries(this.selectedProductsMap).forEach((productItem) => {
+      const [id, productData] = productItem;
+      if (productData.quantity <= 0) {
+        noQuantity++;
+      }
+    });
+
+    if (Object.keys(this.selectedProductsMap).length === noQuantity) {
+      Swal.fire({
+        title: 'No hay productos selecionados',
+        text: 'Por favor asegurese de seleccionar al menos un producto',
+        icon: 'warning',
+        cancelButtonColor: '#d33',
+      });
+      return;
+    }
+
+    let occupiedStatus = {
+      status: TableStatus.Disponible + 1,
+    };
+
+    this.tableService
+      .setOcuppiedTable(this.selectedTable.id, occupiedStatus)
+      .subscribe((res) => {
+        this.tableService.reloadTables();
+      });
+
+    Object.entries(this.selectedProductsMap).forEach(
+      (product: any, index: number) => {
+        const [productId, productData] = product;
+
+        const currentOrder = this.orders.find(
+          (order) => order.product.id === productId
+        );
+        let orderDetail;
+        let productUpdated: any;
+        if (!currentOrder) {
+          orderDetail = {
+            order_date: new Date(),
+            order_details: productData.product.product_name,
+            product: productId,
+            quantity: productData.quantity,
+            amount: productData.quantity * productData.product.price,
+            order_status: OrderStatus.Completado + 1,
+            tableId: this.selectedTable.id,
+            observations: 'Ninguna',
+          };
+          productUpdated = {
+            ...productData.product,
+            selled: productData.product.selled + productData.quantity
+          }
+
+          const {images, id, slug, ...productFiltered} = productUpdated;
+
+          this.productService.updateProduct(productId,productFiltered).subscribe((res) => {
+            console.log("Actualizacion");
+            console.log(res)
+          })
+
+          this.orderService.createOrder(orderDetail).subscribe((res) => {
+            console.log('After request of createOrder');
+            this.modalClose.click();
+          });
+        } else {
+          orderDetail = {
+            order_date: currentOrder.order_date,
+            order_details: currentOrder.order_details,
+            quantity: productData.quantity,
+            amount: productData.quantity * productData.product.price,
+            order_status: OrderStatus.Completado + 1,
+            tableId: this.selectedTable.id,
+            observations: currentOrder.observations,
+          };
+
+          productUpdated = {
+            ...productData.product,
+            selled: productData.product.selled + productData.quantity
+          }
+
+          const {images, id, slug, ...productFiltered} = productUpdated;
+
+          this.productService.updateProduct(productId,productFiltered).subscribe((res) => {
+            console.log("Actualizacion");
+            console.log(res)
+          })
+          this.orderService
+            .updateOrder(currentOrder.id, orderDetail)
+            .subscribe((res) => {
+              console.log('After request of updateOrder');
+              this.modalClose.click();
+            });
+        }
+      }
+    );
   }
 
   getProducts() {
@@ -199,6 +330,10 @@ export class ProductSelectionComponent implements OnInit {
     }
   }
 
+  searchCurrentCustomer() {
+    this.customerService.getCustomerByCellphone(this.customerCellphone);
+  }
+
   setProductInTable() {
     if (Object.keys(this.selectedProductsMap).length === 0) {
       Swal.fire({
@@ -241,9 +376,11 @@ export class ProductSelectionComponent implements OnInit {
       (product: any, index: number) => {
         const [productId, productData] = product;
 
-        const currentOrder = this.orders.find((order) => order.product.id === productId)
+        const currentOrder = this.orders.find(
+          (order) => order.product.id === productId
+        );
 
-        if(!currentOrder){
+        if (!currentOrder) {
           let orderDetail = {
             order_date: new Date(),
             order_details: productData.product.product_name,
@@ -254,12 +391,12 @@ export class ProductSelectionComponent implements OnInit {
             tableId: this.selectedTable.id,
             observations: 'Ninguna',
           };
-  
+
           this.orderService.createOrder(orderDetail).subscribe((res) => {
             console.log('After request of createOrder');
             this.modalClose.click();
           });
-        }else{
+        } else {
           let orderDetail = {
             order_date: currentOrder.order_date,
             order_details: currentOrder.order_details,
@@ -270,10 +407,12 @@ export class ProductSelectionComponent implements OnInit {
             observations: currentOrder.observations,
           };
           console.log(orderDetail);
-          this.orderService.updateOrder(currentOrder.id,orderDetail).subscribe((res) => {
-            console.log('After request of updateOrder');
-            this.modalClose.click();
-          });
+          this.orderService
+            .updateOrder(currentOrder.id, orderDetail)
+            .subscribe((res) => {
+              console.log('After request of updateOrder');
+              this.modalClose.click();
+            });
         }
       }
     );

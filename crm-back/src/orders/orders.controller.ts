@@ -10,7 +10,6 @@ export class OrdersController {
 
   @Post()
   createOrder( @Body() order: CreateOrderDto) {
-    console.log(order)
     return this.ordersService.create(order);
   }
 
