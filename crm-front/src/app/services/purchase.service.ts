@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Purchase } from '../interfaces/purchase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,9 @@ export class PurchaseService {
 
   constructor(private http: HttpClient) { }
 
-  // createPurchase(customerId: string, productId: string, token:string):Observable:<any> {
-  //   let headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': token })
-  //   return this.http.post(`${this.BASE_URL}/purchase/${customerId}`, {Headers: headers})
-  // }
+  createPurchase(purchase: Purchase): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/purchase`, purchase)
+  }
 
   getDataAmountToDash(token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })

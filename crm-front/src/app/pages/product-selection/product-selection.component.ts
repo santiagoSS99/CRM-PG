@@ -17,6 +17,7 @@ export class ProductSelectionComponent implements OnInit {
   selectedTable: any
   selectedProducts: any[] = [];
   selectedProductsToSaveInTable: any[] = [];
+  selectedProductsIdToSaveInTable: any[] = [];
   products: any;
   quantity: any;
   total: number = 0;
@@ -58,6 +59,7 @@ export class ProductSelectionComponent implements OnInit {
     if (product) {
       this.selectedProducts.push(product);
       this.selectedProductsToSaveInTable.push(product.product_name)
+      this.selectedProductsIdToSaveInTable.push(product.id)
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         if (card.querySelector('.card-title')?.textContent === product.product_name) {
@@ -96,18 +98,29 @@ export class ProductSelectionComponent implements OnInit {
       })
     }
 
-    console.log(this.selectedProductsToSaveInTable)
-    this.selectedProductsToSaveInTable.forEach(product => {
+    let occupiedStatus = {
+      status: 1
+    }
+
+    this.tableService.setOcuppiedTable(tableId, occupiedStatus).subscribe(
+      res => {
+        console.log(res);
+      })
+    this.selectedProducts.forEach((product, index) => {
+      const productId = this.selectedProductsIdToSaveInTable[index];
       let orderDetail = {
         order_date: new Date(),
-        order_details: product,
-        quantity: 1
+        order_details: product.product_name,
+        product: productId,
+        quantity: 1,
+        order_status: 1
       };
       console.log(orderDetail)
 
-      this.orderService.createOrder(tableId, orderDetail).subscribe(res => {
-        console.log(res);
-      });
+      this.orderService.createOrder(tableId, orderDetail).subscribe(
+        res => {
+          console.log(res);
+        });
     });
   }
 

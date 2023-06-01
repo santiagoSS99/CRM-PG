@@ -44,9 +44,27 @@ export class TablesService {
         return table
     }
 
-    update(id: number, updateTableDto: UpdateTableDto) {
-        return `This action updates a #${id} table`;
+    async updateStatus(id: string, updateTableDto: UpdateTableDto) {
+        const { status } = updateTableDto;
+
+        try {
+            const table = await this.tableRepo.findOneBy({ id: id });
+
+            if (!table) {
+                throw new NotFoundException(`Table with id ${id} not found`);
+            }
+
+            table.table_status = status; // Asigna el valor del estado a la propiedad correspondiente
+
+            const updatedTable = await this.tableRepo.save(table);
+
+            return updatedTable;
+        } catch (error) {
+            // Manejo de excepciones
+            throw new InternalServerErrorException('Unexpected error occurred');
+        }
     }
+
 
     remove(id: number) {
         return `This action removes a #${id} table`;

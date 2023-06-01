@@ -106,19 +106,26 @@
             height: 50vh;
 
             .cards {
+
+                .red-cream {
+                    background-color: lightcoral;
+                    /* Otros estilos */
+                }
+
                 .card {
                     margin: 0px 15px 10px 15px;
                     flex-basis: 33.33%;
+                    border-radius: 20px;
+
+                    .red-cream {
+                        background-color: lightcoral;
+                        border-radius: 20px;
+                        width: auto;
+                        height: auto;
+                        /* Otros estilos */
+                    }
 
                     .card-body {
-
-                        .available {
-                            background-color: rgb(145, 234, 145);
-                        }
-
-                        .occupied {
-                            background-color: lightcoral;
-                        }
 
                         .card-title {
                             display: flex;

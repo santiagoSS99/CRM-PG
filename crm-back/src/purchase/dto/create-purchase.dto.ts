@@ -7,6 +7,6 @@ export class CreatePurchaseDto {
     purchase_date: any;
 
     @IsNumber()
-    @IsOptional()
+    // @IsOptional()
     customer: Customer;
 }

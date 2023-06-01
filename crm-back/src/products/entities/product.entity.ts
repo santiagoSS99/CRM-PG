@@ -11,6 +11,9 @@ export class Product {
     product_name: string;
 
     @Column('int')
+    purchaseprice: number;
+
+    @Column('int')
     price: number;
 
     @Column({

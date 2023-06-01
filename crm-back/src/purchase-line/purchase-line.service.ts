@@ -16,29 +16,6 @@ export class PurchaseLineService {
     private productRepository: Repository<Product>,
   ) { }
 
-  // async create(createPurchaseLineDto: CreatePurchaseLineDto) {
-  //   const { products, ...purchaseLine } = createPurchaseLineDto
-
-  //   const productFound = await this.productRepository.findOne({
-  //     where: { id: products[0].id },
-  //   });
-
-  //   if (!productFound) throw new NotFoundException('No se encuentra el producto')
-
-  //   console.log(productFound)
-  //   console.log(createPurchaseLineDto)
-
-  //   const total = productFound.price * createPurchaseLineDto.quantity
-
-  //   const purchaseL = await this.purchaseLineRepo.create({
-  //     ...purchaseLine,
-  //     product: productFound,
-  //     total,
-  //   })
-  //   console.log(purchaseL)
-
-  //   return this.purchaseLineRepo.save(purchaseL)
-  // }
 
   async create(createPurchaseLineDto: CreatePurchaseLineDto) {
     const { products, ...purchaseLine } = createPurchaseLineDto;
@@ -84,6 +61,25 @@ export class PurchaseLineService {
     });
 
     return ({ data: months })
+  }
+
+
+  async getPurchaseDataByCustomerAndProduct(): Promise<any[]> {
+    const query = this.purchaseLineRepository.createQueryBuilder('pl')
+      .leftJoin('pl.purchase', 'p')
+      .leftJoin('p.customer', 'c')
+      .leftJoin('pl.product', 'p2')
+      .select('c.id', 'customer')
+      .addSelect('c.name', 'customerName')
+      .addSelect('p2.product_name', 'productName')
+      .addSelect('SUM(pl.quantity)', 'totalQuantity')
+      .groupBy('c.id')
+      .addGroupBy('c.name')
+      .addGroupBy('p2.product_name')
+      .orderBy('c.id')
+      .orderBy('totalQuantity', 'DESC');
+
+    return query.getRawMany();
   }
 
 

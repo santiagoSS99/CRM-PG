@@ -88,11 +88,11 @@ export class CustomerService {
     };
 
     var transporter = nodemailer.createTransport(smtpTransport({
-      service: 'gmail',
-      host: 'smtp.gmail.com',
+      service: process.env.mailservice,
+      host: process.env.mailhost,
       auth: {
-        user: 'santiagosanchezcorrea520@gmail.com',
-        pass: 'pkmfgfvrdgvmkteh'
+        user: process.env.mailuser,
+        pass: process.env.mailpass
       }
     }));
 
@@ -160,6 +160,18 @@ export class CustomerService {
 
     if (!customer) {
       throw new NotFoundException(`User with id ${id} not found`)
+    }
+
+    return customer
+  }
+
+  async findByTelNum(telNum: number) {
+    let customer: Customer;
+    customer = await this.customerRepo.findOneBy({ t_number: String(telNum) });
+
+
+    if (!customer) {
+      throw new NotFoundException(`User with id ${telNum} not found`)
     }
 
     return customer

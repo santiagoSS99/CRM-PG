@@ -7,7 +7,7 @@ export class PurchaseController {
   constructor(private readonly purchaseService: PurchaseService) { }
 
   @Post()
-  createtest(@Body() createPurchaseDto: CreatePurchaseDto) {
+  create(@Body() createPurchaseDto: CreatePurchaseDto) {
     return this.purchaseService.create(createPurchaseDto);
   }
   // // Create Without customer
@@ -21,5 +21,11 @@ export class PurchaseController {
   @Get()
   findAll() {
     return this.purchaseService.findAll();
+  }
+
+  @Get('payment-methods')
+  async getPaymentMethodtoDash() {
+    const paymentMethods = await this.purchaseService.getPaymentMethodtoDash();
+    return paymentMethods;
   }
 }

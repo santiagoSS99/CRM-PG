@@ -24,4 +24,8 @@ export class TablesService {
     return this.http.get<Tables>(`${this.BASE_URL}/tables/${id}`)
   }
 
+  setOcuppiedTable(id: any, status: any): Observable<any> {
+    return this.http.patch(`${this.BASE_URL}/tables/${id}`, status)
+  }
+
 }

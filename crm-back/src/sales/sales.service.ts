@@ -25,6 +25,7 @@ export class SalesService {
         ...salesDetail
       });
       await this.saleRepo.save(sale)
+      console.log(sale)
     } catch (error) {
       this.handleDBExceptions(error)
     }

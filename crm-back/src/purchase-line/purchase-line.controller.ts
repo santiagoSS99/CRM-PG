@@ -22,6 +22,11 @@ export class PurchaseLineController {
     return this.purchaseLineService.findDataSalesPerMonth(res);
   }
 
+  @Get('data-by-customer-product')
+  async getPurchaseDataByCustomerAndProduct(): Promise<any[]> {
+    return this.purchaseLineService.getPurchaseDataByCustomerAndProduct();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.purchaseLineService.findOne(+id);

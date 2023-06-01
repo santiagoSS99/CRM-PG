@@ -42,4 +42,20 @@ export class ProductsController {
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.productsService.remove(id);
   }
+
+  @Get('dash/productWithMostSales')
+  getProductWithMostSales() {
+    return this.productsService.getProductWithMostSales();
+  }
+
+  // @Get('dash/productsWithMostSales')
+  // getProductsWithMostSales() {
+  //   return this.productsService.getProductWithMostSales();
+  // }
+
+  @Get('dash/productsWithMostSales')
+  async getProductsWithMostSales() {
+    const products = await this.productsService.getProductsWithMostSales();
+    return products;
+  }
 }

@@ -1,3 +1,40 @@
+// .container {
+//     margin-top: 110px;
+//     display: flex;
+//     justify-content: space-between;
+
+//     .column {
+//         flex: 1;
+//         display: flex;
+//         flex-direction: column;
+//         gap: 20px;
+
+//         #myChart1 {
+//             display: block;
+//             box-sizing: border-box;
+//             height: 237px;
+//             margin: 0 12px;
+//             width: 475px;
+//             background-color: white;
+//             border-radius: 20px;
+//             padding: 20px;
+//             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//         }
+
+//         #myChart3 {
+//             display: block;
+//             box-sizing: border-box;
+//             height: 237px;
+//             width: 475px;
+//             margin: 0 12px;
+//             background-color: white;
+//             border-radius: 20px;
+//             padding: 20px;
+//             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//         }
+//     }
+// }
+
 .container {
     margin-top: 110px;
     display: flex;
@@ -13,11 +50,36 @@
             display: block;
             box-sizing: border-box;
             height: 237px;
+            margin: 0 12px;
             width: 475px;
             background-color: white;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            // Media query para pantallas de 1522px o menos
+            @media screen and (max-width: 1522px) {
+                height: 478px;
+                width: 478px;
+            }
+        }
+
+        #myChart3 {
+            display: block;
+            box-sizing: border-box;
+            height: 237px;
+            width: 475px;
+            margin: 0 12px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            // Media query para pantallas de 1522px o menos
+            @media screen and (max-width: 1522px) {
+                height: 478px;
+                width: 478px;
+            }
         }
     }
 }
