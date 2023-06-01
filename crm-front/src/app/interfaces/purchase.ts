@@ -1,5 +1,8 @@
 export interface Purchase {
     id?: any;
     purchase_date: any;
-    customer: any
+    customerId?: any;
+    year?: any;
+    createdDate?: any;
+    paymentMethod: string;
 }

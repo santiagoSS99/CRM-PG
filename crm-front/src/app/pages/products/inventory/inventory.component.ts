@@ -9,11 +9,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent implements OnInit {
-
   edit = 'edit';
   shopping_cart = 'shopping_cart';
 
-  filter = ''
+  filter = '';
+  products: any;
+  products_const: any;
+  selectedProduct: any = {};
+  subscription: Subscription;
 
   constructor(private productService: ProductService) { 
     this.subscription = this.productService.products.subscribe((prods) => {
@@ -21,10 +24,6 @@ export class InventoryComponent implements OnInit {
       this.products_const = prods;
     })
   }
-  products: any
-  products_const: any
-  selectedProduct: any = {};
-  subscription: Subscription;
 
   onSelect(product: Product): void {
     this.selectedProduct = product;

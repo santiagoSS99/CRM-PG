@@ -1,10 +1,16 @@
-import { IsDateString, IsNumber, IsString, MinLength, IsOptional, IsArray } from "class-validator";
+import { IsDateString, IsNumber, IsString, MinLength, IsOptional, IsArray, ValidateIf } from "class-validator";
 import { Product } from "src/products/entities";
 
 export class CreateOrderDto {
     @IsString()
     @MinLength(2)
     order_details
+
+    @IsNumber()
+    tableId
+
+    @IsNumber()
+    amount
 
     @IsDateString()
     order_date
@@ -15,9 +21,9 @@ export class CreateOrderDto {
     @IsNumber()
     order_status: any
 
-    @IsString()
     @IsOptional()
-    observations
+    @IsString()
+    observations!: string;
 
     @IsString()
     // @IsArray()

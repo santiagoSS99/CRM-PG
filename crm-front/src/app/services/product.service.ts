@@ -9,11 +9,10 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ProductService {
 
   BASE_URL: string = 'http://localhost:3000/api'
-
-  constructor(private http: HttpClient) { }
-
   public _products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   products = this._products.asObservable();
+
+  constructor(private http: HttpClient) { }
 
   reloadProducts(){
     this.http.get<Product[]>(`${this.BASE_URL}/products`)
@@ -36,6 +35,7 @@ export class ProductService {
     return this.http.post<Product>(`${this.BASE_URL}/products/create`, Product)
   }
   updateProduct(id: string, Product: Product): Observable<Product> {
+    console.log(id, Product);
     return this.http.patch<Product>(`${this.BASE_URL}/products/update/${id}`, Product)
   }
   deleteProduct(id: string) {

@@ -102,7 +102,7 @@ export class ProductsService {
     const { images, ...toUpdateRest } = updateProductDto
 
     const product = await this.productRepo.preload({ id, ...toUpdateRest });
-
+    console.log(product)
     if (!product) {
       throw new NotFoundException(`product with ${id} not found`);
     }

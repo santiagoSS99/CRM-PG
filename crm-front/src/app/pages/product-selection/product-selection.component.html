@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Table {{tables?.table_number}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" (click)="resetData()" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
@@ -28,9 +28,9 @@
                         </div>
                         <div class="col-md-3">
                             <div class="title">Products to set</div>
-                            <div class="container-products" *ngFor="let products of selectedProducts; let i = index">
-                                <div class="products-quantity-section">
-                                    <div for="" class="product-name">{{products.product_name}} : {{products.price}}
+                            <div class="container-products" *ngFor="let product of products">
+                                <div class="products-quantity-section" *ngIf="selectedProductsMap[product.id] && selectedProductsMap[product.id].quantity > 0">
+                                    <div for="" class="product-name">{{product.product_name}} x {{selectedProductsMap[product.id].quantity}}
                                     </div>
                                     <!-- <div class="quantity-input">
                                         <input class="form-control" type="number" min="1" max="10" step="1"
@@ -38,7 +38,7 @@
                                     </div> -->
                                     <div class="product-actions">
                                         <i class="fa-solid fa-trash" style="cursor: pointer;"
-                                            (click)="removeProduct(products)"></i>
+                                            (click)="removeProduct(product)"></i>
                                     </div>
                                 </div>
                             </div>
@@ -46,14 +46,32 @@
                                 <label for="">Total: {{total}}</label>
                             </div>
                         </div>
+                        <div class="col-md-3" *ngIf="paymentEnabled">
+                            <label>Por favor digite su número</label>
+                            <input class="form-control" type="text" [(ngModel)]="customerCellphone" name="customerCellphone">
+                            <button (click)="searchCurrentCustomer()">Buscar Usuario</button>
+                        </div>
+                        <div class="col-md-3" *ngIf="paymentEnabled && customer">
+                            <h4>{{customer.name}} {{customer.surnames}}</h4>
+                        </div>
+                        <div class="col-md-3" *ngIf="paymentEnabled">
+                            <label class="col-sm-3 control-label">Métodos de Pago</label>
+                            <select class="form-control" id="exampleInputPaymentMethods"
+                            aria-describedby="tableStatus" [(ngModel)]="paymentMethod">
+                                <option *ngFor="let method of paymentMethods" [value]="method"> {{PaymentMethodsLabelMapping[method]}} </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="resetData()"
                     data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="setProductInTable(tables.table_number)">Add to
+                <button type="button" class="btn btn-primary" (click)="setProductInTable()">Add to
                     table</button>
+                    <button *ngIf="paymentEnabled" type="button" class="btn btn-secondary" (click)="pay()">
+                        Pagar
+                    </button>
             </div>
         </div>
     </div>

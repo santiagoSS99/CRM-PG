@@ -5,40 +5,45 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Between, Repository } from 'typeorm';
 import { PurchaseLine } from './entities/purchase-line.entity';
 import { Product } from 'src/products/entities';
-
+import { Purchase } from 'src/purchase/entities';
 @Injectable()
 export class PurchaseLineService {
 
   constructor(
     @InjectRepository(PurchaseLine)
     private purchaseLineRepository: Repository<PurchaseLine>,
+    @InjectRepository(Purchase)
+    private purchaseRepository: Repository<Purchase>,
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
   ) { }
 
 
   async create(createPurchaseLineDto: CreatePurchaseLineDto) {
-    const { products, ...purchaseLine } = createPurchaseLineDto;
+    const { ...purchaseLine } = createPurchaseLineDto;
 
-    const productPromises = products.map(async (productId: any) => {
       const productFound = await this.productRepository.findOne({
-        where: { id: productId },
+        where: { id: purchaseLine.productId },
       });
 
       if (!productFound) throw new NotFoundException('No se encuentra el producto');
 
-      const total = productFound.price * purchaseLine.quantity;
+      const purchaseFound = await this.purchaseRepository.findOne({
+        where: { id: purchaseLine.purchaseId },
+      });
 
-      return this.purchaseLineRepository.create({
+      if (!purchaseFound) throw new NotFoundException('No se encuentra el purchase');
+
+      const pLine = this.purchaseLineRepository.create({
         ...purchaseLine,
         product: productFound,
-        total,
+        purchase: purchaseFound
       });
-    });
 
-    const purchaseLines = await Promise.all(productPromises);
+      console.log("PLIne")
+      console.log(pLine);
 
-    return this.purchaseLineRepository.save(purchaseLines);
+      return this.purchaseLineRepository.save(pLine);
   }
 
   async findDataSalesPerMonth(res) {

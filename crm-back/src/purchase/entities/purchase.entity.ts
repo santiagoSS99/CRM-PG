@@ -16,11 +16,10 @@ export class Purchase {
     @ManyToOne(() => Customer, (customer) => customer.purchases)
     customer: Customer;
 
-    @Column({
-        type: 'enum',
-        enum: PayMethod,
-        default: PayMethod.Efectivo,
-    })
+    @Column()
+    customerId: number;
+
+    @Column()
     paymentMethod: string;
 
     @CreateDateColumn({
