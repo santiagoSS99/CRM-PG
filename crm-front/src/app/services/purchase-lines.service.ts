@@ -22,4 +22,9 @@ export class PurchaseLinesService {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
     return this.http.get(`${this.BASE_URL}/purchase-line/dash`, { headers: headers })
   }
+
+  getdataByCustomerProduct(token: any): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/purchase-line/data-by-customer-product`, { headers: headers })
+  }
 }
