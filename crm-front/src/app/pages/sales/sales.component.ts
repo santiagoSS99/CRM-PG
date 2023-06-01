@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tables } from 'src/app/interfaces/tables';
 import { TablesFilterService } from 'src/app/services/tables-filter.service';
 import { TablesService } from 'src/app/services/tables.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sales',
@@ -21,13 +22,21 @@ export class SalesComponent implements OnInit {
   tables: any
   tables_const: any
   selectedTable: any
+  subscription: Subscription;
+
   constructor(
     private tableService: TablesService,
     public tableListService: TablesFilterService
-  ) { }
+  ) { 
+    this.subscription = this.tableService.tables.subscribe((tables) => {
+      this.tables = tables;
+      this.tables_const = tables;
+    })
+  }
 
   ngOnInit(): void {
-    this.getTables()
+    this.tableService.reloadTables()
+    //this.getTables()
   }
 
   getTables() {
@@ -49,9 +58,9 @@ export class SalesComponent implements OnInit {
   }
 
   getTableById(id: any) {
-    this.tableService.getTableById(id).subscribe((res) => {
-      this.selectedTable = res
-      console.log(id)
+    this.tableService.getTableById(id).subscribe((newTable) => {
+      this.selectedTable = newTable;
+      this.tableService.updateCurrentTable(newTable)
     })
   }
 

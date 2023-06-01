@@ -24,18 +24,16 @@
                     </div>
                     <div>
                         <label class="col-sm-3 control-label">Table Status</label>
-                        <!-- <input type="number" name="price" [value]="product.price" id="price"
-                            [(ngModel)]="product.price"> -->
-                        <input type="text" class="form-control" id="exampleInputTableStatus"
+                            <select class="form-control" id="exampleInputTableStatus"
                             aria-describedby="tableStatus" [(ngModel)]="table.table_status">
+                                <option *ngFor="let status of tableStatuses" [value]="status"> {{TableStatusLabelMapping[status]}} </option>
+                            </select>
                     </div>
-                    <div>
+                    <!-- <div>
                         <label class="col-sm-3 control-label">Table Location</label>
-                        <!-- <input type="number" inputmode="numeric" name="stock" [value]="product.quantity" id="stock"
-                            [(ngModel)]="product.quantity"> -->
                         <input type="text" class="form-control" id="exampleInputTableLocation"
                             aria-describedby="tableLocation" [(ngModel)]="table.table_location">
-                    </div>
+                    </div> -->
                     <!-- <div>
                         <label class="col-sm-2 control-label">Table Reservations</label> -->
                     <!-- <input type="number" inputmode="numeric" name="provider" [value]="product.provider"

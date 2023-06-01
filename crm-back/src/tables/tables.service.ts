@@ -17,12 +17,14 @@ export class TablesService {
 
     async create(createTableDto: CreateTableDto) {
         try {
+            console.log(createTableDto)
             const { ...tableDetails } = createTableDto
             const table = this.tableRepo.create({
                 ...tableDetails
             });
             await this.tableRepo.save(table)
         } catch (error) {
+            console.log(error)
             this.handleDBExceptions(error);
         }
     }

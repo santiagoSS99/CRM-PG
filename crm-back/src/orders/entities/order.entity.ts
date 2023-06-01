@@ -14,7 +14,7 @@ export class Order {
     @Column()
     order_details: string;
 
-    @ManyToOne(() => Product)
+    @ManyToOne(() => Product, { eager: true })
     product: Product
 
     @Column()
@@ -30,6 +30,9 @@ export class Order {
     // table: Tables;
     @ManyToOne(() => Tables, { eager: true })
     table: Tables;
+
+    @Column()
+    tableId: number;
 
     // @ManyToOne(() => OrderStatus, { eager: true })
     // @JoinColumn({ name: 'order_status_code' })
