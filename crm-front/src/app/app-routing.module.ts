@@ -16,6 +16,7 @@ import { CustomerInterestsComponent } from './customer/prospection/customer-inte
 import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
 import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
 import { PerformanceComponent } from './pages/performance/performance.component';
+import { ECommerceComponent } from './pages/e-commerce/e-commerce.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,8 @@ const routes: Routes = [
   { path: 'customer/:id/prospection/calls', component: CustomerCallsComponent },
   { path: 'customer/:id/prospection/mails', component: CustomerMailsComponent },
   { path: 'performance', component: PerformanceComponent },
+
+  { path: 'e-commerce', component: ECommerceComponent }
 
 ];
 
