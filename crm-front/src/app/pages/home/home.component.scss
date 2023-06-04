@@ -13,6 +13,7 @@ body {
   background: #fff;
   color: #666666;
   font-family: "Open Sans", sans-serif;
+  padding: 0;
 }
 
 a {
@@ -520,6 +521,10 @@ section {
 }
 
 @media (max-width: 992px) {
+  .hero {
+    padding: 1px 0;
+  }
+
   .breadcrumbs h2 {
     margin: 0 0 10px 0;
   }
