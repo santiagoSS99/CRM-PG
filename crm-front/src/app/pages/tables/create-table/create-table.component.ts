@@ -52,9 +52,9 @@ export class CreateTableComponent implements OnInit {
       message = 'La capacidad de la mesa debe ser un número positivo';
     }
 
-    if(!Object.values(TableStatus).includes(this.table.table_status) && !message){
+    if(!Object.keys(TableStatus).map(t => Number(t)).includes(this.table.table_status) || this.table.table_status == 0 && !message){
       this.table.table_status = 1;
-      message = 'El estado de la mesa deber ser un valor válido';
+      message = 'El estado de la mesa deber ser un valor válido o no ocupado';
     }
   
     if(message){

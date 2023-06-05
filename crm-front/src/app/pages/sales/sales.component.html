@@ -3,8 +3,9 @@
         <h2 class="title">Mesas</h2>
         <div class="search">
             <div class="search-box">
-                <input class="search-text" type="text" placeholder="Search Table" name="filter" [(ngModel)]="filter"
-                    (change)="filterTable()">
+                <input class="search-text" type="text" placeholder="Buscar N° Mesa" name="filter" [(ngModel)]="filter"
+                    (input)="filterTable()">
+                <i class="fa fa-search"></i>
             </div>
         </div>
         <!-- Crear como un componente -->

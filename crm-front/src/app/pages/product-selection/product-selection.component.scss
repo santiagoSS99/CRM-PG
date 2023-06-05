@@ -33,6 +33,46 @@
     }
 }
 
+#staticBackdropLabel{
+    font-family: 'Poppins', 'Roboto',sans-serif;
+}
+
+* {
+    font-family: 'Poppins', 'Roboto',sans-serif;  
+}
+
+.btn-primary{
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn.btn-primary:hover:not(.btn-text),.btn.btn-primary:focus:not(.btn-text){
+    background-color: lighten(#1a1a27,10);
+    border: none;
+}
+
+.button-search-customer{
+    margin-top: 0.5rem;
+}
+
+#exampleInputPaymentMethods{
+    margin-bottom: 1rem;
+}
+
+.found-customer{
+    margin: 1rem 0;
+    font-family: 'Poppins','Roboto',sans-serif !important;
+    font-weight: bold;
+}
+
+.total-summary{
+    border: none;
+    background-color: white !important;
+    border: none;
+    border-left: none !important;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.125);
+}
+
 .modal-body {
     padding: 0;
 
@@ -166,4 +206,40 @@
 
 .selected {
     background-color: lightblue;
+}
+
+.img-center{
+    width: 100% !important;
+    height: 60%;
+}
+
+.img-center img{
+    width: 100% !important;
+    object-fit: cover;
+}
+
+.card{
+    height: 50% !important;
+    overflow-y: scroll;
+    border: none !important;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.125);
+}
+
+.card-container{
+    height: max-content;
+}
+
+.cards-container{
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.empty{
+    background-color: red !important;
+
+    * {
+        font-family: 'Poppins',sans-serif !important;
+        color: white !important;
+    }
 }

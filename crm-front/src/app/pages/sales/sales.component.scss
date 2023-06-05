@@ -1,148 +1,152 @@
 .fullcontainer {
-    margin-top: 110px;
+  margin-top: 110px;
 
-    .form-container {
-        background-color: #ffffff;
-        height: 100%;
-        padding: 9px;
-        width: 65%;
-        border-radius: 10px;
-        -webkit-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 15px 35px 55px 1px rgba(0, 0, 0, 0.3);
-        box-shadow: 0px 17px 46px rgba(255, 0, 0, 0.25);
-        // margin-left: 30px;
+  .form-container {
+    background-color: #ffffff;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    border-radius: 10px;
 
-        .title {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .crm_button {
-            display: flex;
-            justify-content: flex-end;
-            margin: 15px 0px;
-        }
-
-        .search {
-            display: flex;
-            justify-content: flex-end;
-            margin: 0px 50px 10px;
-
-            margin-bottom: 50px;
-        }
-
-        .search-box {
-            position: absolute;
-            display: flex;
-            justify-content: flex-end;
-            background: #fafafa;
-            height: 40px;
-            border-radius: 40px;
-            padding: 10px;
-            box-shadow:
-                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-                0 12.5px 10px rgba(0, 0, 0, 0.06),
-                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-                0 100px 80px rgba(0, 0, 0, 0.12)
-        }
-
-        .search-box:hover>.search-text {
-            width: 200px;
-            padding: 0 9px;
-        }
-
-        .search-box:hover>.search-btn {
-            background: white;
-            color: #000000;
-            box-shadow:
-                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-                0 12.5px 10px rgba(0, 0, 0, 0.06),
-                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-                0 100px 80px rgba(0, 0, 0, 0.12)
-        }
-
-        .search-btn {
-            color: black;
-            float: right;
-            width: 20px;
-            height: 2 0px;
-            border-radius: 50%;
-            background: rgb(255, 255, 255);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.4s;
-            cursor: pointer;
-        }
-
-        i.fa {
-            color: #0000;
-        }
-
-        .search-text {
-            border: none;
-            background: none;
-            outline: none;
-            float: left;
-            padding: 0;
-            color: rgb(0, 0, 0);
-            font-size: 16px;
-            font-weight: normal;
-            transition: 0.4s;
-            line-height: 40px;
-            width: 0px;
-        }
-
-        .cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            overflow: auto;
-            height: 50vh;
-
-            .cards {
-
-                .red-cream {
-                    background-color: lightcoral;
-                    /* Otros estilos */
-                }
-
-                .card {
-                    margin: 0px 15px 10px 15px;
-                    flex-basis: 33.33%;
-                    border-radius: 20px;
-
-                    .red-cream {
-                        background-color: lightcoral;
-                        border-radius: 20px;
-                        width: auto;
-                        height: auto;
-                        /* Otros estilos */
-                    }
-
-                    .card-body {
-
-                        .card-title {
-                            display: flex;
-                            justify-content: center;
-                            font-weight: 600;
-                            text-transform: uppercase;
-                            font-size: 12px;
-                        }
-                    }
-                }
-            }
-
-
-        }
-
-        // .card {
-        //     display: flex;
-        // }
+    .title {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      font-family: "Poppins", "Roboto", sans-serif;
+      font-weight: bold;
     }
+
+    .crm_button {
+      display: flex;
+      justify-content: flex-end;
+      margin: 15px 0px;
+      font-family: "Poppins", "Roboto", sans-serif;
+    }
+
+    .search {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0px 50px 10px;
+
+      margin-bottom: 50px;
+    }
+
+    .search-box {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #fafafa;
+      height: 40px;
+      border-radius: 40px;
+      padding: 10px;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+
+      .fa.fa-search {
+        color: var(--primary-color);
+      }
+    }
+
+    .search-box:hover > .search-text {
+      width: 200px;
+      padding: 0 9px;
+    }
+
+    .search-box:hover > .search-btn {
+      background: white;
+      color: #000000;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .search-btn {
+      color: black;
+      float: right;
+      width: 20px;
+      height: 2 0px;
+      border-radius: 50%;
+      background: rgb(255, 255, 255);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    i.fa {
+      color: #0000;
+    }
+
+    .search-text {
+      border: none;
+      background: none;
+      outline: none;
+      float: left;
+      padding: 0;
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: normal;
+      transition: 0.4s;
+      line-height: 40px;
+      width: 0px;
+      font-family: "Poppins", "Roboto", sans-serif;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: auto;
+      height: 50vh;
+      padding-top: 5%;
+      padding-bottom: 5%;
+
+      .cards {
+        .red-cream {
+          background-color: lightcoral;
+          /* Otros estilos */
+        }
+
+        .card {
+          margin: 0px 15px 10px 15px;
+          flex-basis: 33.33%;
+          border-radius: 20px;
+          box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.125),
+            2px 2px 10px rgba(0, 0, 0, 0.125);
+          border: none;
+
+          .red-cream {
+            background-color: lightcoral;
+            border-radius: 20px;
+            width: auto;
+            height: auto;
+            /* Otros estilos */
+          }
+
+          .card-body {
+            margin: 0;
+            .card-title {
+              display: flex;
+              justify-content: center;
+              font-weight: 600;
+              text-transform: uppercase;
+              font-size: 12px;
+              font-family: "Poppins", "Roboto", sans-serif;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    // .card {
+    //     display: flex;
+    // }
+  }
 }
