@@ -18,6 +18,11 @@ export class PurchaseLinesService {
     return this.http.post(`${this.BASE_URL}/purchase-line`, purchaseLine, { headers: headers })
   }
 
+  getPurchasesLinesByCustomer(token: string){
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
+    return this.http.get(`${this.BASE_URL}/purchase-line/data-by-customer-product`,{ headers: headers });
+  }
+
   getDataAmountToDash(token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
     return this.http.get(`${this.BASE_URL}/purchase-line/dash`, { headers: headers })

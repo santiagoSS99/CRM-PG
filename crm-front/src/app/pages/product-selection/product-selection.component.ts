@@ -66,7 +66,6 @@ export class ProductSelectionComponent implements OnInit {
   ) {
     this.customerSubscription = this.customerService.currentCustomer.subscribe(
       (customer) => {
-        console.log(customer);
         this.customer = customer;
       }
     );
@@ -144,6 +143,15 @@ export class ProductSelectionComponent implements OnInit {
     this.modalMutationObserver?.disconnect();
   }
 
+  outOfStock(product: any) {
+    if(!this.selectedProductsMap[product.id]){
+      return product.stock - product.selled === 0;
+    }
+
+    return this.selectedProductsMap[product.id].quantity >=
+    product.stock - product.selled;
+  }
+
   pay() {
     if (Object.keys(this.selectedProductsMap).length === 0) {
       Swal.fire({
@@ -205,21 +213,22 @@ export class ProductSelectionComponent implements OnInit {
           };
           productUpdated = {
             ...productData.product,
-            selled: productData.product.selled + productData.quantity
-          }
+            selled: productData.product.selled + productData.quantity,
+          };
 
-          const {images, id, slug, ...productFiltered} = productUpdated;
+          const { images, id, slug, ...productFiltered } = productUpdated;
 
-          this.productService.updateProduct(productId,productFiltered).subscribe((res) => {
-            console.log("Actualizacion");
-            console.log(res)
-          })
+          this.productService
+            .updateProduct(productId, productFiltered)
+            .subscribe((res) => {
+              console.log('Actualizacion');
+              console.log(res);
+            });
 
           this.orderService.createOrder(orderDetail).subscribe((res) => {
             console.log('After request of createOrder');
             this.modalClose.click();
           });
-
         } else {
           orderDetail = {
             order_date: currentOrder.order_date,
@@ -233,59 +242,64 @@ export class ProductSelectionComponent implements OnInit {
 
           productUpdated = {
             ...productData.product,
-            selled: productData.product.selled + productData.quantity
-          }
+            selled: productData.product.selled + productData.quantity,
+          };
 
-          const {images, id, slug, ...productFiltered} = productUpdated;
+          const { images, id, slug, ...productFiltered } = productUpdated;
 
-          this.productService.updateProduct(productId,productFiltered).subscribe((res) => {
-            console.log("Actualizacion");
-            console.log(res)
-          })
+          this.productService
+            .updateProduct(productId, productFiltered)
+            .subscribe((res) => {
+              console.log('Actualizacion');
+              console.log(res);
+            });
           this.orderService
             .updateOrder(currentOrder.id, orderDetail)
             .subscribe((res) => {
               console.log('After request of updateOrder');
-              if(!this.customer){
+              if (!this.customer) {
                 this.modalClose.click();
-              } 
+              }
             });
         }
       }
     );
 
     let purchase;
-    if(this.customer){
+    if (this.customer) {
       purchase = {
         purchase_date: new Date(),
         customerId: this.customer.id,
-        paymentMethod: this.paymentMethod
-      }
-      this.purchaseService.createPurchase(purchase).subscribe((newPurchase: any) =>{
-        console.log(newPurchase);
-        Object.entries(this.selectedProductsMap).forEach(
-          (product: any, index: number) => {
-            const [productId, productData] = product;
-            let purchaseLine;
-            if(productData.quantity > 0){
-              purchaseLine = {
-                quantity: productData.quantity,
-                total: productData.quantity * productData.product.price,
-                productId,
-                purchaseId: newPurchase.id
+        paymentMethod: this.paymentMethod,
+      };
+      this.purchaseService
+        .createPurchase(purchase)
+        .subscribe((newPurchase: any) => {
+          console.log(newPurchase);
+          Object.entries(this.selectedProductsMap).forEach(
+            (product: any, index: number) => {
+              const [productId, productData] = product;
+              let purchaseLine;
+              if (productData.quantity > 0) {
+                purchaseLine = {
+                  quantity: productData.quantity,
+                  total: productData.quantity * productData.product.price,
+                  productId,
+                  purchaseId: newPurchase.id,
+                };
+                const token = localStorage.getItem('token') ?? '';
+                console.log(token);
+                this.purchaseLinesService
+                  .createPurchaseLine(purchaseLine, token)
+                  .subscribe((res: any) => {
+                    console.log(res);
+                    console.log('PurchaseLine');
+                    this.modalClose.click();
+                  });
               }
-              const token = localStorage.getItem('token') ?? '';
-              console.log(token)
-              this.purchaseLinesService.createPurchaseLine(purchaseLine,token).subscribe((res: any) => {
-                console.log(res);
-                console.log("PurchaseLine")
-                this.modalClose.click();
-              })
-
             }
-            
-        })
-      })
+          );
+        });
     }
   }
 

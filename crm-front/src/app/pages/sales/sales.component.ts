@@ -89,7 +89,7 @@ export class SalesComponent implements OnInit {
   // }
   searchTable() {
     // Obtener el valor de búsqueda del campo de entrada de texto
-    const searchInput = document.getElementById('search') as HTMLInputElement;
+    const searchInput = document.querySelector('.search-text') as HTMLInputElement;
     const searchValue = searchInput.value.toLowerCase();
 
     // Obtener todas las mesas de la página
@@ -118,9 +118,9 @@ export class SalesComponent implements OnInit {
   filterTable() {
     if (this.filter) {
       var term = new RegExp(this.filter, 'i')
-      this.table = this.tables_const.filter((item: { table_number: any; }) => term.test(item.table_number))
+      this.tables = this.tables_const.filter((item: { table_number: any; }) => term.test(item.table_number))
     } else {
-      this.table = this.tables_const
+      this.tables = this.tables_const
     }
   }
 
