@@ -1,14 +1,38 @@
 <div class="container">
-    <div class="column">
-        <div class="firstChart">
-            <canvas id="myChart1"></canvas>
-        </div>
-        <canvas id="myChart2"></canvas>
+    <div class="investment">
+        <h3 class="text-center value">Total invertido</h3>
+        <h2 class="value">{{totalInvestment | currency: 'COP '}}</h2>
     </div>
-    <div class="column">
-        <div class="secondChart">
-            <canvas id="myChart3"></canvas>
-        </div>
-        <canvas id="myChart4"></canvas>
+    <div class="profits">
+        <h3 class="text-center value">Ganancias</h3>
+        <h2 class="value">{{totalCustomer}}</h2>
     </div>
+    <div class="customers">
+        <h3 class="text-center value">Clientes almacenados</h3>
+        <h2 class="value">{{totalCustomer}}</h2>
+    </div>
+</div>
+
+<div class="chartContainer">
+    <div class="firstChart">
+        <canvas id="myChart1"></canvas>
+    </div>
+    <div class="secondChart">
+        <canvas id="myChart3"></canvas>
+    </div>
+</div>
+
+<div class="tableContainer">
+    <table>
+        <tr>
+            <td>Contenido 1</td>
+            <td>Contenido 2</td>
+            <td>Contenido 3</td>
+        </tr>
+        <tr>
+            <td>Contenido 4</td>
+            <td>Contenido 5</td>
+            <td>Contenido 6</td>
+        </tr>
+    </table>
 </div>
