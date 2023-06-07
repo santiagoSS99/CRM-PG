@@ -47,4 +47,9 @@ export class CustomerController {
   remove(@Param('id') id: string) {
     return this.customerService.remove(+id);
   }
+
+  @Get('gettotal/customer')
+  getTotalCustomer() {
+    return this.customerService.getCustomerCount()
+  }
 }

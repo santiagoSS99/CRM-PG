@@ -241,6 +241,11 @@ export class CustomerService {
     const token = this.jwtService.sign(payload);
     return token
   }
+
+  getCustomerCount() {
+    return this.customerRepo.count()
+  }
+
 }
 
 
