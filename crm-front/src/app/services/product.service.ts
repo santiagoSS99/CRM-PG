@@ -14,11 +14,11 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  reloadProducts(){
+  reloadProducts() {
     this.http.get<Product[]>(`${this.BASE_URL}/products`)
-                    .subscribe((newProducts: Product[]) => {
-                      this._products.next(newProducts)
-                    });
+      .subscribe((newProducts: Product[]) => {
+        this._products.next(newProducts)
+      });
   }
 
   getProducts(): Observable<Product[]> {
@@ -46,6 +46,9 @@ export class ProductService {
   }
   productsWithSales(token: any): Observable<any> {
     return this.http.get(`${this.BASE_URL}/products/dash/productsWithMostSales`, token)
+  }
+  getTotalInvestment() {
+    return this.http.get(`${this.BASE_URL}/products/gettotal/investment`)
   }
 
 }

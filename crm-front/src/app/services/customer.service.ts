@@ -28,7 +28,7 @@ export class CustomerService {
   }
 
   getCustomerByCellphone(cellphone: string): void {
-    this.http.get<Customer>(`${this.BASE_URL}/customer/bytel/${cellphone}`).subscribe((customer: Customer)=>{
+    this.http.get<Customer>(`${this.BASE_URL}/customer/bytel/${cellphone}`).subscribe((customer: Customer) => {
       this._currentCustomer.next(customer);
     })
   }
@@ -107,6 +107,10 @@ export class CustomerService {
   getMailsByCustomer(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token })
     return this.http.get(`${this.BASE_URL}/customer-mail/${id}`, { headers })
+  }
+
+  getTotalCustomers() {
+    return this.http.get(`${this.BASE_URL}/customer/gettotal/customer`)
   }
 
 }
