@@ -62,4 +62,9 @@ export class ProductsController {
     const products = await this.productsService.getProductsWithMostSales();
     return products;
   }
+
+  @Get('gettotal/investment')
+  getInvestment() {
+    return this.productsService.getTotalSum()
+  }
 }

@@ -188,7 +188,14 @@ export class ProductsService {
     const selled = products.map(({ selled }) => selled);
 
     return ({ data: { productNames, selled } });
-
   }
 
+  async getTotalSum() {
+    const { sum } = await this.productRepo
+      .createQueryBuilder()
+      .select('sum(purchaseprice * stock)', 'sum')
+      .getRawOne();
+
+    return Number(sum);
+  }
 }
