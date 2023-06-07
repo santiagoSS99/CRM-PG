@@ -3,20 +3,23 @@
     <div class="modal-dialog .modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Table {{tables?.table_number}}</h1>
-                <button type="button" (click)="resetData()" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Mesa {{tables?.table_number}}</h1>
+                <button type="button" (click)="resetData()" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-9 border-right">
                             <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 cards-container">
-                                <div class="col-sm-6 col-md-5 col-lg-3 mb-5 card-container" *ngFor="let product of products">
-                                    <div class="card" style="cursor:pointer" (click)="selectProduct(product)" [ngClass]="{ empty: outOfStock(product) }">
-                                        <div class="img-center">
+                                <div class="col-sm-6 col-md-5 col-lg-3 mb-5 card-container"
+                                    *ngFor="let product of products">
+                                    <div class="card" style="cursor:pointer" (click)="selectProduct(product)"
+                                        [ngClass]="{ empty: outOfStock(product) }">
+                                        <!-- <div class="img-center">
                                             <img [src]="product.images" class="card-img-top"
                                                 alt="{{product.product_name}}">
-                                        </div>
+                                        </div> -->
                                         <div class="card-body">
                                             <h5 class="card-title">{{product.product_name}}</h5>
                                             <p class="card-text">{{product.description}}</p>
@@ -29,8 +32,10 @@
                         <div class="col-md-3 total-summary">
                             <div class="title">Productos</div>
                             <div class="container-products" *ngFor="let product of products">
-                                <div class="products-quantity-section" *ngIf="selectedProductsMap[product.id] && selectedProductsMap[product.id].quantity > 0">
-                                    <div for="" class="product-name">{{product.product_name}} x {{selectedProductsMap[product.id].quantity}}
+                                <div class="products-quantity-section"
+                                    *ngIf="selectedProductsMap[product.id] && selectedProductsMap[product.id].quantity > 0">
+                                    <div for="" class="product-name">{{product.product_name}} x
+                                        {{selectedProductsMap[product.id].quantity}}
                                     </div>
                                     <!-- <div class="quantity-input">
                                         <input class="form-control" type="number" min="1" max="10" step="1"
@@ -47,8 +52,10 @@
                             </div>
                             <div class="col-md-12" *ngIf="paymentEnabled">
                                 <label>Por favor digite su número</label>
-                                <input class="form-control" type="text" [(ngModel)]="customerCellphone" name="customerCellphone">
-                                <button class="button-search-customer btn btn-primary" (click)="searchCurrentCustomer()">Buscar Usuario</button>
+                                <input class="form-control" type="text" [(ngModel)]="customerCellphone"
+                                    name="customerCellphone">
+                                <button class="button-search-customer btn btn-primary"
+                                    (click)="searchCurrentCustomer()">Buscar Usuario</button>
                             </div>
                             <div class="col-md-12" *ngIf="paymentEnabled && customer">
                                 <h4 class="found-customer">{{customer.name}} {{customer.surnames}}</h4>
@@ -56,12 +63,13 @@
                             <div class="col-md-12" *ngIf="paymentEnabled">
                                 <label class="col-md-12 control-label">Métodos de Pago</label>
                                 <select class="form-control" id="exampleInputPaymentMethods"
-                                aria-describedby="tableStatus" [(ngModel)]="paymentMethod">
-                                    <option *ngFor="let method of paymentMethods" [value]="method"> {{PaymentMethodsLabelMapping[method]}} </option>
+                                    aria-describedby="tableStatus" [(ngModel)]="paymentMethod">
+                                    <option *ngFor="let method of paymentMethods" [value]="method">
+                                        {{PaymentMethodsLabelMapping[method]}} </option>
                                 </select>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -69,9 +77,9 @@
                 <button type="button" class="btn btn-secondary" (click)="resetData()"
                     data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="setProductInTable()">Añadir a Mesa</button>
-                    <button *ngIf="paymentEnabled" type="button" class="btn btn-success" (click)="pay()">
-                        Pagar
-                    </button>
+                <button *ngIf="paymentEnabled" type="button" class="btn btn-success" (click)="pay()">
+                    Pagar
+                </button>
             </div>
         </div>
     </div>
