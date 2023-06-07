@@ -48,6 +48,8 @@ import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap'
 import { PerformanceComponent } from './pages/performance/performance.component';
 import { ProfitSortPipe } from './pipes/profit-sort.pipe';
 import { PaymentProcessComponent } from './pages/payment-process/payment-process.component';
+import { ECommerceComponent } from './pages/e-commerce/e-commerce.component';
+import { HomeHeaderComponent } from './pages/home-header/home-header.component';
 
 
 
@@ -89,6 +91,8 @@ import { PaymentProcessComponent } from './pages/payment-process/payment-process
     PerformanceComponent,
     ProfitSortPipe,
     PaymentProcessComponent,
+    ECommerceComponent,
+    HomeHeaderComponent,
 
   ],
   imports: [
