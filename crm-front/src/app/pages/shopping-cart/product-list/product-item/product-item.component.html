@@ -1,0 +1,20 @@
+<div class="card mb-4 shadow-sm">
+    <img class="bd-placeholder-img card-img-top p-2" height="200px" width="200px" [src]="productItem.images" />
+
+    <div class="card-body">
+        <p class="card-text">
+            <strong>{{ productItem.price | currency:'COP' }}</strong>
+            <!-- <i class="fas fa-heart float-right"></i>
+            <i class="far fa-heart float-right"></i> -->
+        </p>
+        <p class="card-text">{{ productItem.description | slice: 0:80 }}...</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <!-- <button type="button" class="btn btn-sm btn-primary product-btn">Add to
+                    Cart</button> -->
+                <button type="button" class="text-center btn btn-sm btn-outline-secondary product-btn">View
+                    Details</button>
+            </div>
+        </div>
+    </div>
+</div>
