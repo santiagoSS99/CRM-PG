@@ -62,22 +62,39 @@ body {
     width: 100%;
 }
 
-.tableContainer {
+.section3 {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    // overflow-x: auto;
+
+    .tableContainer {
+        display: flex;
+        justify-content: left;
+        // margin-top: 20px;
+        width: auto;
+        margin: 20px;
+
+        .table {
+            background-color: white;
+            width: auto;
+            margin: 20px;
+
+            td,
+            th,
+            table {
+                font-family: 'Poppins', 'Roboto', sans-serif;
+            }
+
+            th {
+                background-color: var(--primary-color);
+                color: white;
+            }
+        }
+
+    }
 }
 
-table {
-    border-collapse: collapse;
-    width: 90%;
-}
 
-table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-}
+
+
 
 @media screen and (max-width: 768px) {
     .container {

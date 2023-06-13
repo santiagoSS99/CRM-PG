@@ -13,17 +13,23 @@ import { PurchaseService } from 'src/app/services/purchase.service';
 export class DashboardComponent implements OnInit {
 
   token = localStorage.getItem('token')
+
   labels: any;
   chartProductCustomer: any
   quantity = [];
-  totalInvestment: any
-  totalCustomer: any
+  totalInvestment: any;
+
+  totalCustomer: any;
+  customers: any;
+  visitingCustomers: any
 
   year: any
   month: any
   dataChartToShowAmount: any
   dataChartToShowProductsBySales: any
   productsLabels: Array<any> = []
+
+  paymentMethod: any
 
   constructor(
     private purchaseLineService: PurchaseLinesService,
@@ -34,10 +40,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // this.dashboardCustomerProduct()
-    this.getTotalInvestment()
-    this.getTotalCustomers()
+    this.initData()
+  }
+
+  initData() {
+    this.getTotalInvestment();
+    this.getTotalCustomers();
     this.loadTotalAmountPurchase();
-    this.productsWithSales()
+    this.productsWithSales();
+    this.getCustomers();
+    this.getTopVisitingCustomers();
+    this.getPaymentMethod()
   }
 
   // dashboardCustomerProduct() {
@@ -72,6 +85,24 @@ export class DashboardComponent implements OnInit {
   //       }
   //     });
   // }
+
+  getTopVisitingCustomers() {
+    this.purchaseService.getTopVisitingCustomers(this.token).subscribe(
+      res => {
+        console.log(res)
+        this.visitingCustomers = res
+      }
+    )
+  }
+
+  getCustomers() {
+    this.customerService.getCustomers().subscribe(
+      res => {
+        this.customers = res
+        console.log(this.customers)
+      }
+    )
+  }
 
   getTotalInvestment() {
     this.productService.getTotalInvestment().subscribe(
@@ -167,6 +198,15 @@ export class DashboardComponent implements OnInit {
         }
 
       })
+  }
+
+  getPaymentMethod() {
+    this.purchaseService.getPaymentMethod(this.token).subscribe(
+      res => {
+        console.log(res)
+        this.paymentMethod = res
+      }
+    )
   }
 
 

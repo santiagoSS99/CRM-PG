@@ -21,18 +21,33 @@
         <canvas id="myChart3"></canvas>
     </div>
 </div>
-
-<div class="tableContainer">
-    <table>
-        <tr>
-            <td>Contenido 1</td>
-            <td>Contenido 2</td>
-            <td>Contenido 3</td>
-        </tr>
-        <tr>
-            <td>Contenido 4</td>
-            <td>Contenido 5</td>
-            <td>Contenido 6</td>
-        </tr>
-    </table>
+<div class="section3">
+    <div class="tableContainer">
+        <table class="table">
+            <tr>
+                <th>Nombre cliente</th>
+                <th>Visitas</th>
+                <!-- <th>Contenido 3</th> -->
+            </tr>
+            <tr *ngFor="let customer of visitingCustomers">
+                <td>{{customer.customerName}}</td>
+                <td>{{customer.visitCount}}</td>
+                <!-- <td>Contenido 6</td> -->
+            </tr>
+        </table>
+    </div>
+    <div class="tableContainer">
+        <table class="table">
+            <tr>
+                <th>Metodo de pago</th>
+                <th>Cantidad de uso</th>
+                <!-- <th>Contenido 3</th> -->
+            </tr>
+            <tr *ngFor="let payment of paymentMethod">
+                <td>{{payment.paymentMethod}}</td>
+                <td>{{payment.countPayment}}</td>
+                <!-- <td>Contenido 6</td> -->
+            </tr>
+        </table>
+    </div>
 </div>
