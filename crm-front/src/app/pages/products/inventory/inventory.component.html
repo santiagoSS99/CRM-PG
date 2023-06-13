@@ -3,23 +3,26 @@
         <input type="text" class="form-control" placeholder="Buscar Producto..." name="filter" [(ngModel)]="filter"
             (keyup)="filterProduct()">
     </div>
-        <div class="card-container row">
-            <div class="col-3" *ngFor="let product of products">
-                    <div class="card-body">
-                        <div class="card-img-wrapper">
-                            <img [src]=product.images alt="">
-                        </div>
-                        <h5 class="card-title">{{product.product_name}}</h5>
-                        <hr>
-                        <p class="card-text">{{product.description}}</p>
-                        <div class="buttons">
-                            <app-crm-button [icon]="shopping_cart" data-bs-toggle="modal">Cart</app-crm-button>
-                            <app-crm-button [icon]="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                (click)="getproductById(product.id)"></app-crm-button>
-                        </div>
-                    </div>
-                
+    <div class="card-container row">
+        <div class="col-3" *ngFor="let product of products">
+            <div class="card-body">
+                <div class="delete-icon">
+                    <i (click)="removeProduct(product.id)" class="material-icons icon-delete">delete</i>
+                </div>
+                <div class="card-img-wrapper">
+                    <img [src]=product.images alt="">
+                </div>
+                <h5 class="card-title">{{product.product_name}}</h5>
+                <hr>
+                <p class="card-text">{{product.description}}</p>
+                <div class="buttons">
+                    <app-crm-button [icon]="shopping_cart" data-bs-toggle="modal">Cart</app-crm-button>
+                    <app-crm-button [icon]="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="getproductById(product.id)"></app-crm-button>
+                </div>
             </div>
+
         </div>
+    </div>
 </div>
 <app-edit-product [product]="selectedProduct"></app-edit-product>

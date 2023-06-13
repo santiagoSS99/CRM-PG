@@ -28,6 +28,15 @@
         border-radius: 15px; // bordes redondeados
         overflow: hidden;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.125);
+
+        .delete-icon {
+            .icon-delete {
+                display: flex;
+                justify-content: end;
+                margin: 7px;
+                color: black;
+            }
+        }
     }
 
     .card-title {
