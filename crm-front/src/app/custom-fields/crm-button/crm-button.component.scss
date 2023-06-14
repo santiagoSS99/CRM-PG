@@ -1,16 +1,24 @@
 * {
-    font-family: sans-serif;
+    font-family: 'Poppins','Roboto',sans-serif;
 }
 
+$primary-color: #1a1a27;
+
 .crm_button {
-    background-color: rgb(15, 99, 255);
+    background-color: $primary-color;
     color: white;
-    padding: 10px 20px;
-    border-radius: 18px;
+    padding: 10px 12.5px;
+    border-radius: 50px;
     border: none;
+    transition: 0.3s all;
 
     i {
         color: #fafafa;
         z-index: 1;
+    }
+
+    &:hover{
+      transform: scale(1.1,1.1);
+      background-color: lighten($primary-color,20);  
     }
 }

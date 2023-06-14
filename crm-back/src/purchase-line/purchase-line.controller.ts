@@ -9,6 +9,8 @@ export class PurchaseLineController {
 
   @Post()
   create(@Body() createPurchaseLineDto: CreatePurchaseLineDto) {
+    console.log("Purchase Line DTO");
+    console.log(createPurchaseLineDto)
     return this.purchaseLineService.create(createPurchaseLineDto);
   }
 

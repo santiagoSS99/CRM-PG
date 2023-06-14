@@ -8,9 +8,9 @@ import { Order } from './entities/order.entity';
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) { }
 
-  @Post(':tableId/orders')
-  createOrder(@Param('tableId') tableId: number, @Body() order: CreateOrderDto) {
-    return this.ordersService.create(tableId, order);
+  @Post()
+  createOrder( @Body() order: CreateOrderDto) {
+    return this.ordersService.create(order);
   }
 
   @Get()

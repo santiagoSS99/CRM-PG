@@ -3,8 +3,9 @@
         <h2 class="title">Mesas</h2>
         <div class="search">
             <div class="search-box">
-                <input class="search-text" type="text" placeholder="Search Table" name="filter" [(ngModel)]="filter"
-                    (change)="filterTable()">
+                <input class="search-text" type="text" placeholder="Buscar N° Mesa" name="filter" [(ngModel)]="filter"
+                    (input)="filterTable()">
+                <i class="fa fa-search"></i>
             </div>
         </div>
         <!-- Crear como un componente -->
@@ -14,15 +15,19 @@
                 data-bs-target="#modalToAddProductToRable">
                 <div class="card" id="myUL" (click)="getTableById(table.id)">
                     <div class="card-body table" [ngClass]="{'red-cream': table.table_status.id === 1}">
-                        <h5 class="card-title">Table {{table.table_number}}</h5>
+                        <h5 class="card-title">Mesa {{table.table_number}}</h5>
                         <img src="./../../../assets/icons/table.svg" alt="">
                     </div>
                 </div>
             </div>
         </div>
         <app-product-selection [tables]="selectedTable"></app-product-selection>
-        <app-crm-button class="crm_button" text="Añadir nueva mesa" data-bs-toggle="modal"
-            data-bs-target="#modalToCreateTable"></app-crm-button>
+        <div class="buttons-container">
+            <app-crm-button class="crm_button" text="Editar Mesas" [routerLink]="['/edit-tables']"
+                routerLinkActive="router-link-active"></app-crm-button>
+            <app-crm-button class="crm_button" text="Añadir nueva mesa" data-bs-toggle="modal"
+                data-bs-target="#modalToCreateTable"></app-crm-button>
+        </div>
         <app-create-table></app-create-table>
     </div>
 </div>

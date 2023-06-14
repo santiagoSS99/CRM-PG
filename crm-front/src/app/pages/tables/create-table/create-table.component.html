@@ -3,39 +3,37 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Create Table</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Mesa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div>
                     <div>
-                        <label class="col-sm-3 control-label">Table Number</label>
+                        <label class="col-sm-12 control-label">Número de Mesa</label>
                         <input [value]="tables" readonly type="number" class="form-control"
                             [(ngModel)]="table.table_number">
                         <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small> -->
                     </div>
                     <div>
-                        <label class="col-sm-3 control-label">Table Capacity</label>
+                        <label class="col-sm-12 control-label">Capacidad de Mesa</label>
                         <!-- <input type="text" name="description" [value]="product.description" id="description"
                             [(ngModel)]="product.description"> -->
                         <input type="number" class="form-control" id="exampleInputTableCapacity"
                             aria-describedby="tableCapacity" [(ngModel)]="table.table_capacity">
                     </div>
                     <div>
-                        <label class="col-sm-3 control-label">Table Status</label>
-                        <!-- <input type="number" name="price" [value]="product.price" id="price"
-                            [(ngModel)]="product.price"> -->
-                        <input type="text" class="form-control" id="exampleInputTableStatus"
+                        <label class="col-sm-12 control-label">Table Status</label>
+                            <select class="form-control" id="exampleInputTableStatus"
                             aria-describedby="tableStatus" [(ngModel)]="table.table_status">
+                                <option *ngFor="let status of tableStatuses" [value]="status"> {{TableStatusLabelMapping[status]}} </option>
+                            </select>
                     </div>
-                    <div>
-                        <label class="col-sm-3 control-label">Table Location</label>
-                        <!-- <input type="number" inputmode="numeric" name="stock" [value]="product.quantity" id="stock"
-                            [(ngModel)]="product.quantity"> -->
+                    <!-- <div>
+                        <label class="col-sm-12 control-label">Table Location</label>
                         <input type="text" class="form-control" id="exampleInputTableLocation"
                             aria-describedby="tableLocation" [(ngModel)]="table.table_location">
-                    </div>
+                    </div> -->
                     <!-- <div>
                         <label class="col-sm-2 control-label">Table Reservations</label> -->
                     <!-- <input type="number" inputmode="numeric" name="provider" [value]="product.provider"
@@ -44,7 +42,7 @@
                             aria-describedby="tableReservations">
                     </div> -->
                     <!-- <div>
-                        <label class="col-sm-3 control-label">Table Orders</label> -->
+                        <label class="col-sm-12 control-label">Table Orders</label> -->
                     <!-- <input type="number"  inputmode="numeric" name="selled" [value]="product.selled"
                             id="selled" [(ngModel)]="product.selled"> -->
                     <!-- <input type="text" class="form-control" id="exampleInputTableLocation"
@@ -53,8 +51,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="createTable()">Create</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="createTable()">Crear</button>
             </div>
         </div>
     </div>

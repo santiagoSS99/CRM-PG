@@ -1,10 +1,11 @@
 export interface Order {
-
-    id?: string;
-    order_date: Date;
+    id?: number | undefined;
     order_details: string;
+    tableId: any;
+    amount?: number;
+    order_date: Date;
     quantity: number;
-    amount?: number
-    tableId: any
-
+    order_status?: number;
+    observations?: string;
+    product?: any;
 }

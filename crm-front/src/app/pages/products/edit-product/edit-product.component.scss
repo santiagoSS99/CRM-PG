@@ -1,0 +1,27 @@
+.modal{
+    font-family: 'Poppins', 'Roboto',sans-serif;
+}
+
+.modal-title, .form-label, input, .btn{
+    font-family: 'Poppins', 'Roboto',sans-serif;
+}
+
+.btn-primary{
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn.btn-primary:hover:not(.btn-text),.btn.btn-primary:focus:not(.btn-text){
+    background-color: lighten(#1a1a27,10);
+    border: none;
+}
+
+.btn-secondary{
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn.btn-secondary:hover:not(.btn-text),.btn.btn-secondary:focus:not(.btn-text){
+    background-color: lighten(#222258,10);
+    color: white;
+}

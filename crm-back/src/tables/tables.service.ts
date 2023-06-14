@@ -23,6 +23,7 @@ export class TablesService {
             });
             await this.tableRepo.save(table)
         } catch (error) {
+            console.log(error)
             this.handleDBExceptions(error);
         }
     }

@@ -18,11 +18,9 @@ export class OrdersService {
   ) { }
 
   // create order with table assigned
-  async create(tableId, createOrderDto: CreateOrderDto) {
-    const { product, ...restOrder } = createOrderDto;
-
-    console.log(tableId);
-    console.log(product, 'im priduyctttt');
+  async create( createOrderDto: CreateOrderDto) {
+    const { product, tableId, ...restOrder } = createOrderDto;
+   
     const table = await this.tableRepository.findOne({
       where: { id: tableId },
       relations: ['orders']
@@ -46,7 +44,6 @@ export class OrdersService {
       createQueryBuilder('order')
       // .leftJoinAndSelect('order.tables', 'tables')
       .getMany();
-    console.log(orders)
     return;
   }
 
@@ -74,8 +71,44 @@ export class OrdersService {
     return `This action returns a #${id} order`;
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(id: number, updateOrderDto: UpdateOrderDto) {
+    let currentOrder: Order;
+    currentOrder = await this.orderRepository.findOneBy({ id });
+
+    if (!currentOrder) {
+      throw new NotFoundException(`User with id ${id} not found`)
+    }
+
+    const {
+      amount = currentOrder.amount,
+      observations = currentOrder.observations,
+      order_date = currentOrder.order_date,
+      order_details = currentOrder.order_details,
+      order_status = currentOrder.order_status,
+      quantity = currentOrder.quantity,
+      tableId = currentOrder.tableId
+    } = updateOrderDto;
+
+    await this.orderRepository.createQueryBuilder()
+      .update(Order)
+      .set({
+        amount,
+        observations,
+        order_date,
+        order_details,
+        order_status,
+        quantity,
+        tableId
+      })
+      .where("id = :id", { id })
+      .execute();
+
+    currentOrder = await this.orderRepository.findOneBy({ id });
+    if (!currentOrder) {
+      throw new NotFoundException(`User with id ${id} not found`)
+    }
+
+    return { message: `Order with id ${id} updated succesfully`, currentOrder }
   }
 
   remove(id: number) {

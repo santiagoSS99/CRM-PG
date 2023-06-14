@@ -102,7 +102,7 @@ export class ProductsService {
     const { images, ...toUpdateRest } = updateProductDto
 
     const product = await this.productRepo.preload({ id, ...toUpdateRest });
-
+    console.log(product)
     if (!product) {
       throw new NotFoundException(`product with ${id} not found`);
     }
@@ -188,7 +188,14 @@ export class ProductsService {
     const selled = products.map(({ selled }) => selled);
 
     return ({ data: { productNames, selled } });
-
   }
 
+  async getTotalSum() {
+    const { sum } = await this.productRepo
+      .createQueryBuilder()
+      .select('sum(purchaseprice * stock)', 'sum')
+      .getRawOne();
+
+    return Number(sum);
+  }
 }

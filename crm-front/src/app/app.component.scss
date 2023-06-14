@@ -1,14 +1,23 @@
+$primary-color: #1a1a27;
+
 .lf-container {
     display: flex;
     box-sizing: border-box;
     z-index: 0;
-    background-color: #eaeaea;
+    // background-color: #eaeaea;
 
     .content {
         // margin-top: 110px;
         width: 100%;
         flex-direction: column;
+        height: auto;
         // padding: 0;
         // background-color: #eaeaea;
     }
+}
+
+.card,
+.form-control,
+.btn {
+    border-radius: 0;
 }

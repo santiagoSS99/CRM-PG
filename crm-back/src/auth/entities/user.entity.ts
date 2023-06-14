@@ -27,7 +27,7 @@ export class User {
     // @IsArray()
     // roles: string[]
 
-    @Column('simple-array')
+    @Column('simple-array',{nullable: true})
     roles: string[];
 
     @BeforeInsert()

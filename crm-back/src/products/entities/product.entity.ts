@@ -36,6 +36,13 @@ export class Product {
     @Column('int')
     selled: number;
 
+    @CreateDateColumn({
+        name: 'created_date',
+        nullable: false,
+        type: 'timestamp',
+    })
+    created_date: Date;
+
     @OneToMany(() => ProductImage, (productImage) => productImage.product, { cascade: true, eager: true })
     images?: ProductImage[];
 

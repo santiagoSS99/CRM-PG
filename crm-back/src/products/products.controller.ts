@@ -34,6 +34,10 @@ export class ProductsController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateProductDto: UpdateProductDto
   ) {
+    console.log("Update Producto DTO")
+    console.log(id)
+    console.log(updateProductDto)
+    console.log("Update Producto DTO Fin")
     return this.productsService.update(id, updateProductDto);
   }
 
@@ -57,5 +61,10 @@ export class ProductsController {
   async getProductsWithMostSales() {
     const products = await this.productsService.getProductsWithMostSales();
     return products;
+  }
+
+  @Get('gettotal/investment')
+  getInvestment() {
+    return this.productsService.getTotalSum()
   }
 }

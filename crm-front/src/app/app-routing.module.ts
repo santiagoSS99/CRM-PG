@@ -16,6 +16,8 @@ import { CustomerInterestsComponent } from './customer/prospection/customer-inte
 import { CustomerCallsComponent } from './customer/prospection/customer-calls/customer-calls.component';
 import { CustomerMailsComponent } from './customer/prospection/customer-mails/customer-mails.component';
 import { PerformanceComponent } from './pages/performance/performance.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { TablesListComponent } from './pages/tables/tables-list/tables-list.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,7 @@ const routes: Routes = [
 
   { path: 'products', component: FormProductComponent },
   { path: 'sales', component: SalesComponent },
+  { path: 'edit-tables', component: TablesListComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'campaign', component: CampaignComponent },
   { path: 'user/management', component: UserManagementComponent },
@@ -39,6 +42,8 @@ const routes: Routes = [
   { path: 'customer/:id/prospection/calls', component: CustomerCallsComponent },
   { path: 'customer/:id/prospection/mails', component: CustomerMailsComponent },
   { path: 'performance', component: PerformanceComponent },
+
+  { path: 'shopping', component: ShoppingCartComponent }
 
 ];
 
