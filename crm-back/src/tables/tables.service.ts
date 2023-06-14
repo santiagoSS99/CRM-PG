@@ -66,9 +66,9 @@ export class TablesService {
         }
     }
 
-
-    remove(id: number) {
-        return `This action removes a #${id} table`;
+    async remove(id: any) {
+        const product = await this.findOne(id);
+        await this.tableRepo.remove(product);
     }
 
     private handleDBExceptions(error: any) {
@@ -77,5 +77,33 @@ export class TablesService {
 
         this.logger.error(error)
         throw new InternalServerErrorException('unexpected error, please check the logs')
+    }
+
+    async update(id: number, updateTableDto: UpdateTableDto) {
+        let currentTable = await this.tableRepo.findOneBy({ id: String(id) });
+        if (!currentTable) {
+            throw new NotFoundException(`Table with id ${id} not found`)
+        }
+        const {
+            table_number = currentTable.table_number,
+            table_capacity = currentTable.table_capacity,
+            table_location = currentTable.table_location,
+        } = updateTableDto;
+
+        await this.tableRepo.createQueryBuilder()
+            .update(Tables)
+            .set({
+                table_number,
+                table_capacity,
+                table_location,
+            })
+            .where("id = :id", { id })
+            .execute();
+
+        currentTable = await this.tableRepo.findOneBy({ id: String(id) });
+        if (!currentTable) {
+            throw new NotFoundException(`Table with id ${id} not found`)
+        }
+        return { message: `Table with id ${id} updated succesfully`, table: currentTable }
     }
 }
