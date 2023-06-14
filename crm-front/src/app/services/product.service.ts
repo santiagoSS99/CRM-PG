@@ -39,7 +39,8 @@ export class ProductService {
     return this.http.patch<Product>(`${this.BASE_URL}/products/update/${id}`, Product)
   }
   deleteProduct(id: string) {
-    return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
+    // return this.http.delete<Product>(`${this.BASE_URL}/products/delete?productID=${id}`)
+    return this.http.delete<Product>(`${this.BASE_URL}/products/${id}`)
   }
   uploadImages(x: any) {
     return this.http.post(`${this.BASE_URL}/files/product`, x);
@@ -50,5 +51,4 @@ export class ProductService {
   getTotalInvestment() {
     return this.http.get(`${this.BASE_URL}/products/gettotal/investment`)
   }
-
 }
