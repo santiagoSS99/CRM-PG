@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,9 @@ export class HeaderComponent implements OnInit {
   user: any = {
 
   }
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     let str_user: any = localStorage.getItem('user')
     this.user = JSON.parse(str_user)
   }
@@ -21,6 +24,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     window.location.reload()
+    this.router.navigate(['/home']);
   }
 
 }

@@ -1,96 +1,68 @@
-<div class="fullcontainer">
-  <div class="form-container">
-    <div class="title">
-      <h3 class="title-header">Añadir producto</h3>
-    </div>
-    <form class="inputs">
-      <div class="wrapper-left col-md-6">
-        <div class="center-wrapper">
-          <div class="form-input">
-            <label class="field">Nombre del producto</label>
-            <input
-              class="input"
-              type="text"
-              name="name"
-              [(ngModel)]="product.product_name"
-            />
-          </div>
-          <div class="form-input">
-            <label class="field">Precio de compra</label>
-            <input
-              class="input"
-              type="number"
-              name="purchaseprice"
-              [(ngModel)]="product.purchaseprice"
-            />
-          </div>
-          <div class="form-input">
-            <label class="field">Precio de venta</label>
-            <input
-              class="input"
-              type="number"
-              name="price"
-              [(ngModel)]="product.price"
-            />
-          </div>
-
-          <div class="form-input">
-            <label class="field">Descripción</label>
-            <input
-              class="input"
-              type="text"
-              name="description"
-              [(ngModel)]="product.description"
-            />
-          </div>
-        </div>
+<div class="contain">
+  <div class="fullcontainer">
+    <div class="form-container">
+      <div class="title">
+        <h3 class="title-header">Añadir producto</h3>
       </div>
-      <div class="wrapper-right col-md-6">
-        <div class="center-wrapper">
-          <div class="form-input">
-            <label class="field">Cantidad</label>
-            <input
-              class="input"
-              type="number"
-              name="quantity"
-              [(ngModel)]="product.stock"
-            />
-          </div>
-          <div class="form-input">
-            <label class="field">Proveedor</label>
-            <input
-              class="input"
-              type="search"
-              name="provider"
-              [(ngModel)]="product.provider"
-            />
-          </div>
-          <!-- <div class="form-input file-input">
-            <label class="field">Image</label>
-            <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
-          </div> -->
-          <div class="form-input file-input">
-            <label class="field" for="file-input">Imagen</label>
-            <div class="file-input">
-              <input type="file" name="images" (change)="selectFiles($event)" />
-              <button class="custom-btn" type="file" name="images">
-                Elegir imagen
-              </button>
+      <form class="inputs">
+        <div class="wrapper-left col-md-6">
+          <div class="center-wrapper">
+            <div class="form-input">
+              <label class="field">Nombre del producto</label>
+              <input class="input" type="text" name="name" [(ngModel)]="product.product_name" />
+            </div>
+            <div class="form-input">
+              <label class="field">Precio de compra</label>
+              <input class="input" type="number" name="purchaseprice" [(ngModel)]="product.purchaseprice" />
+            </div>
+            <div class="form-input">
+              <label class="field">Precio de venta</label>
+              <input class="input" type="number" name="price" [(ngModel)]="product.price" />
+            </div>
+
+            <div class="form-input">
+              <label class="field">Descripción</label>
+              <input class="input" type="text" name="description" [(ngModel)]="product.description" />
             </div>
           </div>
         </div>
-        <div class="button-send">
-          <button class="custom-btn" type="button" (click)="submitForm()">
-            Crear producto
-          </button>
+        <div class="wrapper-right col-md-6">
+          <div class="center-wrapper">
+            <div class="form-input">
+              <label class="field">Cantidad</label>
+              <input class="input" type="number" name="quantity" [(ngModel)]="product.stock" />
+            </div>
+            <div class="form-input">
+              <label class="field">Proveedor</label>
+              <input class="input" type="search" name="provider" [(ngModel)]="product.provider" />
+            </div>
+            <!-- <div class="form-input file-input">
+              <label class="field">Image</label>
+              <input type="file" multiple name="images" [(ngModel)]="product.images" (change)="selectFiles($event)" />
+            </div> -->
+            <div class="form-input file-input">
+              <label class="field" for="file-input">Imagen</label>
+              <div class="file-input">
+                <input type="file" name="images" (change)="selectFiles($event)" />
+                <button class="custom-btn" type="file" name="images">
+                  Elegir imagen
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="button-send">
+            <button class="custom-btn" type="button" (click)="submitForm()">
+              Crear producto
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="live-reload-component">
+      <app-live-reload-products></app-live-reload-products>
+    </div>
   </div>
-  <div class="live-reload-component">
-    <app-live-reload-products></app-live-reload-products>
+  <div class="inventory">
+    <app-inventory></app-inventory>
   </div>
-</div>
-<div class="inventory">
-  <app-inventory></app-inventory>
 </div>

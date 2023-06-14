@@ -27,7 +27,7 @@ export class SalesComponent implements OnInit {
   constructor(
     private tableService: TablesService,
     public tableListService: TablesFilterService
-  ) { 
+  ) {
     this.subscription = this.tableService.tables.subscribe((tables) => {
       this.tables = tables;
       this.tables_const = tables;
@@ -36,7 +36,7 @@ export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableService.reloadTables()
-    //this.getTables()
+    this.getTables()
   }
 
   getTables() {
@@ -64,29 +64,6 @@ export class SalesComponent implements OnInit {
     })
   }
 
-  // searchTable() {
-  //   // Obtener el valor de búsqueda del campo de entrada de texto
-  //   const searchInput = document.getElementById('search') as HTMLInputElement;
-  //   console.log(searchInput)
-  //   const searchValue = searchInput.value.trim().toUpperCase();
-  //   console.log(searchValue)
-
-
-  //   // Obtener todas las mesas de la página
-  //   const tables = document.querySelectorAll('.table');
-  //   console.log(tables)
-
-  //   // Iterar sobre las mesas y ocultar las que no coinciden con el término de búsqueda
-  //   tables.forEach(table => {
-  //     console.log(table)
-  //     const name = table.querySelector('.name')?.textContent?.trim().toUpperCase() || '';
-  //     if (name.includes(searchValue)) {
-  //       (table as HTMLElement).style.display = 'block';
-  //     } else {
-  //       (table as HTMLElement).style.display = 'none';
-  //     }
-  //   });
-  // }
   searchTable() {
     // Obtener el valor de búsqueda del campo de entrada de texto
     const searchInput = document.querySelector('.search-text') as HTMLInputElement;
@@ -123,5 +100,4 @@ export class SalesComponent implements OnInit {
       this.tables = this.tables_const
     }
   }
-
 }

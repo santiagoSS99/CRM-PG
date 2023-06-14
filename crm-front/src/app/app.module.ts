@@ -48,8 +48,15 @@ import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap'
 import { PerformanceComponent } from './pages/performance/performance.component';
 import { ProfitSortPipe } from './pipes/profit-sort.pipe';
 import { PaymentProcessComponent } from './pages/payment-process/payment-process.component';
-import { ECommerceComponent } from './pages/e-commerce/e-commerce.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { HomeHeaderComponent } from './pages/home-header/home-header.component';
+import { FiltersComponent } from './pages/shopping-cart/filters/filters.component';
+import { ProductListComponent } from './pages/shopping-cart/product-list/product-list.component';
+import { CartComponent } from './pages/shopping-cart/cart/cart.component';
+import { CartItemComponent } from './pages/shopping-cart/cart/cart-item/cart-item.component';
+import { ProductItemComponent } from './pages/shopping-cart/product-list/product-item/product-item.component';
+import { TablesListComponent } from './pages/tables/tables-list/tables-list.component';
+import { EditTablesComponent } from './pages/tables/edit-tables/edit-tables.component';
 
 
 
@@ -91,9 +98,15 @@ import { HomeHeaderComponent } from './pages/home-header/home-header.component';
     PerformanceComponent,
     ProfitSortPipe,
     PaymentProcessComponent,
-    ECommerceComponent,
+    ShoppingCartComponent,
     HomeHeaderComponent,
-
+    FiltersComponent,
+    ProductListComponent,
+    CartComponent,
+    CartItemComponent,
+    ProductItemComponent,
+    TablesListComponent,
+    EditTablesComponent
   ],
   imports: [
     BrowserModule,

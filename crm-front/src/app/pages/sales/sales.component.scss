@@ -51,12 +51,12 @@
       }
     }
 
-    .search-box:hover > .search-text {
+    .search-box:hover>.search-text {
       width: 200px;
       padding: 0 9px;
     }
 
-    .search-box:hover > .search-btn {
+    .search-box:hover>.search-btn {
       background: white;
       color: #000000;
       box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -131,6 +131,7 @@
 
           .card-body {
             margin: 0;
+
             .card-title {
               display: flex;
               justify-content: center;
@@ -140,9 +141,27 @@
               font-family: "Poppins", "Roboto", sans-serif;
               font-weight: bold;
             }
+
+            .delete-icon {
+              display: flex;
+              justify-content: end;
+
+              .icon-delete {
+                position: absolute;
+                color: black;
+                cursor: pointer;
+              }
+            }
+
           }
         }
       }
+    }
+
+    .buttons-container {
+      justify-content: flex-end;
+      display: flex;
+      margin: 0 15px;
     }
 
     // .card {

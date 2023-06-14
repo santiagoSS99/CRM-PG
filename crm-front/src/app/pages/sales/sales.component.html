@@ -22,8 +22,12 @@
             </div>
         </div>
         <app-product-selection [tables]="selectedTable"></app-product-selection>
-        <app-crm-button class="crm_button" text="Añadir nueva mesa" data-bs-toggle="modal"
-            data-bs-target="#modalToCreateTable"></app-crm-button>
+        <div class="buttons-container">
+            <app-crm-button class="crm_button" text="Editar Mesas" [routerLink]="['/edit-tables']"
+                routerLinkActive="router-link-active"></app-crm-button>
+            <app-crm-button class="crm_button" text="Añadir nueva mesa" data-bs-toggle="modal"
+                data-bs-target="#modalToCreateTable"></app-crm-button>
+        </div>
         <app-create-table></app-create-table>
     </div>
 </div>

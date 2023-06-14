@@ -24,8 +24,8 @@ export class CalendarComponent implements OnInit {
     dateClick: this.handleDateClick.bind(this), // MUST ensure `this` context is maintained
     events: [
       { title: 'event 1', date: '2023-03-01' },
-      { title: 'event 1', date: '2023-03-01' },
-      { title: 'event 2', date: '2023-03-02' },
+      { title: 'Sustentación', date: '2023-06-15' },
+      { title: 'Festejar', date: '2023-06-15' },
       { title: 'event 2', date: '2023-03-02' },
     ]
   };
@@ -70,5 +70,4 @@ export class CalendarComponent implements OnInit {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
   }
-
 }

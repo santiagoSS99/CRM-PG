@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+        <div class="card-title">
+            <h3 class="card-label text-center">Mesas
+                <span class="text-muted pt-2 font-size-sm d-block">Lista de mesas</span>
+            </h3>
+        </div>
+        <div class="card-toolbar">
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="table-responsive">
+                    <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                            <tr class="text-left text-uppercase">
+                                <th style="min-width: 250px" class="pl-7">
+                                    <span class="text-dark-75">Mesa #</span>
+                                </th>
+                                <th style="min-width: 100px">Ubicación</th>
+                                <th style="min-width: 100px">Estado</th>
+                                <th style="min-width: 100px">Cantidad personas</th>
+
+                                <th style="min-width: 80px">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="tables.length > 0">
+                            <tr *ngFor="let table of tables">
+                                <td class="pl-0 py-8">
+                                    <div class="d-flex align-items-center">
+                                        <!-- <div class="symbol symbol-40 flex-shrink-0 symbol-success mr-3">
+                                            <div class="symbol-label">
+                                                {{customer.name.substr(0,1)}}{{customer.surnames.substr(0,1)}}</div>
+                                        </div> -->
+                                        <div>
+                                            <h3 class="text-center">Mesa {{table.table_number}}</h3>
+                                            <!-- <a [routerLink]="['/customer/' + customer.id + '/dashboard']"
+                                                routerLinkActive="router-link-active"
+                                                class="text-primary font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                Mesa {{table.table_number}}
+                                            </a> -->
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span
+                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">{{table.table_location}}</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger"
+                                        *ngIf="table.table_status.name == 'Ocupado' ">{{table.table_status.name}}</span>
+                                    <span class="badge badge-success"
+                                        *ngIf="table.table_status.name == 'Disponible' ">{{table.table_status.name}}
+                                    </span>
+                                </td>
+                                <td>
+
+                                    <span>{{table.table_capacity}}</span>
+                                </td>
+
+
+                                <td class="pr-0 text-left ">
+                                    <button class="btn btn-facebook" (click)="getTableById(table.id)"
+                                        data-bs-toggle="modal" data-bs-target="#modalToUpdateTable">Actualizar</button>
+                                    <app-edit-tables [table]="selectedTable"></app-edit-tables>
+                                    <button class="btn btn-danger text-center"
+                                        (click)="deleteTable(table.id)">Eliminar</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <tbody *ngIf="tables.length == 0">
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <p class="font-size-h3 text-muted font-weight-normal mt-5">No hay clientes para
+                                        mostrar</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

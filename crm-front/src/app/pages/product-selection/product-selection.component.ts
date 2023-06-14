@@ -27,9 +27,17 @@ export class ProductSelectionComponent implements OnInit {
       product: Product;
     }
   > = {};
+  copySelectedProductsMap: Record<
+    string,
+    {
+      quantity: number;
+      product: Product;
+    }
+  > = {};
   products: any;
   quantity: any;
   total: number = 0;
+  removeProductDisable: boolean = false;
 
   customer: any;
   customerCellphone: string = '';
@@ -99,10 +107,15 @@ export class ProductSelectionComponent implements OnInit {
             controller.orderService
               .reloadOrders(controller.selectedTable.id)
               .subscribe((newOrders: Order[]) => {
+                controller.removeProductDisable = true;
                 controller.orders = newOrders;
                 controller.orders.forEach((order) => {
                   const { product } = order;
                   controller.selectedProductsMap[product.id] = {
+                    product,
+                    quantity: order.quantity,
+                  };
+                  controller.copySelectedProductsMap[product.id] = {
                     product,
                     quantity: order.quantity,
                   };
@@ -116,6 +129,8 @@ export class ProductSelectionComponent implements OnInit {
            * **/
           console.log('Cerre el modal el modal');
           controller.paymentEnabled = false;
+          controller.removeProductDisable = false;
+
         }
       }
     });
@@ -144,12 +159,12 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   outOfStock(product: any) {
-    if(!this.selectedProductsMap[product.id]){
+    if (!this.selectedProductsMap[product.id]) {
       return product.stock - product.selled === 0;
     }
 
     return this.selectedProductsMap[product.id].quantity >=
-    product.stock - product.selled;
+      product.stock - product.selled;
   }
 
   pay() {
@@ -329,7 +344,7 @@ export class ProductSelectionComponent implements OnInit {
         if (
           product.stock - product.selled === 0 ||
           this.selectedProductsMap[product.id].quantity >=
-            product.stock - product.selled
+          product.stock - product.selled
         ) {
           Swal.fire({
             title: 'No hay más existencias de este producto',
@@ -355,6 +370,7 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   removeProduct(product: any) {
+
     if (product) {
       // El producto ya está en selectedProducts, lo removemos
       if (!this.selectedProductsMap[product.id]) {
@@ -363,6 +379,19 @@ export class ProductSelectionComponent implements OnInit {
           quantity: 0,
         };
       } else {
+
+        if (this.copySelectedProductsMap[product.id]) {
+          if (this.copySelectedProductsMap[product.id].quantity === this.selectedProductsMap[product.id].quantity) {
+            Swal.fire({
+              title: 'No se puede eliminar productos',
+              text: 'No se puede eliminar productos cuando ya se han agregado productos',
+              icon: 'warning',
+              cancelButtonColor: '#d33',
+            });
+            return;
+          }
+        }
+
         if (this.selectedProductsMap[product.id].quantity > 0) {
           this.selectedProductsMap[product.id].quantity--;
         }

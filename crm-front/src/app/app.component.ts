@@ -11,7 +11,7 @@ export class AppComponent {
     /^\/home/,
     /^\/login/,
     /^\/verification/,
-    /^\/e-commerce/,
+    /^\/shopping/,
   ]
   router: Router;
   title = 'crm-front';

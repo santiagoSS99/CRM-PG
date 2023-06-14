@@ -1,3 +1,8 @@
+.contain {
+    background-color: #eaeaea;
+
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -18,7 +23,7 @@ input[type=number] {
     margin-top: 110px;
     // margin-right: -30px;
 
-    & h3.title-header{
+    & h3.title-header {
         font-weight: bold;
     }
 
@@ -161,8 +166,8 @@ input[type=number] {
             // padding: 20px;
         }
 
-        .title-header{
-            font-family: 'Poppins','Roboto',sans-serif;
+        .title-header {
+            font-family: 'Poppins', 'Roboto', sans-serif;
             font-size: 1.5rem;
         }
 
@@ -172,7 +177,7 @@ input[type=number] {
 
         }
 
-        label.field{
+        label.field {
             font-weight: bold;
         }
     }

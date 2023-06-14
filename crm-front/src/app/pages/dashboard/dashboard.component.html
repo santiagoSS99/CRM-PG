@@ -1,53 +1,102 @@
-<div class="container">
-    <div class="investment">
-        <h3 class="text-center value">Total invertido</h3>
-        <h2 class="value">{{totalInvestment | currency: 'COP '}}</h2>
+<!-- <div class="allcontainer">
+    <div class="container">
+        <div class="investment">
+            <h3 class="text-center value">Total invertido</h3>
+            <h2 class="value">{{totalInvestment | currency: 'COP '}}</h2>
+        </div>
+        <div class="profits">
+            <h3 class="text-center value">Ganancias</h3>
+            <h2 class="value">{{totalCustomer}}</h2>
+        </div>
+        <div class="customers">
+            <h3 class="text-center value">Clientes almacenados</h3>
+            <h2 class="value">{{totalCustomer}}</h2>
+        </div>
     </div>
-    <div class="profits">
-        <h3 class="text-center value">Ganancias</h3>
-        <h2 class="value">{{totalCustomer}}</h2>
-    </div>
-    <div class="customers">
-        <h3 class="text-center value">Clientes almacenados</h3>
-        <h2 class="value">{{totalCustomer}}</h2>
-    </div>
-</div>
 
-<div class="chartContainer">
-    <div class="firstChart">
-        <canvas id="myChart1"></canvas>
+    <div class="chartContainer">
+        <div class="firstChart">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="secondChart">
+            <canvas id="myChart3"></canvas>
+        </div>
     </div>
-    <div class="secondChart">
-        <canvas id="myChart3"></canvas>
+    <div class="section3">
+        <div class="tableContainer">
+            <table class="table">
+                <tr>
+                    <th>Nombre cliente</th>
+                    <th>Visitas</th>
+                </tr>
+                <tr *ngFor="let customer of visitingCustomers">
+                    <td>{{customer.customerName}}</td>
+                    <td>{{customer.visitCount}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tableContainer">
+            <table class="table">
+                <tr>
+                    <th>Metodo de pago</th>
+                    <th>Cantidad de uso</th>
+                </tr>
+                <tr *ngFor="let payment of paymentMethod">
+                    <td>{{payment.paymentMethod}}</td>
+                    <td>{{payment.countPayment}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
-<div class="section3">
-    <div class="tableContainer">
-        <table class="table">
-            <tr>
-                <th>Nombre cliente</th>
-                <th>Visitas</th>
-                <!-- <th>Contenido 3</th> -->
-            </tr>
-            <tr *ngFor="let customer of visitingCustomers">
-                <td>{{customer.customerName}}</td>
-                <td>{{customer.visitCount}}</td>
-                <!-- <td>Contenido 6</td> -->
-            </tr>
-        </table>
-    </div>
-    <div class="tableContainer">
-        <table class="table">
-            <tr>
-                <th>Metodo de pago</th>
-                <th>Cantidad de uso</th>
-                <!-- <th>Contenido 3</th> -->
-            </tr>
-            <tr *ngFor="let payment of paymentMethod">
-                <td>{{payment.paymentMethod}}</td>
-                <td>{{payment.countPayment}}</td>
-                <!-- <td>Contenido 6</td> -->
-            </tr>
-        </table>
+</div> -->
+
+<div class="allcontainer" style="display: flex; flex-direction: column;">
+    <div class="container" style="display: flex;">
+        <div class="column">
+            <div class="profits">
+                <h3 class="text-center value">Ganancias</h3>
+                <h2 class="value">{{totalCustomer}}</h2>
+            </div>
+            <div class="chartContainer">
+                <div class="firstChart">
+                    <canvas id="myChart1"></canvas>
+                </div>
+            </div>
+            <div class="tableContainer">
+                <table class="table">
+                    <tr>
+                        <th>Nombre cliente</th>
+                        <th>Visitas</th>
+                    </tr>
+                    <tr *ngFor="let customer of visitingCustomers">
+                        <td>{{customer.customerName}}</td>
+                        <td>{{customer.visitCount}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="column">
+            <div class="investment">
+                <h3 class="text-center value">Total invertido</h3>
+                <h2 class="value">{{totalInvestment | currency: 'COP '}}</h2>
+            </div>
+            <div class="chartContainer">
+                <div class="secondChart">
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+            <div class="tableContainer">
+                <table class="table">
+                    <tr>
+                        <th>Método de pago</th>
+                        <th>Cantidad de uso</th>
+                    </tr>
+                    <tr *ngFor="let payment of paymentMethod">
+                        <td>{{payment.paymentMethod}}</td>
+                        <td>{{payment.countPayment}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
