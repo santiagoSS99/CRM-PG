@@ -29,6 +29,11 @@ export class PurchaseLineController {
     return this.purchaseLineService.getPurchaseDataByCustomerAndProduct();
   }
 
+  @Get('total-profit')
+  getProfits() {
+    return this.purchaseLineService.getProfits()
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.purchaseLineService.findOne(+id);
