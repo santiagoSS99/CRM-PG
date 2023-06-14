@@ -16,6 +16,8 @@ export class PurchaseService {
     private productRepository: Repository<Product>,
     @InjectRepository(Purchase)
     private purchaseRepository: Repository<Purchase>,
+    @InjectRepository(Customer)
+    private customerRepository: Repository<Customer>
   ) { }
 
   async create(createPurchaseDto: CreatePurchaseDto) {
@@ -76,6 +78,40 @@ export class PurchaseService {
     // const paymentMethodNames = sortedPaymentMethods.map(([paymentMethod]) => paymentMethod);
 
     return { data: paymentMethodCounts };
+  }
+
+  // async getTopVisitingCustomers(): Promise<{ customerId: number; visitCount: number }[]> {
+  //   const query = this.purchaseRepository.createQueryBuilder('purchase')
+  //     .select('purchase.customerId', 'customerId')
+  //     .addSelect('COUNT(purchase.customerId)', 'visitCount')
+  //     .groupBy('purchase.customerId')
+  //     .orderBy('visitCount', 'DESC')
+  //     .limit(10);
+
+  //   return query.getRawMany();
+  // }
+
+  async getTopVisitingCustomers(): Promise<{ customerId: number; visitCount: number; customerName: string }[]> {
+    const query = this.purchaseRepository.createQueryBuilder('purchase')
+      .select('purchase.customerId', 'customerId')
+      .addSelect('COUNT(purchase.customerId)', 'visitCount')
+      .addSelect('customer.name', 'customerName')
+      .leftJoin(Customer, 'customer', 'customer.id = purchase.customerId')
+      .groupBy('purchase.customerId')
+      .orderBy('visitCount', 'DESC')
+      .limit(10);
+
+    return query.getRawMany();
+  }
+
+  async getPaymentMethod(): Promise<{ customerId: number; visitCount: number; customerName: string }[]> {
+    const query = this.purchaseRepository.createQueryBuilder('purchase')
+      .select('purchase.paymentMethod', 'paymentMethod')
+      .addSelect('COUNT(purchase.paymentMethod)', 'countPayment')
+      .groupBy('purchase.paymentMethod')
+      .orderBy('paymentMethod', 'DESC')
+
+    return query.getRawMany();
   }
 
 
