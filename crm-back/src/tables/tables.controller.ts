@@ -27,8 +27,13 @@ export class TablesController {
     return this.tablesService.updateStatus(id, updateTableDto);
   }
 
+  @Patch('updateTable/:id')
+  updateTable(@Param('id') id: string, @Body() updateTableDto: UpdateTableDto) {
+    return this.tablesService.update(+id, updateTableDto);
+  }
+
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tablesService.remove(+id);
+  remove(@Param('id') id: any) {
+    return this.tablesService.remove(id);
   }
 }

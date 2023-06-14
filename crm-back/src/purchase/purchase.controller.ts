@@ -25,7 +25,12 @@ export class PurchaseController {
 
   @Get('payment-methods')
   async getPaymentMethodtoDash() {
-    const paymentMethods = await this.purchaseService.getPaymentMethodtoDash();
+    const paymentMethods = await this.purchaseService.getPaymentMethod();
     return paymentMethods;
+  }
+
+  @Get('top-visiting-customer')
+  getTopVisiting() {
+    return this.purchaseService.getTopVisitingCustomers()
   }
 }

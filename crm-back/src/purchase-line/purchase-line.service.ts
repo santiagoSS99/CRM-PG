@@ -22,28 +22,28 @@ export class PurchaseLineService {
   async create(createPurchaseLineDto: CreatePurchaseLineDto) {
     const { ...purchaseLine } = createPurchaseLineDto;
 
-      const productFound = await this.productRepository.findOne({
-        where: { id: purchaseLine.productId },
-      });
+    const productFound = await this.productRepository.findOne({
+      where: { id: purchaseLine.productId },
+    });
 
-      if (!productFound) throw new NotFoundException('No se encuentra el producto');
+    if (!productFound) throw new NotFoundException('No se encuentra el producto');
 
-      const purchaseFound = await this.purchaseRepository.findOne({
-        where: { id: purchaseLine.purchaseId },
-      });
+    const purchaseFound = await this.purchaseRepository.findOne({
+      where: { id: purchaseLine.purchaseId },
+    });
 
-      if (!purchaseFound) throw new NotFoundException('No se encuentra el purchase');
+    if (!purchaseFound) throw new NotFoundException('No se encuentra el purchase');
 
-      const pLine = this.purchaseLineRepository.create({
-        ...purchaseLine,
-        product: productFound,
-        purchase: purchaseFound
-      });
+    const pLine = this.purchaseLineRepository.create({
+      ...purchaseLine,
+      product: productFound,
+      purchase: purchaseFound
+    });
 
-      console.log("PLIne")
-      console.log(pLine);
+    console.log("PLIne")
+    console.log(pLine);
 
-      return this.purchaseLineRepository.save(pLine);
+    return this.purchaseLineRepository.save(pLine);
   }
 
   async findDataSalesPerMonth(res) {
@@ -85,6 +85,15 @@ export class PurchaseLineService {
       .orderBy('totalQuantity', 'DESC');
 
     return query.getRawMany();
+  }
+
+  async getProfits(): Promise<number> {
+    const { total } = await this.purchaseLineRepository
+      .createQueryBuilder('purchaseLine')
+      .select('SUM(purchaseLine.total)', 'total')
+      .getRawOne();
+
+    return total;
   }
 
 
