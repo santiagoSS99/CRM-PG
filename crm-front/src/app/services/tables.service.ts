@@ -2,13 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Tables } from '../interfaces/tables';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TablesService {
 
-  BASE_URL: string = 'http://localhost:3000/api'
+  // BASE_URL: string = 'http://localhost:3000/api'
+  BASE_URL: string = environment.domainUrl
+
   public _tables: BehaviorSubject<Tables[]> = new BehaviorSubject<Tables[]>([]);
   public _currentTable: BehaviorSubject<Partial<Tables>> = new BehaviorSubject<Partial<Tables>>({});
   currentTable = this._currentTable.asObservable();
