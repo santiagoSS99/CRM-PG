@@ -37,6 +37,7 @@ yarn-error.log
 testem.log
 /typings
 
+crm-front/src/environments
 crm-front/src/environments/environment.prod.ts
 
 # System files
@@ -7707,3 +7708,5 @@ crm-front/src/assets/scss/widgets/topbar-mail.scss
 crm-front/src/assets/scss/widgets/weather-widget.scss
 crm-front/src/assets/scss/widgets/widgets.scss
 crm-back/.env
+crm-front/src/environments/environment.prod.ts
+crm-front/src/environments/environment.ts
