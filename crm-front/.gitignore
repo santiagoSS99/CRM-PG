@@ -37,6 +37,8 @@ yarn-error.log
 testem.log
 /typings
 
+crm-front/src/environments/environment.prod.ts
+
 # System files
 .DS_Store
 Thumbs.db
