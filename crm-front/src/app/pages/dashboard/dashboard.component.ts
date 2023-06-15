@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   chartProductCustomer: any
   quantity = [];
   totalInvestment: any;
+  totalProfit: any
 
   totalCustomer: any;
   customers: any;
@@ -50,7 +51,8 @@ export class DashboardComponent implements OnInit {
     this.productsWithSales();
     this.getCustomers();
     this.getTopVisitingCustomers();
-    this.getPaymentMethod()
+    this.getPaymentMethod();
+    this.getProfitTotal();
   }
 
   // dashboardCustomerProduct() {
@@ -205,6 +207,15 @@ export class DashboardComponent implements OnInit {
       res => {
         console.log(res)
         this.paymentMethod = res
+      }
+    )
+  }
+
+  getProfitTotal() {
+    this.purchaseLineService.getprofitTotal(this.token).subscribe(
+      res => {
+        console.log(res)
+        this.totalProfit = res
       }
     )
   }

@@ -5,12 +5,16 @@ import { Observable, Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Call } from '../interfaces/call';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  BASE_URL: string = 'http://localhost:3000/api'
+  // BASE_URL: string = 'http://localhost:3000/api'  
+  BASE_URL: string = environment.domainUrl
+
   private _refresh$ = new Subject<void>();
   public _currentCustomer: BehaviorSubject<Partial<Customer>> = new BehaviorSubject<Partial<Customer>>({});
   currentCustomer = this._currentCustomer.asObservable();
