@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Call } from '../interfaces/call';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
